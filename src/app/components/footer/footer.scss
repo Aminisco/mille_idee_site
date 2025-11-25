@@ -1,0 +1,47 @@
+.footer {
+  display: flex;
+  justify-content: center;       /* centre tout le footer */
+  align-items: flex-start;
+  gap: 40px;                     /* espace égal entre chaque colonne */
+  padding: 40px 0;
+  width: 100%;
+  background-color: white;     /* (optionnel) couleur de fond */
+}
+
+/* Chaque colonne a la même largeur */
+.footer > div {
+  flex: 1;
+  text-align: center;            /* centre le contenu dans chaque div */
+  max-width: 250px;              /* limite la largeur pour un rendu propre */
+}
+
+/* Logo */
+.footer-logo img {
+  width: 150px;
+}
+
+/* Enlever marges inutiles */
+.footer h2,
+.footer p {
+  margin: 0 0 10px 0;
+}
+
+.footer-réseaux img{
+  width: 80px;
+}
+.footer-reseaux-icons {
+  display: flex;
+  justify-content: center;  /* centre horizontalement les icônes */
+  gap: 15px;                /* garde l'espacement */
+  margin-top: 10px;         /* petit espace entre le titre et les icônes */
+}
+.footer-top{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 60px;
+  background-color: #f4b400; /* couleur de ta bande */
+  text-align: center;
+  font-size: 14px;
+}

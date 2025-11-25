@@ -1,0 +1,74 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* Logo à gauche, menu à droite */
+  align-items: center;
+  padding: 0 20px; /* marge horizontale */
+  box-sizing: border-box;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+.header-elements {
+  display: flex;
+  gap: 150px; /* espace entre les éléments */
+  padding-right: 15px;
+}
+.header-elements a {
+  text-decoration: none; /* enlève le soulignement */
+  color: inherit;        /* prend la couleur du parent (ou définis ta couleur) */
+  cursor: pointer;
+  font-style: oblique;   /* optionnel, pour uniformiser avec les h3 */
+}
+
+.header-elements a:hover {
+  color: darkred;           /* couleur au survol, tu peux changer */
+}
+
+.logo {
+  display: flex;
+  align-items: center;   /* image + bloc de texte alignés */
+  gap: 15px;             /* espace entre l’image et les textes */
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column; /* empile les textes verticalement */
+  align-items: center;
+}
+
+.logo h3,
+.logo p {
+  margin: 0;              /* enlève les marges par défaut */
+}
+.header-top {
+  width: 100%;
+  height: 60px;
+  background-color: #f4b400; /* couleur de ta bande */
+  display: flex;
+  justify-content: flex-end; /* icônes à droite */
+  align-items: center;
+  padding-right: 20px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  padding-right: 15px;
+}
+
+.social-icons img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.social-icons img:hover {
+  transform: scale(1.15); /* petit zoom au survol */
+}
+
+
+
+
+
+
