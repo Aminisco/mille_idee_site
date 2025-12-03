@@ -1,1 +1,50 @@
-<p>Contactez nous</p>
+<div class="contact-wrapper">
+  <form class="contact-card" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+    <h2 class="contact-title">Contactez-nous</h2>
+    <p class="contact-subtitle">
+      Une question ? Un projet ? Envoyez-nous un message.
+    </p>
+
+    <!-- Nom -->
+    <div class="form-group">
+      <label for="name">Nom</label>
+      <input id="name" type="text" formControlName="name">
+      <div class="error" *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.invalid">
+        Le nom est requis.
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email">
+      <div class="error" *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.invalid">
+        Un email valide est requis.
+      </div>
+    </div>
+
+    <!-- Sujet -->
+    <div class="form-group">
+      <label for="subject">Sujet</label>
+      <input id="subject" type="text" formControlName="subject">
+      <div class="error" *ngIf="contactForm.get('subject')?.touched && contactForm.get('subject')?.invalid">
+        Le sujet est requis.
+      </div>
+    </div>
+
+    <!-- Message -->
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message" rows="5" formControlName="message"></textarea>
+      <div class="error" *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.invalid">
+        Le message doit contenir au moins 10 caractères.
+      </div>
+    </div>
+
+    <button class="btn-primary" type="submit" [disabled]="contactForm.invalid">
+      Envoyer
+    </button>
+
+  </form>
+</div>
