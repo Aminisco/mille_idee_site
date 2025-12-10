@@ -1,50 +1,92 @@
-<div class="contact-wrapper">
-  <form class="contact-card" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+<section class="contact-page">
+  <div class="contact-grid">
 
-    <h2 class="contact-title">Contactez-nous</h2>
-    <p class="contact-subtitle">
-      Une question ? Un projet ? Envoyez-nous un message.
-    </p>
+    <!-- Colonne gauche : texte + background -->
+    <div class="contact-left animate-left">
+      <div class="left-overlay">
+        <h1>Contactez notre ASBL</h1>
+        <p class="intro">
+          Une question, une idée de projet ou une demande d’information ?
+          Écrivez-nous, on vous répond dès que possible.
+        </p>
 
-    <!-- Nom -->
-    <div class="form-group">
-      <label for="name">Nom</label>
-      <input id="name" type="text" formControlName="name">
-      <div class="error" *ngIf="contactForm.get('name')?.touched && contactForm.get('name')?.invalid">
-        Le nom est requis.
+        <ul class="highlights">
+          <li>🤝 Accompagnement personnalisé</li>
+          <li>📅 Réponse rapide</li>
+          <li>📍 Basés en Belgique</li>
+        </ul>
+
+        <div class="contact-details">
+          <p><strong>Email :</strong></p>
+          <p>contact&#64;mon-asbl.be</p>
+          <p><strong>Téléphone :</strong> +32 (0)4 12 34 56 78</p>
+        </div>
       </div>
     </div>
 
-    <!-- Email -->
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input id="email" type="email" formControlName="email">
-      <div class="error" *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.invalid">
-        Un email valide est requis.
-      </div>
+    <!-- Colonne droite : formulaire -->
+    <div class="contact-right animate-right">
+      <form class="contact-card" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+        <h2>Envoyer un message</h2>
+        <p class="form-subtitle">
+          Remplis ce formulaire, on revient vers toi rapidement.
+        </p>
+
+        @if (isSending) {
+          <div class="alert alert-info">Envoi en cours…</div>
+        }
+        @else if (sendOk === true) {
+          <div class="alert alert-success">✅ Message envoyé, merci !</div>
+        }
+        @else if (sendOk === false) {
+          <div class="alert alert-error">❌ Une erreur est survenue, réessaie.</div>
+        }
+
+        <!-- Champs du formulaire -->
+        <div class="form-group">
+          <label for="name">Nom</label>
+          <input id="name" type="text" formControlName="name">
+          @if (contactForm.get('name')?.touched && contactForm.get('name')?.invalid) {
+            <div class="error">Le nom est requis.</div>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" type="email" formControlName="email">
+          @if (contactForm.get('email')?.touched && contactForm.get('email')?.invalid) {
+            <div class="error">Un email valide est requis.</div>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Sujet</label>
+          <input id="subject" type="text" formControlName="subject">
+          @if (contactForm.get('subject')?.touched && contactForm.get('subject')?.invalid) {
+            <div class="error">Le sujet est requis.</div>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" rows="5" formControlName="message"></textarea>
+          @if (contactForm.get('message')?.touched && contactForm.get('message')?.invalid) {
+            <div class="error">Le message doit contenir au moins 10 caractères.</div>
+          }
+        </div>
+
+        <button class="btn-primary" type="submit" [disabled]="contactForm.invalid || isSending">
+          @if (isSending) {
+            <span>Envoi…</span>
+          }
+          @else {
+            <span>Envoyer</span>
+          }
+        </button>
+
+      </form>
     </div>
 
-    <!-- Sujet -->
-    <div class="form-group">
-      <label for="subject">Sujet</label>
-      <input id="subject" type="text" formControlName="subject">
-      <div class="error" *ngIf="contactForm.get('subject')?.touched && contactForm.get('subject')?.invalid">
-        Le sujet est requis.
-      </div>
-    </div>
-
-    <!-- Message -->
-    <div class="form-group">
-      <label for="message">Message</label>
-      <textarea id="message" rows="5" formControlName="message"></textarea>
-      <div class="error" *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.invalid">
-        Le message doit contenir au moins 10 caractères.
-      </div>
-    </div>
-
-    <button class="btn-primary" type="submit" [disabled]="contactForm.invalid">
-      Envoyer
-    </button>
-
-  </form>
-</div>
+  </div>
+</section>

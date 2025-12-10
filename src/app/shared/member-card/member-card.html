@@ -1,0 +1,26 @@
+<div class="member-card animate-card">
+
+  <!-- image rectangulaire en haut -->
+  <div class="photo-wrapper">
+    <img class="photo" [src]="photo" [alt]="name">
+  </div>
+
+  <!-- contenu texte -->
+  <div class="member-content">
+
+    <h3 class="name">{{ name }}</h3>
+    <p class="role">{{ role }}</p>
+
+    @if (email) {
+      <a class="email" [href]="'mailto:' + email">
+        {{ email }}
+      </a>
+    }
+
+    @if (bio) {
+      <p class="bio">{{ bio }}</p>
+    }
+
+  </div>
+
+</div>

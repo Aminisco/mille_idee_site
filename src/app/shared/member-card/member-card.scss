@@ -1,0 +1,90 @@
+/* --- STRUCTURE DE LA CARTE --- */
+.member-card {
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;         /* centrer horizontalement */
+  text-align: center;          /* centrer tous les textes */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  /* 🔥 Garantit que toutes les cartes ont la même taille */
+  width: 100%;
+  min-height: 380px;           /* hauteur fixe harmonisée */
+  max-height: 380px;           /* empêche l'étirement */
+  box-sizing: border-box;
+}
+
+/* effet au survol */
+.member-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* --- IMAGE UNIFORME --- */
+.photo-wrapper {
+  width: 100%;
+  height: 180px;              /* même hauteur pour toutes */
+  overflow: hidden;
+  background: #f3f4f6;
+  flex-shrink: 0;             /* empêche la réduction d’image */
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* remplie uniformément */
+}
+
+/* --- CONTENU TEXTE --- */
+.member-content {
+  padding: 1rem 0.9rem 1.2rem;
+
+  /* Garantit que le texte prend toute la place restante */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+/* nom */
+.name {
+  margin: 0.4rem 0 0.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+/* rôle */
+.role {
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #005c99;
+}
+
+/* email */
+.email {
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: #cc4e4e;
+  margin-bottom: 0.4rem;
+  display: inline-block;
+}
+
+.email:hover {
+  text-decoration: underline;
+}
+
+/* bio */
+.bio {
+  font-size: 0.82rem;
+  color: #444;
+  margin-top: 0.4rem;
+  flex-grow: 1;      /* 🔥 permet au texte de s’étendre sans casser la hauteur */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
