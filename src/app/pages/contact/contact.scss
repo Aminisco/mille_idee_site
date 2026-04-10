@@ -34,7 +34,7 @@
   gap: 1.8rem;
 
   /* IMAGE EN BACKGROUND */
-  background-image: url('/assets/image-contact/istockphoto-1395008633-1024x1024.jpg');
+  background-image: url('/assets/image-contact/image formulaire contact.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -306,5 +306,45 @@
   .contact-left {
     padding: 1.8rem 1.4rem;
     border-radius: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-page {
+    padding: 1.5rem 1rem;
+    min-height: unset;
+  }
+
+  .contact-card {
+    padding: 1.6rem 1.2rem;
+    border-radius: 16px;
+  }
+
+  .contact-card h2 {
+    font-size: 1.25rem;
+  }
+
+  .contact-left h1 {
+    font-size: 1.6rem;
+  }
+
+  .highlights {
+    font-size: 0.88rem;
+  }
+
+  .contact-details {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .contact-card {
+    padding: 1.2rem 1rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.75rem;
   }
 }

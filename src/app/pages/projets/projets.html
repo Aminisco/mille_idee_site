@@ -1,18 +1,83 @@
-<h1>Découvrez tous nos projets</h1>
-<h2>Nos maraudes</h2>
-<p>- Hiver Partagé</p>
-<p>Projet associatif ayant pour but de proposer un repas aux sens-abris de notre belle capitale. Ce dernier a également
-pour but d'objectiver et de sensibiliser nos jeunes bénéficiaires à la précarité omniprésente à Bruxelles
-  ainsi que partager  une simple discussion et un sourire. Des échanges sociales indispensables à tout humain;
-  que nos jeunes et notre équipe transmettent à travers cette action caritative. </p>
-<p>- Maraude estivale</p>
-<h2>Nos projets citoyens</h2>
-<p>- Clean Walking dans le quartier de Saint-Gilles</p>
-<h2>Projets sprotifs</h2>
-<p>- Atelier découverte de boxe anglaise, en collaboration avec l'ASBL Mosaïc</p>
-<h3>Projets d'auto financement</h3>
-<h5>Dans le but de pouvoir effectuer un voyage culturel au Canada, nous réalisons différents projets de vente et
-d'auto-financement :</h5>
-<p>- Vente de bonbons dans les rues de Bruxelles</p>
-<h2>Projets à venir</h2>
-<p></p>
+<div class="projets-page">
+
+  <!-- HERO -->
+  <section class="projets-hero animate-fade">
+    <div class="projets-hero-inner">
+      <span class="hero-chip">Nos projets</span>
+      <h1>Découvrez ce que nous construisons</h1>
+      <p>
+        Maraudes, projets citoyens, ateliers sportifs, auto-financement…
+        chaque action est portée par et pour les jeunes de Bruxelles.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTIONS -->
+  @for (section of sections; track section.label) {
+    <div class="section animate-fade">
+
+      <div class="section-header">
+        <span class="section-chip">{{ section.label }}</span>
+        @if (section.note) {
+          <p class="section-note">{{ section.note }}</p>
+        }
+      </div>
+
+      @if (section.projects.length > 0) {
+        <div class="cards-grid">
+          @for (project of section.projects; track project.title) {
+            <div class="card">
+
+              @if (project.image && project.image.length > 0) {
+                <div class="card-slider">
+                  <img
+                    class="card-img"
+                    [src]="project.image[getSlideIndex(project.title)]"
+                    [alt]="project.title"
+                  />
+                  @if (project.image.length > 1) {
+                    <button
+                      class="slider-btn slider-prev"
+                      (click)="prevSlide(project.title, project.image.length, $event)"
+                      aria-label="Image précédente"
+                    >&#8249;</button>
+                    <button
+                      class="slider-btn slider-next"
+                      (click)="nextSlide(project.title, project.image.length, $event)"
+                      aria-label="Image suivante"
+                    >&#8250;</button>
+                    <div class="slider-dots">
+                      @for (img of project.image; track $index) {
+                        <span
+                          class="dot"
+                          [class.active]="getSlideIndex(project.title) === $index"
+                          (click)="setSlide(project.title, $index)"
+                        ></span>
+                      }
+                    </div>
+                  }
+                </div>
+              } @else {
+                <div class="card-img-placeholder"></div>
+              }
+
+              <div class="card-body">
+                <span [class]="'card-tag tag-' + project.tag">{{ project.category }}</span>
+                <p class="card-title">{{ project.title }}</p>
+                <p class="card-desc">{{ project.description }}</p>
+              </div>
+
+            </div>
+          }
+        </div>
+      } @else {
+        <div class="coming-soon">
+          <span class="coming-soon-icon">🌱</span>
+          <p>De nouveaux projets arrivent bientôt — restez connectés !</p>
+        </div>
+      }
+
+    </div>
+  }
+
+</div>

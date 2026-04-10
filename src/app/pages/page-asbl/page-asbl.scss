@@ -580,3 +580,78 @@
   gap: 1rem;
   align-items: stretch;
 }
+
+/* ============================
+   RESPONSIVE MOBILE
+============================ */
+
+@media (max-width: 768px) {
+  .asbl-page {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .asbl-text {
+    padding: 1.8rem 1.4rem;
+    border-radius: 24px;
+  }
+
+  .asbl-pill {
+    display: none;
+  }
+
+  .goals-section {
+    padding: 2rem 1.2rem 2.4rem;
+    border-radius: 24px;
+  }
+
+  .goals-title {
+    font-size: 1.6rem;
+  }
+
+  .goals-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .visual-wrapper {
+    height: 220px;
+  }
+
+  .visual-overlay-text {
+    padding: 1.4rem 1.2rem;
+  }
+
+  .visual-overlay-text h2 {
+    font-size: 1.3rem;
+  }
+
+  .section-divider .bar {
+    width: 60px;
+  }
+
+  .section-divider .divider-title {
+    font-size: 1.3rem;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-inner {
+    padding: 1.4rem 1rem 1.6rem;
+  }
+
+  .hero-text-block h1 {
+    font-size: 1.5rem;
+  }
+
+  .goals-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}

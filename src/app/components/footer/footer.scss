@@ -35,6 +35,38 @@
   gap: 15px;                /* garde l'espacement */
   margin-top: 10px;         /* petit espace entre le titre et les icônes */
 }
+@media (max-width: 768px) {
+  .footer {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    padding: 30px 1.2rem;
+  }
+
+  .footer > div {
+    max-width: 45%;
+    min-width: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 24px 1rem;
+  }
+
+  .footer > div {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .footer-logo img {
+    width: 100px;
+  }
+}
+
 .footer-top{
   display: flex;
   align-items: center;

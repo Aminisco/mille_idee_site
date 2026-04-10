@@ -1,86 +1,297 @@
-.presentation-home {
+.home-page {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 60px 10%;
-  gap: 40px;
-  flex-wrap: wrap;
-  background-color: #f9f9f9;
+  flex-direction: column;
+  gap: 4rem;
+  padding-bottom: 4rem;
 }
 
-/* Texte dans un cadre */
+/* ============================
+   HERO
+============================ */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 1.5rem 3rem;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(129, 140, 248, 0.18), transparent 55%),
+    radial-gradient(circle at 90% 80%, rgba(52, 211, 153, 0.15), transparent 55%),
+    #f9fafb;
+}
+
 .presentation-text {
-  background-color: white;
-  padding: 30px 40px;
-  border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  max-width: 600px;
+  max-width: 700px;
+  background: #ffffff;
+  padding: 2.5rem 3rem;
+  border-radius: 24px;
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.1);
   opacity: 0;
   transform: translateY(30px);
-  transition: all 1s ease;
-}
+  transition: opacity 0.9s ease, transform 0.9s ease;
 
-.presentation-text.active {
-  opacity: 1;
-  transform: translateY(0);
+  &.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .presentation-text h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  color: #333;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.9rem;
+  line-height: 1.2;
 }
 
 .presentation-text h3 {
-  font-size: 1.3rem;
-  margin-bottom: 20px;
-  color: #555;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 1rem;
 }
 
 .presentation-text p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #666;
-  margin-bottom: 15px;
+  font-size: 0.97rem;
+  line-height: 1.7;
+  color: #6b7280;
+  margin-bottom: 0.6rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
-/* Image à droite */
-.illustration-accueil {
-  flex: 1;
+/* ============================
+   BOUTONS DE NAVIGATION
+============================ */
+
+.hero-nav {
   display: flex;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
   justify-content: center;
+}
+
+.btn-nav {
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  border: 1.5px solid #d1d5db;
+  color: #374151;
+  background: #ffffff;
+  transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, transform 0.15s ease;
+
+  &:hover {
+    border-color: #4f46e5;
+    color: #4f46e5;
+    background: #eef2ff;
+    transform: translateY(-1px);
+  }
+
+  &--primary {
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    color: #ffffff;
+    border-color: transparent;
+    box-shadow: 0 6px 18px rgba(79, 70, 229, 0.32);
+
+    &:hover {
+      background: linear-gradient(135deg, #4338ca, #4f46e5);
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 10px 26px rgba(79, 70, 229, 0.42);
+    }
+  }
+}
+
+/* ============================
+   SLIDER
+============================ */
+
+.events-slider {
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 1.2rem;
 }
 
-.img-accueil {
-  max-width: 500px;
+.slider-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #111827;
+  text-align: center;
+}
+
+.slider-wrapper {
+  position: relative;
   width: 100%;
-  height: auto;
-  border-radius: 15px;
-  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
-  opacity: 0;
-  transform: scale(0.9);
-  transition: all 1s ease;
+  max-width: 1000px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.14);
 }
 
-.img-accueil.active {
-  opacity: 1;
-  transform: scale(1);
+.slider-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .presentation-home {
-    flex-direction: column-reverse;
-    text-align: center;
-    padding: 40px 5%;
+.slide {
+  flex: 0 0 100%;
+  width: 100%;
+
+  img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+/* Flèches */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.88);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1f2937;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.2);
+  transition: background 0.15s ease, transform 0.15s ease;
+  z-index: 2;
+
+  &:hover {
+    background: #fff;
+    transform: translateY(-50%) scale(1.1);
+  }
+}
+
+.slider-prev { left: 14px; }
+.slider-next { right: 14px; }
+
+/* Dots */
+.slider-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d1d5db;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+
+  &.active {
+    background: #4f46e5;
+    transform: scale(1.35);
+  }
+
+  &:hover {
+    background: #a5b4fc;
+  }
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+
+@media (max-width: 768px) {
+  .home-page {
+    gap: 2.5rem;
+  }
+
+  .hero {
+    padding: 2.5rem 1rem 2rem;
   }
 
   .presentation-text {
-    max-width: 100%;
+    padding: 1.8rem 1.4rem;
   }
 
-  .illustration-accueil {
-    margin-bottom: 30px;
+  .presentation-text h1 {
+    font-size: 1.6rem;
   }
+
+  .hero-nav {
+    gap: 0.6rem;
+  }
+
+  .btn-nav {
+    font-size: 0.88rem;
+    padding: 0.55rem 1.1rem;
+  }
+
+  .events-slider {
+    padding: 0 0.8rem;
+  }
+
+  .slider-title {
+    font-size: 1.2rem;
+  }
+
+  .slide img {
+    height: 300px;
+  }
+
+  .slider-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .presentation-text {
+    padding: 1.4rem 1rem;
+  }
+
+  .presentation-text h1 {
+    font-size: 1.4rem;
+  }
+
+  .presentation-text h3 {
+    font-size: 0.95rem;
+  }
+
+  .hero-nav {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .btn-nav {
+    width: 100%;
+    max-width: 260px;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .slide img {
+    height: 220px;
+  }
+
+  .slider-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+  }
+
+  .slider-prev { left: 8px; }
+  .slider-next { right: 8px; }
 }

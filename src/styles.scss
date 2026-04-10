@@ -4,6 +4,16 @@ html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow-y: auto; /* uniquement overflow-y auto */
+  overflow-y: auto;
+  overflow-x: hidden;
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }

@@ -1,13 +1,51 @@
-<div class="presentation-home">
-  <div class="presentation-text">
-    <h1>Bienvenue sur le site de Mille Idées</h1>
-    <h3>Mille Idées, la nouvelle association de jeunes de Bruxelles par les jeunes de Bruxelles. Notre but? </h3>
-    <p>Lutter contre toutes formes d'exclusions sociales et développer le potentiel des jeunes bruxellois afin qu'ils deviennent des citoyens actifs, responsables et épanouis.</p>
-    <p>Des idées de projets sportifs, artistiques, humanitaires ou encore citoyens?
-    Faisons de cette idée une réalite. </p>
-  </div>
-  <div class="illustartion-acceuil">
-    <img class="img-accueil" src="assets/image_accueil/boy-8539958_1920.jpg" alt="image-acceuil">
-  </div>
-</div>
+<div class="home-page">
 
+  <!-- HERO : texte centré -->
+  <section class="hero">
+    <div class="presentation-text">
+      <h1>Bienvenue sur le site de Mille Idées</h1>
+      <h3>Mille Idées, la nouvelle association de jeunes de Bruxelles par les jeunes de Bruxelles.</h3>
+      <p>Lutter contre toutes formes d'exclusions sociales et développer le potentiel des jeunes bruxellois afin qu'ils deviennent des citoyens actifs, responsables et épanouis.</p>
+      <p>Des idées de projets sportifs, artistiques, humanitaires ou encore citoyens ? Faisons de cette idée une réalité.</p>
+    </div>
+
+    <!-- Boutons de navigation -->
+    <div class="hero-nav">
+      <a routerLink="/asbl" class="btn-nav">L'Asbl</a>
+      <a routerLink="/projets" class="btn-nav btn-nav--primary">Nos projets</a>
+      <a routerLink="/contact" class="btn-nav">Contact</a>
+    </div>
+  </section>
+
+  <!-- SLIDER PHOTOS -->
+  <section class="events-slider">
+    <h2 class="slider-title">Nos événements en images</h2>
+
+    <div class="slider-wrapper">
+      <div
+        class="slider-track"
+        [style.transform]="'translateX(-' + currentSlide * 100 + '%)'"
+      >
+        @for (img of slides; track $index) {
+          <div class="slide">
+            <img [src]="img" alt="Photo événement">
+          </div>
+        }
+      </div>
+
+      <button class="slider-btn slider-prev" (click)="prevSlide()" aria-label="Précédent">&#8249;</button>
+      <button class="slider-btn slider-next" (click)="nextSlide()" aria-label="Suivant">&#8250;</button>
+    </div>
+
+    <div class="slider-dots">
+      @for (img of slides; track $index) {
+        <span
+          class="dot"
+          [class.active]="currentSlide === $index"
+          (click)="setSlide($index)"
+        ></span>
+      }
+    </div>
+  </section>
+
+</div>

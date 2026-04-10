@@ -83,12 +83,23 @@
   font-size: 0.82rem;
   color: #444;
   margin-top: 0.4rem;
-  flex-grow: 1;      /* 🔥 permet au texte de s’étendre sans casser la hauteur */
+  flex-grow: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: justify;
   hyphens: auto;
   word-break: normal;
+}
+
+@media (max-width: 480px) {
+  .member-card {
+    min-height: unset;
+    max-height: unset;
+  }
+
+  .photo-wrapper {
+    height: 160px;
+  }
 }
 

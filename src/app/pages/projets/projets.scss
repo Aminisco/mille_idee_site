@@ -1,1 +1,390 @@
+/* ============================
+   PAGE WRAPPER
+============================ */
 
+.projets-page {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3.5rem 1.8rem 5rem;
+}
+
+.projets-page::before,
+.projets-page::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.projets-page::before {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle at 30% 30%, #6366f1, transparent 60%);
+  top: 0;
+  left: -80px;
+}
+
+.projets-page::after {
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle at 70% 70%, #22c55e, transparent 60%);
+  bottom: 80px;
+  right: -60px;
+}
+
+/* ============================
+   HERO
+============================ */
+
+.projets-hero {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  padding: 3.5rem 2rem 4rem;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(129, 140, 248, 0.18), transparent 55%),
+    radial-gradient(circle at 90% 80%, rgba(52, 211, 153, 0.15), transparent 55%),
+    #f9fafb;
+  border-radius: 40px 28px 44px 20px;
+  box-shadow: 0 18px 46px rgba(15, 23, 42, 0.1);
+}
+
+.projets-hero-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.hero-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  background: #e0e7ff;
+  color: #3730a3;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.projets-hero h1 {
+  font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
+  margin-bottom: 0.8rem;
+}
+
+.projets-hero p {
+  font-size: 1.02rem;
+  color: #6b7280;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ============================
+   SECTIONS
+============================ */
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.section-header {
+  margin-bottom: 1.5rem;
+}
+
+.section-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  background: #e0e7ff;
+  color: #3730a3;
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.section-note {
+  margin: 0.65rem 0 0;
+  font-size: 0.96rem;
+  color: #6b7280;
+  max-width: 720px;
+  line-height: 1.65;
+}
+
+/* ============================
+   GRILLE
+============================ */
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ============================
+   CARTE
+============================ */
+
+.card {
+  background: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.09);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background: radial-gradient(circle at 10% 0%, rgba(129, 140, 248, 0.12), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  &:hover {
+    transform: translateY(-6px) rotate(-0.3deg);
+    box-shadow: 0 22px 50px rgba(79, 70, 229, 0.18);
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
+}
+
+/* ============================
+   SLIDER
+============================ */
+
+.card-slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .card-img {
+  transform: scale(1.04);
+}
+
+.card-img-placeholder {
+  width: 100%;
+  height: 240px;
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1f2937;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.2);
+  transition: background 0.15s, opacity 0.2s, transform 0.15s;
+  opacity: 0;
+  z-index: 2;
+
+  &:hover {
+    background: #fff;
+    transform: translateY(-50%) scale(1.1);
+  }
+}
+
+.slider-prev { left: 10px; }
+.slider-next { right: 10px; }
+
+.card-slider:hover .slider-btn {
+  opacity: 1;
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+
+  &.active {
+    background: #fff;
+    transform: scale(1.35);
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.88);
+  }
+}
+
+/* ============================
+   CARD BODY
+============================ */
+
+.card-body {
+  position: relative;
+  z-index: 1;
+  padding: 1.2rem 1.4rem 1.5rem;
+}
+
+.card-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.6rem;
+
+  &.tag-maraude     { background: #E1F5EE; color: #0F6E56; }
+  &.tag-citoyen     { background: #E6F1FB; color: #185FA5; }
+  &.tag-sport       { background: #FAECE7; color: #993C1D; }
+  &.tag-financement { background: #FAEEDA; color: #854F0B; }
+  &.tag-avenir      { background: #F1EFE8; color: #5F5E5A; }
+}
+
+.card-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0 0 0.5rem;
+  line-height: 1.4;
+}
+
+.card-desc {
+  font-size: 0.9rem;
+  color: #6b7280;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ============================
+   COMING SOON
+============================ */
+
+.coming-soon {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(129, 140, 248, 0.12), transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(52, 211, 153, 0.1), transparent 55%),
+    #f9fafb;
+  border: 1px dashed #c7d2fe;
+  border-radius: 24px;
+  padding: 2.4rem;
+  text-align: center;
+
+  .coming-soon-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+
+  p {
+    color: #6b7280;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+}
+
+/* ============================
+   ANIMATIONS
+============================ */
+
+@keyframes fadeInSoft {
+  0%   { opacity: 0; transform: translateY(18px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade {
+  animation: fadeInSoft 0.9s ease-out both;
+}
+
+/* ============================
+   RESPONSIVE
+============================ */
+
+@media (max-width: 768px) {
+  .projets-page {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .projets-hero {
+    padding: 2.5rem 1.2rem 3rem;
+    border-radius: 24px;
+    margin-bottom: 2rem;
+  }
+
+  .projets-hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-img {
+    height: 200px;
+  }
+
+  .card-img-placeholder {
+    height: 200px;
+  }
+
+  .slider-btn {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .projets-hero {
+    padding: 2rem 1rem 2.5rem;
+  }
+
+  .projets-hero h1 {
+    font-size: 1.45rem;
+  }
+
+  .section {
+    margin-bottom: 2rem;
+  }
+
+  .card-body {
+    padding: 1rem 1.1rem 1.2rem;
+  }
+}
