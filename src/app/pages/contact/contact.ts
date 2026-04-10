@@ -6,11 +6,11 @@ import {NgIf} from '@angular/common';
 @Component({
   selector: 'app-contact',
   imports: [
-    ReactiveFormsModule,
-    NgIf
+    ReactiveFormsModule
   ],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
+  standalone: true
 })
 export class Contact {
 
