@@ -9,19 +9,48 @@
   </div>
 </div>
 
-<header class="header">
+<header class="header" [class.menu-open]="menuOpen()">
   <a class="logo" routerLink="/home">
-    <img src="/assets/logo/logo_noir_png.png" alt="Logo Mille Idées" width="90">
+    <img src="/assets/logo/logo_noir_png.png" alt="Logo Mille Idées">
     <div class="logo-text">
       <span class="logo-name">Mille Idées Asbl</span>
       <span class="logo-tagline">L'asbl qui vient en aide à la jeunesse Bruxelloise</span>
     </div>
   </a>
 
-  <nav class="nav">
-    <a routerLink="/home"     routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact:true}">Accueil</a>
-    <a routerLink="/asbl"     routerLinkActive="nav-active">L'Asbl</a>
-    <a routerLink="/projets"  routerLinkActive="nav-active">Projets</a>
-    <a routerLink="/contact"  routerLinkActive="nav-active" class="nav-cta">Contact</a>
+  <!-- Nav desktop (dans le flex du header) -->
+  <nav class="nav nav--desktop">
+    <a routerLink="/home"    routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact:true}">Accueil</a>
+    <a routerLink="/asbl"    routerLinkActive="nav-active">L'Asbl</a>
+    <a routerLink="/projets" routerLinkActive="nav-active">Projets</a>
+    <a routerLink="/contact" routerLinkActive="nav-active" class="nav-cta">Contact</a>
   </nav>
+
+  <button
+    class="burger"
+    type="button"
+    [attr.aria-expanded]="menuOpen()"
+    aria-controls="mobile-nav"
+    aria-label="Menu"
+    (click)="toggleMenu()">
+    <span class="burger-bar"></span>
+    <span class="burger-bar"></span>
+    <span class="burger-bar"></span>
+  </button>
 </header>
+
+<!-- Backdrop -->
+<div class="nav-backdrop" [class.open]="menuOpen()" (click)="closeMenu()" aria-hidden="true"></div>
+
+<!-- Nav mobile : drawer à droite, hors du header -->
+<nav id="mobile-nav" class="nav--mobile" [class.open]="menuOpen()">
+  <button class="nav-close" type="button" aria-label="Fermer le menu" (click)="closeMenu()">
+    <span></span>
+    <span></span>
+  </button>
+
+  <a routerLink="/home"    routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact:true}" (click)="closeMenu()">Accueil</a>
+  <a routerLink="/asbl"    routerLinkActive="nav-active" (click)="closeMenu()">L'Asbl</a>
+  <a routerLink="/projets" routerLinkActive="nav-active" (click)="closeMenu()">Projets</a>
+  <a routerLink="/contact" routerLinkActive="nav-active" class="nav-cta" (click)="closeMenu()">Contact</a>
+</nav>

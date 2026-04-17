@@ -3,6 +3,13 @@
   <!-- image rectangulaire en haut -->
   <div class="photo-wrapper">
     <img class="photo" [src]="photo" [alt]="name">
+
+    @if (cofounder) {
+      <span class="founder-badge" aria-label="Cofondateur">
+        <span class="founder-badge-icon" aria-hidden="true">★</span>
+        Cofondateur
+      </span>
+    }
   </div>
 
   <!-- contenu texte -->

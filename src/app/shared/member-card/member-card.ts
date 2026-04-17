@@ -18,4 +18,6 @@ export class MemberCard {
   @Input() linkedin?: string;
   @Input() facebook?: string;
 
+  @Input() cofounder: boolean = false;
+
 }

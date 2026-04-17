@@ -9,7 +9,17 @@
   <footer class="footer">
     <app-footer></app-footer>
   </footer>
+
+  <button
+    type="button"
+    class="scroll-top"
+    [class.visible]="showScrollTop()"
+    aria-label="Remonter en haut de la page"
+    (click)="scrollToTop()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5"/>
+      <path d="M5 12l7-7 7 7"/>
+    </svg>
+  </button>
 </div>
 </body>
-
-

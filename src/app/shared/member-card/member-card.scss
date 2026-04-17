@@ -1,105 +1,207 @@
-/* --- STRUCTURE DE LA CARTE --- */
 .member-card {
-  background: #ffffff;
-  border-radius: 14px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;         /* centrer horizontalement */
-  text-align: center;          /* centrer tous les textes */
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  /* 🔥 Garantit que toutes les cartes ont la même taille */
   width: 100%;
-  min-height: 380px;           /* hauteur fixe harmonisée */
-  max-height: 380px;           /* empêche l'étirement */
-  box-sizing: border-box;
-}
-
-/* effet au survol */
-.member-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
-}
-
-/* --- IMAGE UNIFORME --- */
-.photo-wrapper {
-  width: 100%;
-  height: 180px;              /* même hauteur pour toutes */
+  height: 100%;
+  min-height: 540px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
   overflow: hidden;
-  background: #f3f4f6;
-  flex-shrink: 0;             /* empêche la réduction d’image */
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--t-base), box-shadow var(--t-base),
+              border-color var(--t-base);
+}
+
+.member-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--grad-brand);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-base);
+  z-index: 3;
+}
+
+.member-card:hover {
+  transform: translateY(-6px);
+  border-color: transparent;
+  box-shadow: var(--shadow-lg);
+}
+
+.member-card:hover::before { transform: scaleX(1); }
+
+/* ---- Photo : hauteur fixe ---- */
+.photo-wrapper {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  flex: none;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--brand-50), var(--accent-50));
+}
+
+.photo-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 65%, rgba(11, 18, 32, 0.12));
+  pointer-events: none;
 }
 
 .photo {
   width: 100%;
   height: 100%;
-  object-fit: cover;          /* remplie uniformément */
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-out);
 }
 
-/* --- CONTENU TEXTE --- */
-.member-content {
-  padding: 1rem 0.9rem 1.2rem;
+.member-card:hover .photo { transform: scale(1.05); }
 
-  /* Garantit que le texte prend toute la place restante */
+/* ---- Badge cofondateur ---- */
+.founder-badge {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.7rem 0.3rem 0.55rem;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--grad-brand);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+.founder-badge-icon {
+  font-size: 0.78rem;
+  line-height: 1;
+  color: var(--gold-50);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+/* ---- Contenu : remplit le reste, texte complet visible ---- */
+.member-content {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  flex-grow: 1;
+  gap: 0.45rem;
+  padding: 1.1rem 1.25rem 1.25rem;
 }
 
-/* nom */
 .name {
-  margin: 0.4rem 0 0.2rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #1a1a1a;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink-900);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin: 0;
 }
 
-/* rôle */
 .role {
-  margin: 0 0 0.4rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: #005c99;
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  padding: 0.22rem 0.7rem;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-700);
+  background: var(--brand-50);
+  border-radius: var(--radius-pill);
+  margin: 0;
+  width: fit-content;
+  line-height: 1.2;
 }
 
-/* email */
 .email {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  color: var(--ink-500);
   text-decoration: none;
-  color: #cc4e4e;
-  margin-bottom: 0.4rem;
-  display: inline-block;
+  word-break: break-all;
+  line-height: 1.3;
+  margin: 0;
+  transition: color var(--t-fast);
 }
 
 .email:hover {
+  color: var(--brand-600);
   text-decoration: underline;
 }
 
-/* bio */
 .bio {
-  font-size: 0.82rem;
-  color: #444;
-  margin-top: 0.4rem;
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: justify;
-  hyphens: auto;
-  word-break: normal;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--ink-500);
+  margin: 0.1rem 0 0;
+  flex: 1;
 }
 
-@media (max-width: 480px) {
+/* ---- Animation ---- */
+.animate-card {
+  animation: fadeUp 0.7s var(--ease-out) both;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
   .member-card {
-    min-height: unset;
-    max-height: unset;
+    min-height: 440px;
+    max-width: 280px;
+    margin: 0 auto;
   }
-
-  .photo-wrapper {
-    height: 160px;
-  }
+  .photo-wrapper { height: 200px; }
 }
 
+@media (max-width: 680px) {
+  .member-card {
+    min-height: 340px;
+    max-width: 220px;
+  }
+  .photo-wrapper { height: 150px; }
+  .member-content {
+    padding: 0.7rem 0.8rem 0.9rem;
+    gap: 0.3rem;
+  }
+  .name { font-size: 0.9rem; line-height: 1.2; }
+  .role {
+    font-size: 0.58rem;
+    padding: 0.16rem 0.5rem;
+    letter-spacing: 0.06em;
+  }
+  .email { font-size: 0.7rem; }
+  .bio { font-size: 0.74rem; line-height: 1.4; }
+
+  .founder-badge {
+    top: 0.5rem;
+    left: 0.5rem;
+    font-size: 0.56rem;
+    padding: 0.2rem 0.5rem 0.2rem 0.4rem;
+    letter-spacing: 0.04em;
+  }
+  .founder-badge-icon { font-size: 0.64rem; }
+}
+
+@media (max-width: 420px) {
+  .member-card {
+    min-height: 320px;
+    max-width: 240px;
+  }
+  .photo-wrapper { height: 140px; }
+  .name { font-size: 0.86rem; }
+  .bio { font-size: 0.72rem; }
+}

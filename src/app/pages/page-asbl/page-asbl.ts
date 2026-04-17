@@ -16,13 +16,24 @@ export class PageAsbl {
 
   team = [
     {
+      name: 'Julien Dubois',
+      role: 'Président',
+      photo: 'assets/image-asbl/membres/julien2.jpg',
+      bio: "Fondateur de projets associatifs et éducateur spécialisé en accompagnement psycho-éducatif avec une grande expérience dans l'Aide à la Jeunesse et la vie institutionnelle",
+      email: 'julienissa.dubois@gmail.com',
+      linkedin: '',
+      facebook: '',
+      cofounder: true
+    },
+    {
       name: 'Amin Rozas Zabalo',
       role: 'Trésorier',
       photo: 'assets/image-asbl/membres/Amin.jpg',
       bio: "Issu d'une formation en informatique, je pense qu'il est important de venir en aide à la jeunesse via différents projets",
       email: 'aminrozas24@gmail.com',
       linkedin: '',
-      facebook: ''
+      facebook: '',
+      cofounder: true
     },
     {
       name: 'Anas Bentatou',
@@ -31,16 +42,18 @@ export class PageAsbl {
       bio: "Animateur et éducateur en accompagnement psycho-éducatif avec une grande expérience dans l'Aide à la Jeunesse et la vie institutionnelle",
       email: 'benta4525@gmail.com',
       linkedin: '',
-      facebook: ''
+      facebook: '',
+      cofounder: true
     },
     {
-      name: 'Julien Dubois',
-      role: 'Président',
-      photo: 'assets/image-asbl/membres/julien2.jpg',
-      bio: "Fondateur de projets associatifs et éducateur spécialisé en accompagnement psycho-éducatif avec une grande expérience dans l'Aide à la Jeunesse et la vie institutionnelle",
-      email: 'julienissa.dubois@gmail.com',
+      name: 'Saphae Allaoui',
+      role: 'Chargée de communication',
+      photo: 'assets/image-asbl/membres/saphae.jpg',
+      bio: 'Infirmière en soins généraux de formation',
+      email: 'saphae.allaoui@outlook.fr',
       linkedin: '',
-      facebook: ''
+      facebook: '',
+      cofounder: false
     },
     {
       name: 'Adam Ghannan',
@@ -49,17 +62,9 @@ export class PageAsbl {
       bio: "Animateur à Mosaïc ASBL avec une formation de régisseur dans l'événementiel",
       email: 'ghannanadam@outlook.be',
       linkedin: '',
-      facebook: ''
+      facebook: '',
+      cofounder: false
     },
-    {
-      name: 'Saphae Allaoui',
-      role: 'Graphic designer',
-      photo: 'assets/image-asbl/membres/saphae.jpg',
-      bio: 'Infirmière en soins généraux de formation',
-      email: 'saphae.allaoui@outlook.fr',
-      linkedin: '',
-      facebook: ''
-    }
     // ajoute autant de membres que nécessaire
   ];
 

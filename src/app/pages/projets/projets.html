@@ -12,72 +12,83 @@
     </div>
   </section>
 
-  <!-- SECTIONS -->
-  @for (section of sections; track section.label) {
-    <div class="section animate-fade">
+  <!-- FILTRES -->
+  <div class="filters-bar animate-fade" role="tablist" aria-label="Filtres des projets">
+    @for (filter of filters; track filter.key) {
+      <button
+        class="filter-pill"
+        [class.active]="activeFilter() === filter.key"
+        [attr.aria-pressed]="activeFilter() === filter.key"
+        (click)="setFilter(filter.key)"
+        type="button">
+        <span class="filter-label">{{ filter.label }}</span>
+        <span class="filter-count">{{ countFor(filter.key) }}</span>
+      </button>
+    }
+  </div>
 
-      <div class="section-header">
-        <span class="section-chip">{{ section.label }}</span>
-        @if (section.note) {
-          <p class="section-note">{{ section.note }}</p>
-        }
-      </div>
+  <!-- GRILLE -->
+  @if (filteredProjects().length > 0) {
+    <div class="cards-grid animate-fade">
+      @for (project of filteredProjects(); track project.title) {
+        <article class="card">
 
-      @if (section.projects.length > 0) {
-        <div class="cards-grid">
-          @for (project of section.projects; track project.title) {
-            <div class="card">
-
-              @if (project.image && project.image.length > 0) {
-                <div class="card-slider">
-                  <img
-                    class="card-img"
-                    [src]="project.image[getSlideIndex(project.title)]"
-                    [alt]="project.title"
-                  />
-                  @if (project.image.length > 1) {
-                    <button
-                      class="slider-btn slider-prev"
-                      (click)="prevSlide(project.title, project.image.length, $event)"
-                      aria-label="Image précédente"
-                    >&#8249;</button>
-                    <button
-                      class="slider-btn slider-next"
-                      (click)="nextSlide(project.title, project.image.length, $event)"
-                      aria-label="Image suivante"
-                    >&#8250;</button>
-                    <div class="slider-dots">
-                      @for (img of project.image; track $index) {
-                        <span
-                          class="dot"
-                          [class.active]="getSlideIndex(project.title) === $index"
-                          (click)="setSlide(project.title, $index)"
-                        ></span>
-                      }
-                    </div>
+          @if (project.image && project.image.length > 0) {
+            <div class="card-slider">
+              <img
+                class="card-img"
+                [src]="project.image[getSlideIndex(project.title)]"
+                [alt]="project.title"
+              />
+              @if (project.image.length > 1) {
+                <button
+                  class="slider-btn slider-prev"
+                  (click)="prevSlide(project.title, project.image.length, $event)"
+                  aria-label="Image précédente"
+                >&#8249;</button>
+                <button
+                  class="slider-btn slider-next"
+                  (click)="nextSlide(project.title, project.image.length, $event)"
+                  aria-label="Image suivante"
+                >&#8250;</button>
+                <div class="slider-dots">
+                  @for (img of project.image; track $index) {
+                    <span
+                      class="dot"
+                      [class.active]="getSlideIndex(project.title) === $index"
+                      (click)="setSlide(project.title, $index)"
+                    ></span>
                   }
                 </div>
-              } @else {
-                <div class="card-img-placeholder"></div>
               }
-
-              <div class="card-body">
-                <span [class]="'card-tag tag-' + project.tag">{{ project.category }}</span>
-                <p class="card-title">{{ project.title }}</p>
-                <p class="card-desc">{{ project.description }}</p>
-              </div>
-
             </div>
+          } @else {
+            <div class="card-img-placeholder"></div>
           }
-        </div>
-      } @else {
-        <div class="coming-soon">
-          <span class="coming-soon-icon">🌱</span>
-          <p>De nouveaux projets arrivent bientôt — restez connectés !</p>
-        </div>
-      }
 
+          <div class="card-body">
+            <span [class]="'card-tag tag-' + project.tag">{{ project.category }}</span>
+            <h3 class="card-title">{{ project.title }}</h3>
+            <p class="card-desc">{{ project.description }}</p>
+          </div>
+
+        </article>
+      }
+    </div>
+  } @else {
+    <div class="empty-state animate-fade">
+      <span class="empty-icon">🔍</span>
+      <p>Aucun projet dans cette catégorie pour le moment.</p>
     </div>
   }
+
+  <!-- À VENIR -->
+  <section class="coming-soon animate-fade" aria-label="Projets à venir">
+    <div class="coming-soon-icon">🌱</div>
+    <div class="coming-soon-text">
+      <h3>De nouveaux projets arrivent bientôt</h3>
+      <p>On prépare des actions inédites pour 2026. Reste connecté·e sur nos réseaux pour ne rien manquer.</p>
+    </div>
+  </section>
 
 </div>

@@ -1,25 +1,55 @@
 <div class="home-page">
 
-  <!-- HERO : texte centré -->
+  <!-- HERO -->
   <section class="hero">
-    <div class="presentation-text">
-      <h1>Bienvenue sur le site de Mille Idées</h1>
-      <h3>Mille Idées, la nouvelle association de jeunes de Bruxelles par les jeunes de Bruxelles.</h3>
-      <p>Lutter contre toutes formes d'exclusions sociales et développer le potentiel des jeunes bruxellois afin qu'ils deviennent des citoyens actifs, responsables et épanouis.</p>
-      <p>Des idées de projets sportifs, artistiques, humanitaires ou encore citoyens ? Faisons de cette idée une réalité.</p>
+    <div class="hero-bg" aria-hidden="true">
+      <span class="hero-blob hero-blob--indigo"></span>
+      <span class="hero-blob hero-blob--emerald"></span>
+      <span class="hero-blob hero-blob--gold"></span>
     </div>
 
-    <!-- Boutons de navigation -->
-    <div class="hero-nav">
-      <a routerLink="/asbl" class="btn-nav">L'Asbl</a>
-      <a routerLink="/projets" class="btn-nav btn-nav--primary">Nos projets</a>
-      <a routerLink="/contact" class="btn-nav">Contact</a>
+    <div class="presentation-text">
+      <span class="eyebrow">ASBL Bruxelloise</span>
+      <h1>
+        Bienvenue sur le site de
+        <span class="title-accent">Mille Idées</span>
+      </h1>
+      <h3>La nouvelle association de jeunes de Bruxelles, par les jeunes de Bruxelles.</h3>
+      <p>Lutter contre toutes formes d'exclusions sociales et développer le potentiel des jeunes bruxellois afin qu'ils deviennent des citoyens actifs, responsables et épanouis.</p>
+      <p>Des idées de projets sportifs, artistiques, humanitaires ou citoyens&nbsp;? Faisons de cette idée une réalité.</p>
+
+      <div class="hero-nav">
+        <a routerLink="/projets" class="btn btn--primary">
+          Découvrir nos projets
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </a>
+        <a routerLink="/asbl" class="btn btn--ghost">L'Asbl</a>
+        <a routerLink="/contact" class="btn btn--ghost">Nous contacter</a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">+50</span>
+        <span class="stat-label">Jeunes accompagnés</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">7</span>
+        <span class="stat-label">Projets réalisés</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Bénévole</span>
+      </div>
     </div>
   </section>
 
-  <!-- SLIDER PHOTOS -->
+  <!-- SLIDER -->
   <section class="events-slider">
-    <h2 class="slider-title">Nos événements en images</h2>
+    <div class="slider-heading">
+      <span class="eyebrow">Nos événements</span>
+      <h2 class="slider-title">La vie associative en images</h2>
+    </div>
 
     <div class="slider-wrapper">
       <div

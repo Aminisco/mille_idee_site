@@ -85,31 +85,57 @@
     </div>
   </section>
 
-  <!-- SECTION INTRO : BLOC ORGANIQUE -->
+  <!-- SECTION INTRO -->
   <section class="asbl-intro-section animate-fade">
     <div class="asbl-intro-bg-shape"></div>
 
-    <div class="asbl-text">
-      <div class="asbl-pill"></div>
-
-      <p>
-        Nous proposons une large variété de projets sportifs, artistiques, humanitaires et citoyens, pensés pour répondre aux besoins et aux aspirations des jeunes qui fréquentent notre association.
-        Ces activités constituent autant d’espaces d’expression, de découverte et de dépassement de soi.
-        Elles permettent aux jeunes de développer de nouvelles compétences, de renforcer leur confiance, mais aussi de créer du lien avec d’autres participants tout en évoluant dans un cadre sécurisant et bienveillant.
+    <header class="intro-head">
+      <span class="intro-eyebrow">Notre approche</span>
+      <h2 class="intro-title">
+        Un espace qui grandit <span class="intro-underline">au rythme des jeunes.</span>
+      </h2>
+      <p class="intro-lead">
+        Mille Idées propose aux jeunes bruxellois un lieu d’expression, d’accompagnement et de découverte, pensé pour répondre à leurs besoins et révéler leur potentiel.
       </p>
+    </header>
 
-      <p>
-        L’association accompagne également des jeunes ayant vécu des parcours de vie complexes ou éloignés de leur cadre familial.
-        Nous leur offrons un soutien personnalisé, attentif et respectueux de leur réalité, afin de favoriser leur stabilité, leur épanouissement et leur autonomie.
-        Cet accompagnement prend différentes formes : écoute active, construction de projets de vie, aide administrative, soutien scolaire ou encore mise en relation avec des partenaires spécialisés.
-        Notre objectif est de leur offrir des repères solides et de les aider à trouver leur place dans la société.
-      </p>
+    <div class="intro-features">
 
-      <p>
-        Nos activités sont multiples et évoluent au rythme des besoins des jeunes : ateliers sportifs pour encourager la santé et l’esprit d’équipe, projets citoyens pour développer l’engagement et la participation active,
-        ateliers artistiques pour stimuler la créativité, ou encore accompagnements individuels pour soutenir chacun dans son parcours personnel. Cette diversité permet à chaque jeune de trouver un espace qui lui ressemble,
-        de découvrir de nouvelles passions et de progresser à son propre rythme.
-      </p>
+      <article class="intro-feature">
+        <div class="feature-icon feature-icon--indigo">🎯</div>
+        <h3>Des projets variés</h3>
+        <p>Sport, art, humanitaire, citoyen&nbsp;: autant d’espaces d’expression et de dépassement de soi, dans un cadre bienveillant qui favorise la confiance et le lien social.</p>
+        <ul class="feature-tags">
+          <li>Sport</li>
+          <li>Art</li>
+          <li>Humanitaire</li>
+          <li>Citoyen</li>
+        </ul>
+      </article>
+
+      <article class="intro-feature">
+        <div class="feature-icon feature-icon--emerald">🤝</div>
+        <h3>Un accompagnement sur mesure</h3>
+        <p>Pour les jeunes aux parcours complexes, nous offrons une écoute active, un soutien scolaire, une aide administrative et une mise en relation avec des partenaires spécialisés.</p>
+        <ul class="feature-tags">
+          <li>Écoute</li>
+          <li>Scolarité</li>
+          <li>Admin</li>
+          <li>Partenaires</li>
+        </ul>
+      </article>
+
+      <article class="intro-feature">
+        <div class="feature-icon feature-icon--gold">🌱</div>
+        <h3>Chaque jeune à son rythme</h3>
+        <p>Nos activités évoluent avec les besoins&nbsp;: ateliers, projets citoyens, suivis individuels. Chacun trouve un espace qui lui ressemble et progresse à sa manière.</p>
+        <ul class="feature-tags">
+          <li>Ateliers</li>
+          <li>Suivi individuel</li>
+          <li>Progression libre</li>
+        </ul>
+      </article>
+
     </div>
   </section>
 
@@ -150,7 +176,8 @@
           [photo]="member.photo"
           [email]="member.email"
           [linkedin]="member.linkedin"
-          [facebook]="member.facebook">
+          [facebook]="member.facebook"
+          [cofounder]="member.cofounder">
         </app-member-card>
       }
     </div>
