@@ -122,12 +122,19 @@
   width: auto;
   height: auto;
   object-fit: contain;
-  filter: grayscale(.6) opacity(.75);
+  filter: grayscale(.25) opacity(.95);
   transition: filter var(--t-base);
 }
 
 .footer-partenaires-logos a:hover img {
   filter: none;
+}
+
+.footer-partenaires-logos a[aria-label="Centre Benenzon"] {
+  padding: 0.2rem;
+}
+.footer-partenaires-logos a[aria-label="Centre Benenzon"] img {
+  transform: scale(1.25);
 }
 
 /* ---- Réseaux ---- */
