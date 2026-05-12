@@ -317,7 +317,15 @@
   overflow: hidden;
   transition: transform var(--t-base), box-shadow var(--t-base),
               border-color var(--t-base), background var(--t-base);
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeUp .55s var(--ease-out) forwards;
 }
+
+.goals-grid .goal-card:nth-child(1) { animation-delay: .05s; }
+.goals-grid .goal-card:nth-child(2) { animation-delay: .15s; }
+.goals-grid .goal-card:nth-child(3) { animation-delay: .25s; }
+.goals-grid .goal-card:nth-child(4) { animation-delay: .35s; }
 
 .goal-card::before {
   content: "";
@@ -349,7 +357,7 @@
   height: 48px;
   border-radius: var(--radius-md);
   background: var(--brand-50);
-  font-size: 1.5rem;
+  color: var(--brand-700);
   margin-bottom: 1rem;
   transition: transform var(--t-base);
 }
@@ -527,7 +535,6 @@
   width: 56px;
   height: 56px;
   border-radius: var(--radius-lg);
-  font-size: 1.7rem;
   transition: transform var(--t-base);
   flex-shrink: 0;
 }
@@ -741,4 +748,10 @@
   .visual-image { height: 260px; }
   .section-divider { gap: 0.75rem; }
   .divider-title { font-size: 1.4rem; }
+}
+
+/* Réordonnage mobile : place "Notre local" avant le divider + équipe pour ne pas le coller au footer */
+@media (max-width: 900px) {
+  .asbl-page .section-divider { order: 1; }
+  .asbl-page .team-section { order: 2; }
 }
