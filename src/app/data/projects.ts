@@ -120,7 +120,7 @@ export const PROJECTS: Project[] = [
     date: '2024-11-01',
     summary: "Notre toute première sortie maraude à Bruxelles : repas chauds, vêtements et un temps d'écoute avec les personnes à la rue.",
     description: "Notre toute première sortie maraude à Bruxelles : repas chauds, vêtements et un temps d'écoute avec les personnes à la rue.",
-    doodle: 'illustrations/icon_hands.svg',
+    doodle: 'illustrations/thermos.svg',
   },
 ];
 
