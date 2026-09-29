@@ -35,6 +35,10 @@
               }
             ],
             "styles": [
+              "@fontsource/archivo/latin-800.css",
+              "@fontsource/karla/latin-400.css",
+              "@fontsource/karla/latin-500.css",
+              "@fontsource/karla/latin-700.css",
               "src/styles.scss"
             ]
           },
@@ -98,6 +102,10 @@
               }
             ],
             "styles": [
+              "@fontsource/archivo/latin-800.css",
+              "@fontsource/karla/latin-400.css",
+              "@fontsource/karla/latin-500.css",
+              "@fontsource/karla/latin-700.css",
               "src/styles.scss"
             ]
           }
