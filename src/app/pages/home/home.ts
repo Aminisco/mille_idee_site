@@ -1,55 +1,77 @@
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import { Component, ElementRef, signal, viewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Edge } from '../../shared/edge/edge';
+import { PhotoShape, Project, TAG_LABELS, findProject, formatProjectDate } from '../../data/projects';
+
+interface HomeProject {
+  project: Project;
+  withPhoto: boolean;
+  shape?: PhotoShape;
+}
+
+interface Slide {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
+const featured = (slug: string, withPhoto: boolean, shape?: PhotoShape): HomeProject => {
+  const project = findProject(slug);
+  return { project, withPhoto, shape: shape ?? project.photo?.shape };
+};
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink],
+  imports: [RouterLink, Edge],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class Home implements AfterViewInit, OnDestroy {
+export class Home {
+  protected readonly tagLabels = TAG_LABELS;
+  protected readonly formatDate = formatProjectDate;
 
-  currentSlide = 0;
-  private slideInterval: any;
-
-  readonly slides = [
-    'assets/image_events/maraude_mars.jpg',
-    'assets/image_events/photo_groupe.jpg',
-    'assets/image_events/cleanwalking1.jpg',
-    'assets/image_events/cleanwalking2.jpg',
-    'assets/image_events/boxe1.jpg',
-    'assets/image_events/boxe2.jpg',
-    'assets/image_events/bonbons.jpg',
+  protected readonly terrains = [
+    { name: 'Sport', text: "Atelier boxe anglaise avec l'asbl Mosaïc, ouvert à tous les niveaux." },
+    // TODO(comité) : pas encore de projet artistique, ce texte est une invitation à en proposer un
+    { name: 'Art', text: 'Des projets artistiques à imaginer avec les jeunes. Une idée ? Écris-nous.' },
+    { name: 'Humanitaire', text: 'Maraudes et repas partagés avec les sans-abris de Bruxelles.' },
+    { name: 'Citoyen', text: 'Clean Walking à Saint-Gilles, pour un Bruxelles plus propre et plus solidaire.' },
   ];
 
-  prevSlide(): void {
-    this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length;
+  // Deux colonnes décalées, comme la maquette : une ligne dessin, puis des lignes photo
+  protected readonly projectColumns: HomeProject[][] = [
+    [featured('gaufres', false), featured('clean-walking', true), featured('bonbons', true)],
+    [featured('hiver-partage', false), featured('maraude-estivale', true, 'arch'), featured('boxe', false)],
+  ];
+
+  protected readonly slides: Slide[] = [
+    { src: 'assets/photos/vie/maraude-mars.jpg', alt: 'Maraude de nuit dans Bruxelles, sacs de vivres à la main', width: 1000, height: 667 },
+    { src: 'assets/photos/vie/photo-groupe.jpg', alt: 'Photo de groupe des jeunes et des bénévoles, le soir de la maraude', width: 1000, height: 667 },
+    { src: 'assets/photos/vie/cleanwalking1.jpg', alt: 'Deux jeunes remplissent un sac poubelle dans un parc à Saint-Gilles', width: 675, height: 900 },
+    { src: 'assets/photos/vie/cleanwalking2.jpg', alt: 'Un jeune ramasse des déchets au pied d’un arbre', width: 675, height: 900 },
+    { src: 'assets/photos/vie/boxe1.jpg', alt: 'Atelier boxe anglaise avec l’asbl Mosaïc', width: 675, height: 900 },
+    { src: 'assets/photos/vie/boxe2.jpg', alt: 'Des jeunes enchaînent les exercices de boxe, gants aux mains', width: 675, height: 900 },
+    { src: 'assets/photos/vie/bonbons.jpg', alt: 'Un plateau de sachets de bonbons pendant la vente dans la rue', width: 675, height: 900 },
+  ];
+  protected readonly slideShapes: PhotoShape[] = ['cut', 'leaf', 'arch'];
+
+  protected readonly atStart = signal(true);
+  protected readonly atEnd = signal(false);
+
+  private readonly track = viewChild.required<ElementRef<HTMLElement>>('track');
+
+  scrollSlides(direction: 1 | -1): void {
+    const track = this.track().nativeElement;
+    const slide = track.querySelector<HTMLElement>('li');
+    const step = slide ? slide.offsetWidth + parseFloat(getComputedStyle(track).columnGap || '0') : track.clientWidth;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    track.scrollBy({ left: direction * step, behavior: reduceMotion ? 'auto' : 'smooth' });
   }
 
-  nextSlide(): void {
-    this.currentSlide = (this.currentSlide + 1) % this.slides.length;
-  }
-
-  setSlide(index: number): void {
-    this.currentSlide = index;
-  }
-
-  ngAfterViewInit(): void {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, { threshold: 0.3 });
-
-    document.querySelectorAll('.presentation-text')
-      .forEach(el => observer.observe(el));
-
-    this.slideInterval = setInterval(() => this.nextSlide(), 4500);
-  }
-
-  ngOnDestroy(): void {
-    clearInterval(this.slideInterval);
+  onTrackScroll(): void {
+    const track = this.track().nativeElement;
+    this.atStart.set(track.scrollLeft <= 4);
+    this.atEnd.set(track.scrollLeft + track.clientWidth >= track.scrollWidth - 4);
   }
 }

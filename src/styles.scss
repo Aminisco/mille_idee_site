@@ -178,6 +178,8 @@ h2 {
 
 p { margin: 0; }
 
+.nowrap { white-space: nowrap; }
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -255,6 +257,21 @@ p { margin: 0; }
   min-height: 44px;
   font-weight: 700;
 }
+
+/* ---------- Photos détourées ---------- */
+.photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: var(--border);
+}
+
+.shape-pebble { border-radius: var(--radius-pebble); }
+.shape-pebble-2 { border-radius: var(--radius-pebble-2); }
+.shape-leaf { border-radius: var(--radius-leaf); }
+.shape-arch { border-radius: var(--radius-arch); }
+.shape-cut { border-radius: var(--radius-cut); }
 
 /* Mot souligné au feutre */
 .marker {

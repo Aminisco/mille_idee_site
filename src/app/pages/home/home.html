@@ -1,109 +1,178 @@
-<div class="home-page">
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg" aria-hidden="true">
-      <span class="hero-blob hero-blob--indigo"></span>
-      <span class="hero-blob hero-blob--emerald"></span>
-      <span class="hero-blob hero-blob--gold"></span>
+<section class="hero">
+  <div class="hero-text">
+    <h1>Une asbl <span class="marker">bruxelloise</span>, portée par les jeunes <span class="nowrap">eux-mêmes</span>.</h1>
+    <p class="hero-lead">
+      Lutter contre l'exclusion sociale et donner aux jeunes de Bruxelles les moyens de s'affirmer comme citoyens.
+      Sport, art, humanitaire, citoyen : si tu as une idée de projet, on la fait avec toi.
+    </p>
+    <div class="hero-actions">
+      <a class="btn" routerLink="/contact">Écrire à l'asbl</a>
+      <a class="link-strong" routerLink="/projets">Voir les projets</a>
     </div>
+  </div>
 
-    <div class="presentation-text">
-      <span class="eyebrow">ASBL Bruxelloise</span>
-      <h1>
-        Ici, c'est
-        <span class="title-accent">Mille Idées</span>
-      </h1>
-      <h3>Une nouvelle asbl bruxelloise, portée par les jeunes eux-mêmes.</h3>
-      <p>Lutter contre toutes formes d'exclusions sociales et développer le potentiel des jeunes bruxellois, pour qu'ils deviennent des citoyens actifs et responsables.</p>
-      <p>Des idées de projets sportifs, artistiques, humanitaires ou citoyens&nbsp;? On la fait avec vous.</p>
+  <figure class="hero-figure">
+    <img
+      class="photo hero-photo"
+      src="assets/photos/boxe.jpg"
+      alt="Atelier de boxe avec des jeunes, dans une salle aux murs de briques orange"
+      width="900" height="1200"
+      fetchpriority="high">
+    <figcaption>Atelier boxe avec l'asbl Mosaïc, décembre 2025</figcaption>
+    <img class="hero-kids" src="illustrations/kids_group.svg" alt="" width="290" height="284">
+  </figure>
+</section>
 
-      <div class="hero-nav">
-        <a routerLink="/projets" class="btn btn--primary">
-          Découvrir nos projets
-          <span class="btn-arrow" aria-hidden="true">→</span>
-        </a>
-        <a routerLink="/asbl" class="btn btn--ghost">L'Asbl</a>
-        <a routerLink="/contact" class="btn btn--ghost">Nous contacter</a>
-      </div>
-    </div>
+<section class="samedi" aria-labelledby="samedi-title">
+  <app-edge shape="wave" tone="yellow" />
+  <div class="samedi-text">
+    <h2 id="samedi-title">Tous les samedis, de 16h à 19h.</h2>
+    <p>
+      On se retrouve au Centre Benenzon,
+      <a href="https://www.google.com/maps/search/?api=1&query=Av.+G%C3%A9n%C3%A9ral+Eisenhower+132%2C+1030+Schaerbeek"
+         target="_blank" rel="noopener noreferrer">avenue Général Eisenhower 132, à Schaerbeek</a>.
+      Pour discuter, monter des projets ou juste se retrouver. Pas besoin de prévenir.
+    </p>
+  </div>
+  <img class="samedi-doodle" src="illustrations/samedi.svg" alt="" width="290" height="218" loading="lazy">
+  <img
+    class="photo shape-pebble samedi-photo"
+    src="assets/photos/local.jpg"
+    alt="Des jeunes assis dans la salle mansardée du Centre Benenzon"
+    width="1000" height="666"
+    loading="lazy">
+</section>
 
-    <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-num">+50</span>
-        <span class="stat-label">Jeunes accompagnés</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">7</span>
-        <span class="stat-label">Projets réalisés</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num">100%</span>
-        <span class="stat-label">Bénévole</span>
-      </div>
-    </div>
-  </section>
+<section class="terrains" aria-labelledby="terrains-title">
+  <app-edge shape="cloud" tone="paper" />
+  <div class="section-head">
+    <h2 id="terrains-title">Sport, art, humanitaire, citoyen.</h2>
+    <p>Quatre terrains pour se construire et créer du lien entre jeunes.</p>
+  </div>
 
-  <!-- SLIDER -->
-  <section class="events-slider">
-    <div class="slider-heading">
-      <span class="eyebrow">Nos événements</span>
-      <h2 class="slider-title">La vie associative en images</h2>
-    </div>
+  <img class="panorama" src="illustrations/panorama.svg" alt="" width="1248" height="350" loading="lazy">
 
-    <div class="slider-wrapper">
-      <div
-        class="slider-track"
-        [style.transform]="'translateX(-' + currentSlide * 100 + '%)'"
-      >
-        @for (img of slides; track $index) {
-          <div class="slide">
-            <img [src]="img" alt="Photo événement">
-          </div>
+  <ul class="terrains-list">
+    @for (terrain of terrains; track terrain.name; let i = $index) {
+      <li>
+        <div class="terrain-crop" [style.--i]="i" aria-hidden="true">
+          <img src="illustrations/panorama.svg" alt="" width="1248" height="350" loading="lazy">
+        </div>
+        <h3>{{ terrain.name }}</h3>
+        <img class="terrain-underline" src="illustrations/underline.svg" alt="" width="96" height="12" loading="lazy">
+        <p>{{ terrain.text }}</p>
+      </li>
+    }
+  </ul>
+</section>
+
+<section class="projects" aria-labelledby="projects-title">
+  <div class="section-head">
+    <h2 id="projects-title">Ce qu'on a fait</h2>
+    <p>
+      Sept projets et plus de cinquante jeunes accompagnés depuis le début, tout ça porté par des bénévoles.
+      <a class="link-strong" routerLink="/projets">Tous les projets →</a>
+    </p>
+  </div>
+
+  <div class="project-columns">
+    @for (column of projectColumns; track $index) {
+      <div class="project-column">
+        @for (item of column; track item.project.slug) {
+          <article class="project" [class.project--photo]="item.withPhoto && item.project.photo">
+            @if (item.withPhoto && item.project.photo; as photo) {
+              <div class="project-media">
+                <img
+                  class="photo"
+                  [class]="'shape-' + item.shape"
+                  [src]="photo.src"
+                  [alt]="photo.alt"
+                  width="600" height="800"
+                  loading="lazy">
+                <img class="sticker" [src]="item.project.doodle" alt="" width="100" height="90" loading="lazy">
+              </div>
+            }
+            <div class="project-text">
+              <p class="project-meta">
+                <time [attr.datetime]="item.project.date">{{ formatDate(item.project.date) }}</time>
+                · {{ tagLabels[item.project.tag].toLowerCase() }}
+              </p>
+              <h3>{{ item.project.title }}</h3>
+              <p>{{ item.project.summary }}</p>
+            </div>
+            @if (!(item.withPhoto && item.project.photo)) {
+              <img class="project-doodle" [src]="item.project.doodle" alt="" width="140" height="126" loading="lazy">
+            }
+          </article>
         }
       </div>
+    }
+  </div>
 
-      <button class="slider-btn slider-prev" (click)="prevSlide()" aria-label="Précédent">&#8249;</button>
-      <button class="slider-btn slider-next" (click)="nextSlide()" aria-label="Suivant">&#8250;</button>
+  <a class="link-strong projects-more" routerLink="/projets">Voir tous les projets →</a>
+</section>
+
+<section class="gallery" aria-labelledby="gallery-title">
+  <div class="section-head">
+    <h2 id="gallery-title">La vie associative en images</h2>
+    <div class="gallery-controls">
+      <button type="button" class="btn btn--small" (click)="scrollSlides(-1)" [disabled]="atStart()" aria-label="Photos précédentes">←</button>
+      <button type="button" class="btn btn--small btn--alt" (click)="scrollSlides(1)" [disabled]="atEnd()" aria-label="Photos suivantes">→</button>
     </div>
+  </div>
 
-    <div class="slider-dots">
-      @for (img of slides; track $index) {
-        <span
-          class="dot"
-          [class.active]="currentSlide === $index"
-          (click)="setSlide($index)"
-        ></span>
-      }
-    </div>
-  </section>
+  <ul #track class="gallery-track" tabindex="0" aria-label="Photos des activités, défilement horizontal" (scroll)="onTrackScroll()">
+    @for (slide of slides; track slide.src; let i = $index) {
+      <li>
+        <img
+          class="photo"
+          [class]="'shape-' + slideShapes[i % slideShapes.length]"
+          [src]="slide.src"
+          [alt]="slide.alt"
+          [attr.width]="slide.width"
+          [attr.height]="slide.height"
+          loading="lazy">
+      </li>
+    }
+  </ul>
+</section>
 
-  <!-- NOTRE LOCAL -->
-  <section class="local-section" aria-label="Notre local">
-    <div class="local-inner">
-      <div class="local-info">
-        <span class="local-eyebrow">Notre local</span>
-        <h2 class="local-title">On se retrouve au <span class="local-accent">Centre Benenzon</span></h2>
+<section class="join on-ink" aria-labelledby="join-title">
+  <img class="join-peek" src="illustrations/peek.svg" alt="" width="620" height="150" loading="lazy">
+  <img class="join-megaphone" src="illustrations/megaphone.svg" alt="" width="200" height="167" loading="lazy">
 
-        <ul class="local-meta">
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
-            <a href="https://www.google.com/maps/search/?api=1&query=Av.+G%C3%A9n%C3%A9ral+Eisenhower+132%2C+1030+Schaerbeek"
-               target="_blank" rel="noopener noreferrer">
-              Av. Général Eisenhower 132 — 1030 Schaerbeek
-            </a>
-          </li>
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span>Tous les samedis, de 16h à 19h</span>
-          </li>
-        </ul>
-      </div>
+  <div class="join-text">
+    <h2 id="join-title">Une idée ? Une heure de libre ?</h2>
+    <p>
+      On recrute des bénévoles du secteur social pour accompagner des jeunes au quotidien.
+      Et si tu as un projet en tête, écris-nous, on te répond dès que possible.
+    </p>
+  </div>
 
-      <div class="local-photos">
-        <img src="assets/benenzon/benenzon1.jpeg" alt="Notre local au Centre Benenzon">
-      </div>
-    </div>
-  </section>
+  <div class="join-contact">
+    <p class="join-label">Par mail</p>
+    <a class="join-mail" href="mailto:milleidees1190&#64;gmail.com">milleidees1190&#64;gmail.com</a>
 
-</div>
+    <p class="join-label">Sur les réseaux</p>
+    <ul class="join-socials">
+      <li>
+        <a href="https://www.instagram.com/milleidees_asbl/" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+          </svg>
+          Instagram : milleidees_asbl
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/company/mille-idees-asbl/" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true">
+            <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.5h.06c.53-1 1.83-1.8 3.64-1.8 3.9 0 4.5 2.45 4.5 5.6v5.7h-4v-5c0-1.2-.02-2.8-1.7-2.8-1.72 0-1.98 1.3-1.98 2.7v5.1h-4v-11Z" />
+          </svg>
+          LinkedIn : Mille Idées
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
