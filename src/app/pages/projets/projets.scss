@@ -47,7 +47,7 @@
   &:hover { border-color: var(--ink); }
 
   &[aria-pressed='true'] {
-    background: var(--yellow);
+    background: var(--accent);
     border-color: var(--ink);
   }
 }
@@ -124,7 +124,7 @@
 
 .upcoming {
   padding: 0 10px;
-  background: var(--yellow);
+  background: var(--accent);
   border: 2px solid var(--ink);
   border-radius: var(--radius-field);
   font-size: 15px;

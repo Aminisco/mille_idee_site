@@ -5,10 +5,9 @@
 :root {
   --paper: #F2EEE4;
   --ink: #14130F;
-  --yellow: #F2C200;
-  --red: #D8261C;
-  /* #D8261C fait 4.3:1 sur le papier : cette nuance passe AA pour du texte */
-  --red-text: #C8231A;
+  --accent: #C79A2E;
+  /* Brique : 5.5:1 sur le papier, passe AA pour du texte. Sur l'accent (2.4:1), texte en encre */
+  --red: #A83A28;
   --grey: #5C5A52;
   --paper-dark: #E6E0D2;
   --grey-on-ink: #B9B5A8;
@@ -70,7 +69,7 @@ img {
 button, input, textarea, select { font: inherit; }
 
 a { color: var(--ink); }
-a:hover { color: var(--red-text); }
+a:hover { color: var(--red); }
 
 :focus-visible {
   outline: 3px solid var(--focus-color);
@@ -78,7 +77,7 @@ a:hover { color: var(--red-text); }
 }
 
 ::selection {
-  background: var(--yellow);
+  background: var(--accent);
   color: var(--ink);
 }
 
@@ -120,14 +119,14 @@ p { margin: 0; }
 
 /* Bandeaux sombres : le focus passe au jaune */
 .on-ink {
-  --focus-color: var(--yellow);
+  --focus-color: var(--accent);
   background: var(--ink);
   color: var(--paper);
 
   a:not(.btn) { color: var(--paper); }
-  a:not(.btn):hover { color: var(--yellow); }
+  a:not(.btn):hover { color: var(--accent); }
 
-  .btn--yellow:hover {
+  .btn--accent:hover {
     background: var(--paper);
     color: var(--ink);
   }
@@ -166,13 +165,13 @@ p { margin: 0; }
 
 .btn--alt { border-radius: var(--radius-btn-alt); }
 
-.btn--yellow {
-  background: var(--yellow);
+.btn--accent {
+  background: var(--accent);
   color: var(--ink);
 
   &:hover {
     background: var(--ink);
-    color: var(--yellow);
+    color: var(--accent);
   }
 }
 

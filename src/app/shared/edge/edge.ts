@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 
 export type EdgeShape = 'wave' | 'wave-2' | 'cloud' | 'cloud-2';
-export type EdgeTone = 'paper' | 'yellow' | 'ink';
+export type EdgeTone = 'paper' | 'accent' | 'ink';
 
 // Tracés repris des maquettes (1360×46). Le viewBox garde 8 unités de marge en haut
 // pour ne pas rogner les nuages. La zone sous le trait prend la couleur de la section.

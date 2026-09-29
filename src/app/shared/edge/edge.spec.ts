@@ -24,9 +24,9 @@ describe('Edge', () => {
   });
 
   it('exposes the tone as a host class', () => {
-    fixture.componentRef.setInput('tone', 'yellow');
+    fixture.componentRef.setInput('tone', 'accent');
     fixture.detectChanges();
 
-    expect(fixture.nativeElement.classList).toContain('tone-yellow');
+    expect(fixture.nativeElement.classList).toContain('tone-accent');
   });
 });

@@ -11,7 +11,7 @@
 }
 
 :host(.tone-paper) { --edge-color: var(--paper); }
-:host(.tone-yellow) { --edge-color: var(--yellow); }
+:host(.tone-accent) { --edge-color: var(--accent); }
 :host(.tone-ink) { --edge-color: var(--ink); }
 
 svg {
