@@ -12,7 +12,7 @@
 
   img {
     width: 100%;
-    max-width: 1248px;
+    max-width: 1212px;
     height: auto;
   }
 }
@@ -74,12 +74,22 @@
   }
 }
 
-.socials a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  font-size: 18px;
-  font-weight: 700;
+.socials {
+  display: flex;
+  gap: 12px;
+
+  a {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: var(--radius-btn);
+    transition: background-color 0.15s;
+
+    &:hover { background: var(--paper-dark); }
+  }
+
+  img { width: 48px; }
 }
 
 .copyright {
@@ -96,14 +106,14 @@
 @media (max-width: 719px) {
   :host { padding-top: 26px; }
 
-  // Sur mobile la frise est recadrée, comme dans la maquette
+  // Agrandie et centrée : on garde les quatre objets du milieu, lisibles
   .frieze {
     margin-inline: calc(-1 * var(--gutter));
 
     img {
-      width: 790px;
+      width: 170%;
       max-width: none;
-      margin-left: -20px;
+      margin-left: -35%;
     }
   }
 
