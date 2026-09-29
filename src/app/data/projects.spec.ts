@@ -16,4 +16,10 @@ describe('projects data', () => {
     expect(findProject('boxe').title).toBe('Atelier boxe anglaise');
     expect(() => findProject('inconnu')).toThrowError(/inconnu/);
   });
+
+  it('points every photo and drawing to a file that is actually served', async () => {
+    const paths = PROJECTS.flatMap(p => [p.doodle, ...(p.photo ? [p.photo.src] : [])]);
+    const statuses = await Promise.all(paths.map(async path => [path, (await fetch('/' + path)).status] as const));
+    expect(statuses.filter(([, status]) => status !== 200)).toEqual([]);
+  });
 });

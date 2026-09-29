@@ -10,6 +10,7 @@
   /* #D8261C fait 4.3:1 sur le papier : cette nuance passe AA pour du texte */
   --red-text: #C8231A;
   --grey: #5C5A52;
+  --paper-dark: #E6E0D2;
   --grey-on-ink: #B9B5A8;
 
   --font-display: 'Archivo', 'Arial Black', system-ui, sans-serif;
@@ -195,6 +196,10 @@ p { margin: 0; }
   height: 100%;
   object-fit: cover;
   border: var(--border);
+  // Si l'image ne charge pas : forme grisée, alt masqué à l'écran (toujours lu par les lecteurs d'écran)
+  overflow: hidden;
+  background-color: var(--paper-dark);
+  color: transparent;
 }
 
 .shape-pebble { border-radius: var(--radius-pebble); }
