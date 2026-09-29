@@ -11,7 +11,8 @@ export interface Project {
   /** Version courte, pour l'accueil */
   summary: string;
   description: string;
-  photo?: { src: string; alt: string; shape: PhotoShape };
+  /** position: 'top' pour les affiches, dont le titre est en haut */
+  photo?: { src: string; alt: string; shape: PhotoShape; position?: 'top' };
   /** Grand dessin si le projet n'a aucune photo, autocollant sinon */
   doodle: string;
 }
@@ -35,6 +36,7 @@ export const PROJECTS: Project[] = [
       src: 'assets/photos/gaufres.jpg',
       alt: 'Affiche de la vente de gaufres : 10 € la boîte, vanille ou chocolat',
       shape: 'pebble',
+      position: 'top',
     },
     doodle: 'illustrations/waffle.svg',
   },
@@ -105,6 +107,7 @@ export const PROJECTS: Project[] = [
       src: 'assets/photos/maraude-estivale.jpg',
       alt: "Affiche illustrée de la maraude estivale devant l'hôtel de ville de Bruxelles",
       shape: 'pebble-2',
+      position: 'top',
     },
     doodle: 'illustrations/sunbottle.svg',
   },
