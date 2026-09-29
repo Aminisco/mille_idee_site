@@ -172,3 +172,18 @@ Lien : « Tous les projets → » (desktop), « Voir tous les projets → » (mo
 | Section « À l'agenda / Prochains événements » avec badge « À venir » et lien « Nous contacter » | Les projets à venir restent dans la liste, avec un badge « À venir » à côté de la date |
 | Aucun projet dans cette catégorie pour le moment. | (retiré : chaque filtre a au moins un projet) |
 | Texte alternatif = titre du projet | Une description de chaque photo |
+
+## Contact
+
+| Avant | Après |
+|---|---|
+| Contactez notre ASBL | Écris-nous. |
+| Une question, une idée de projet ou une demande d'information ? Écrivez-nous, on vous répond dès que possible. | Une question, une idée de projet, une demande d'information ? Écris-nous, on te répond dès que possible. |
+| Accompagnement personnalisé / Réponse rapide / Basée en Belgique (liste à icônes) | (retirée) |
+| Email : milleidees1190@gmail.com | Par mail : milleidees1190@gmail.com (lien cliquable) |
+| (nouveau) | Réseaux : Instagram : milleidees_asbl / LinkedIn : Mille Idées |
+| (nouveau) | Ou passe au local, tous les samedis de 16h à 19h, au Centre Benenzon, avenue Général Eisenhower 132, 1030 Schaerbeek. |
+| Envoyer un message / Remplis ce formulaire, on revient vers toi rapidement. | inchangés |
+| Une erreur est survenue, réessayez. | Une erreur est survenue, réessaie. |
+| Envoi en cours… / Message envoyé, merci ! / messages d'erreur des champs | inchangés |
+| Bouton Envoyer grisé tant que le formulaire est incomplet | Bouton toujours actif : un envoi incomplet affiche les erreurs et place le curseur sur le premier champ à corriger |

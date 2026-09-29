@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import emailjs from '@emailjs/browser';
-import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-contact',
@@ -33,9 +32,16 @@ export class Contact {
     });
   }
 
+  showError(field: string): boolean {
+    const control = this.contactForm.get(field);
+    return !!control && control.touched && control.invalid;
+  }
+
   onSubmit() {
     if (this.contactForm.invalid) {
       this.contactForm.markAllAsTouched();
+      // Après le rendu des messages d'erreur, on amène le focus sur le premier champ à corriger
+      setTimeout(() => document.querySelector<HTMLElement>('.panel [aria-invalid="true"]')?.focus());
       return;
     }
 
