@@ -23,11 +23,12 @@ describe('Home', () => {
     expect(component).toBeTruthy();
   });
 
-  it('shows six projects, with a sticker on each photo row', () => {
+  it('shows six projects, each with its photo and a sticker', () => {
     const el = fixture.nativeElement as HTMLElement;
     expect(el.querySelectorAll('.project').length).toBe(6);
-    expect(el.querySelectorAll('.project--photo').length).toBe(3);
-    expect(el.querySelectorAll('.project--photo .sticker').length).toBe(3);
+    expect(el.querySelectorAll('.project--photo').length).toBe(6);
+    expect(el.querySelectorAll('.project--photo .sticker').length).toBe(6);
+    expect(el.querySelectorAll('.project-doodle').length).toBe(0);
   });
 
   it('crops the panorama into four terrains for mobile', () => {

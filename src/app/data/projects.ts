@@ -12,7 +12,7 @@ export interface Project {
   summary: string;
   description: string;
   photo?: { src: string; alt: string; shape: PhotoShape };
-  /** Grand dessin si le projet n'a pas de photo, autocollant sinon */
+  /** Grand dessin si le projet n'a aucune photo, autocollant sinon */
   doodle: string;
 }
 
@@ -31,6 +31,11 @@ export const PROJECTS: Project[] = [
     date: '2026-06-01',
     summary: 'Pour financer nos prochains projets. Tu veux en commander ? Écris-nous.',
     description: "Pour financer nos prochains projets. Envie d'en commander ? Écris-nous depuis la page contact, on te répond rapidement.",
+    photo: {
+      src: 'assets/photos/gaufres.jpg',
+      alt: 'Affiche de la vente de gaufres : 10 € la boîte, vanille ou chocolat',
+      shape: 'pebble',
+    },
     doodle: 'illustrations/waffle.svg',
   },
   {
@@ -40,6 +45,11 @@ export const PROJECTS: Project[] = [
     date: '2026-03-01',
     summary: 'Un repas et un moment de partage avec les sans-abris de Bruxelles, pour sensibiliser nos jeunes à la précarité.',
     description: 'Un repas et un moment de partage avec les sans-abris de Bruxelles, pour sensibiliser nos jeunes à la précarité.',
+    photo: {
+      src: 'assets/photos/hiver-partage.jpg',
+      alt: "Photo de groupe des jeunes et des bénévoles, le soir d'Hiver Partagé",
+      shape: 'cut',
+    },
     doodle: 'illustrations/bowl.svg',
   },
   {
@@ -50,8 +60,8 @@ export const PROJECTS: Project[] = [
     summary: "Atelier découverte avec l'asbl Mosaïc, ouvert à tous les niveaux.",
     description: "Atelier découverte organisé avec l'asbl Mosaïc, ouvert à tous les niveaux.",
     photo: {
-      src: 'assets/photos/boxe.jpg',
-      alt: 'Atelier de boxe avec des jeunes, dans une salle aux murs de briques orange',
+      src: 'assets/photos/boxe-atelier.jpg',
+      alt: 'Des jeunes enchaînent les exercices de boxe, gants aux mains, devant un mur de briques orange',
       shape: 'arch',
     },
     doodle: 'illustrations/gloves.svg',
@@ -98,6 +108,8 @@ export const PROJECTS: Project[] = [
     },
     doodle: 'illustrations/sunbottle.svg',
   },
+  // TODO(étape 5) : image_events/première-maraude.jpeg montre l'affiche d'Hiver Partagé,
+  // pas la première maraude. Retrouver la bonne photo avant de l'afficher.
   {
     slug: 'premiere-maraude',
     title: 'Première maraude',

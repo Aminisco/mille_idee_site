@@ -79,8 +79,8 @@
     @for (column of projectColumns; track $index) {
       <div class="project-column">
         @for (item of column; track item.project.slug) {
-          <article class="project" [class.project--photo]="item.withPhoto && item.project.photo">
-            @if (item.withPhoto && item.project.photo; as photo) {
+          <article class="project" [class.project--photo]="item.project.photo">
+            @if (item.project.photo; as photo) {
               <div class="project-media">
                 <img
                   class="photo"
@@ -100,7 +100,7 @@
               <h3>{{ item.project.title }}</h3>
               <p>{{ item.project.summary }}</p>
             </div>
-            @if (!(item.withPhoto && item.project.photo)) {
+            @if (!item.project.photo) {
               <img class="project-doodle" [src]="item.project.doodle" alt="" width="140" height="126" loading="lazy">
             }
           </article>

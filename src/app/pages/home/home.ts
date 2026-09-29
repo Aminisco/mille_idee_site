@@ -5,7 +5,6 @@ import { PhotoShape, Project, TAG_LABELS, findProject, formatProjectDate } from 
 
 interface HomeProject {
   project: Project;
-  withPhoto: boolean;
   shape?: PhotoShape;
 }
 
@@ -16,9 +15,10 @@ interface Slide {
   height: number;
 }
 
-const featured = (slug: string, withPhoto: boolean, shape?: PhotoShape): HomeProject => {
+// La forme peut changer d'une page à l'autre pour éviter deux galets côte à côte
+const featured = (slug: string, shape?: PhotoShape): HomeProject => {
   const project = findProject(slug);
-  return { project, withPhoto, shape: shape ?? project.photo?.shape };
+  return { project, shape: shape ?? project.photo?.shape };
 };
 
 @Component({
@@ -39,10 +39,10 @@ export class Home {
     { name: 'Citoyen', text: 'Clean Walking à Saint-Gilles, pour un Bruxelles plus propre et plus solidaire.' },
   ];
 
-  // Deux colonnes décalées, comme la maquette : une ligne dessin, puis des lignes photo
+  // Deux colonnes décalées, comme la maquette
   protected readonly projectColumns: HomeProject[][] = [
-    [featured('gaufres', false), featured('clean-walking', true), featured('bonbons', true)],
-    [featured('hiver-partage', false), featured('maraude-estivale', true, 'arch'), featured('boxe', false)],
+    [featured('gaufres', 'pebble-2'), featured('clean-walking'), featured('bonbons')],
+    [featured('hiver-partage', 'leaf'), featured('maraude-estivale', 'arch'), featured('boxe', 'pebble-2')],
   ];
 
   protected readonly slides: Slide[] = [
