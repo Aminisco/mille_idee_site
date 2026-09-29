@@ -1,228 +1,67 @@
-<div class="asbl-page">
-
-  <!-- SECTION HERO AVEC IMAGE + CARTES COURBES -->
-  <section class="hero-section animate-fade">
-    <div class="hero-bg-wrapper">
-      <div class="hero-blob hero-blob--one"></div>
-      <div class="hero-blob hero-blob--two"></div>
-      <img
-        src="/assets/image-asbl/3c6b1002-10ca-40a3-84e4-a1ac13386350.jpg"
-        alt="Illustration entraide"
-        class="hero-bg">
-      <div class="hero-overlay"></div>
-    </div>
-
-    <div class="hero-inner">
-
-      <div class="hero-main">
-        <div class="hero-text-block">
-          <h1>Mille Idées : une association pour les jeunes de Bruxelles</h1>
-          <p>
-            Lutter contre l’exclusion sociale, et donner aux jeunes de Bruxelles les moyens
-            de s’affirmer comme citoyens.
-          </p>
-        </div>y
-
-        <div class="hero-side-card">
-          <h3>On l'a fait avec vous.</h3>
-          <ul class="hero-points">
-            <li>Projets sportifs, artistiques, citoyens</li>
-            <li>Un accompagnement individuel quand c’est nécessaire</li>
-            <li>Un lieu pour discuter, monter des projets, se retrouver</li>
-          </ul>
-
-          <div class="hero-actions">
-            <a [routerLink]="['/projets']" class="hero-cta">
-              Découvrir nos projets
-            </a>
-        </div>
-      </div>
-
-      <div class="hero-scroll-indicator">
-        <span class="scroll-dot"></span>
-        <span class="scroll-text">En savoir plus</span>
-      </div>
-    </div>
-    </div>
-  </section>
-
-  <!-- SECTION : Nos objectifs, avec effet "bandeau" incurvé -->
-  <section class="goals-section-wrapper">
-    <div class="goals-section animate-fade">
-      <header class="goals-header">
-        <span class="goals-chip">Nos missions</span>
-        <h2 class="goals-title">Nos objectifs</h2>
-        <p class="goals-subtitle">
-          Des actions concrètes pour soutenir les jeunes bruxellois, au quotidien.
-        </p>
-      </header>
-
-      <div class="goals-grid">
-        <div class="goal-card">
-          <span class="goal-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg>
-          </span>
-          <h3>Autonomisation des jeunes</h3>
-          <p>Aider chaque jeune à développer son potentiel personnel et social.</p>
-        </div>
-
-        <div class="goal-card">
-          <span class="goal-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></svg>
-          </span>
-          <h3>Inclusion sociale</h3>
-          <p>Lutter contre l’exclusion par le terrain.</p>
-        </div>
-
-        <div class="goal-card">
-          <span class="goal-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>
-          </span>
-          <h3>Découverte & créativité</h3>
-          <p>Stimuler l’intérêt pour le sport, l’art, la culture et les projets citoyens.</p>
-        </div>
-
-        <div class="goal-card">
-          <span class="goal-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16"/><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 15 6 6"/><path d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.73 2.73 0 0 0 16 4a2.78 2.78 0 0 0-5 1.8c0 1.2.8 2 1.5 2.8L16 12z"/></svg>
-          </span>
-          <h3>Accompagnement individuel</h3>
-          <p>Offrir un soutien personnalisé aux jeunes en transition.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION INTRO -->
-  <section class="asbl-intro-section animate-fade">
-    <div class="asbl-intro-bg-shape"></div>
-
-    <header class="intro-head">
-      <span class="intro-eyebrow">Notre approche</span>
-      <h2 class="intro-title">
-        Un espace qui grandit <span class="intro-underline">au rythme des jeunes.</span>
-      </h2>
-      <p class="intro-lead">
-        Mille Idées propose aux jeunes bruxellois un lieu pour s’exprimer, être accompagné et essayer des choses, à leur rythme.
-      </p>
-    </header>
-
-    <div class="intro-features">
-
-      <article class="intro-feature">
-        <div class="feature-icon feature-icon--indigo" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg>
-        </div>
-        <h3>Des projets variés</h3>
-        <p>Sport, art, humanitaire, citoyen&nbsp;: quatre terrains pour se construire et créer du lien.</p>
-        <ul class="feature-tags">
-          <li>Sport</li>
-          <li>Art</li>
-          <li>Humanitaire</li>
-          <li>Citoyen</li>
-        </ul>
-      </article>
-
-      <article class="intro-feature">
-        <div class="feature-icon feature-icon--emerald" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
-        </div>
-        <h3>Un accompagnement sur mesure</h3>
-        <p>Pour les jeunes aux parcours complexes, nous offrons une écoute active, un soutien scolaire, une aide administrative et une mise en relation avec des partenaires spécialisés.</p>
-        <ul class="feature-tags">
-          <li>Écoute</li>
-          <li>Scolarité</li>
-          <li>Admin</li>
-          <li>Partenaires</li>
-        </ul>
-      </article>
-
-      <article class="intro-feature">
-        <div class="feature-icon feature-icon--gold" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/><circle cx="12" cy="12" r="10"/></svg>
-        </div>
-        <h3>Chaque jeune à son rythme</h3>
-        <p>Nos activités évoluent avec les besoins&nbsp;: ateliers, projets citoyens, suivis individuels. Chacun avance à son rythme, sur ce qui lui parle.</p>
-        <ul class="feature-tags">
-          <li>Ateliers</li>
-          <li>Suivi individuel</li>
-          <li>Progression libre</li>
-        </ul>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- SECTION : Visuel + phrase forte, style carte arrondie -->
-  <section class="asbl-visual-section animate-fade">
-    <div class="visual-wrapper">
-      <img
-        src="/assets/image-asbl/855d32b8-b304-4be0-9e14-9b274ba4b3ee.jpg"
-        alt="Entraide"
-        class="visual-image">
-    </div>
-
-    <div class="visual-overlay-text">
-      <div class="visual-badge">Avec les jeunes</div>
-      <h2>Ouvrir des portes, pour chacun d’eux.</h2>
-    </div>
-
-    <div class="visual-floating-circle visual-floating-circle--left"></div>
-    <div class="visual-floating-circle visual-floating-circle--right"></div>
-  </section>
-
-
-  <!-- 🔵 Séparateur stylé avant la section équipe -->
-  <div class="section-divider">
-    <div class="bar"></div>
-    <h2 class="divider-title">Notre équipe</h2>
-    <div class="bar"></div>
+<section class="intro">
+  <div class="intro-text">
+    <h1>Une association pour les <span class="marker">jeunes</span> de Bruxelles.</h1>
+    <p>
+      Lutter contre l'exclusion sociale et donner aux jeunes de Bruxelles les moyens de s'affirmer comme citoyens.
+      Développer leur potentiel, pour qu'ils deviennent des citoyens actifs et responsables.
+    </p>
   </div>
+  <div class="intro-visual">
+    <img
+      class="photo shape-pebble-2 intro-photo"
+      src="assets/photos/local.jpg"
+      alt="Des jeunes assis dans la salle mansardée du Centre Benenzon"
+      width="1000" height="666"
+      fetchpriority="high">
+    <img class="intro-doodle" src="illustrations/atelier.svg" alt="" width="310" height="310">
+  </div>
+</section>
 
-  <!-- SECTION : Équipe (INCHANGÉE) -->
-  <section class="team-section animate-fade">
-    <div class="team-grid">
-      @for (member of team; track member.name) {
-        <app-member-card
-          [name]="member.name"
-          [role]="member.role"
-          [bio]="member.bio"
-          [photo]="member.photo"
-          [email]="member.email"
-          [linkedin]="member.linkedin"
-          [facebook]="member.facebook"
-          [cofounder]="member.cofounder">
-        </app-member-card>
-      }
-    </div>
-  </section>
+<section class="goals" aria-labelledby="goals-title">
+  <h2 id="goals-title">Ce qu'on veut</h2>
+  <ul>
+    @for (goal of goals; track goal.title) {
+      <li>
+        <img [src]="goal.icon" alt="" width="80" height="88" loading="lazy">
+        <h3>{{ goal.title }}</h3>
+        <p>{{ goal.text }}</p>
+      </li>
+    }
+  </ul>
+</section>
 
-  <!-- NOTRE LOCAL -->
-  <section class="local-section animate-fade" aria-label="Notre local">
-    <div class="local-inner">
-      <div class="local-info">
-        <span class="local-eyebrow">Notre local</span>
-        <h2 class="local-title">On se retrouve au <span class="local-accent">Centre Benenzon</span></h2>
+<section class="method" aria-labelledby="method-title">
+  <app-edge shape="cloud-2" tone="yellow" />
+  <div class="method-head">
+    <h2 id="method-title">Comment on travaille</h2>
+    <img src="illustrations/huddle.svg" alt="" width="250" height="250" loading="lazy">
+  </div>
+  <ul>
+    @for (item of method; track item.title) {
+      <li>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.text }}</p>
+      </li>
+    }
+  </ul>
+</section>
 
-        <ul class="local-meta">
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
-            <a href="https://www.google.com/maps/search/?api=1&query=Av.+G%C3%A9n%C3%A9ral+Eisenhower+132%2C+1030+Schaerbeek"
-               target="_blank" rel="noopener noreferrer">
-              Av. Général Eisenhower 132 — 1030 Schaerbeek
-            </a>
-          </li>
-          <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span>Tous les samedis, de 16h à 19h</span>
-          </li>
-        </ul>
-      </div>
+<section class="team" aria-labelledby="team-title">
+  <app-edge shape="wave-2" tone="paper" />
+  <div class="team-head">
+    <h2 id="team-title">L'équipe</h2>
+    <p>Trois cofondateurs et deux membres qui les ont rejoints. Ici, tout le monde est bénévole.</p>
+  </div>
+  <ul>
+    @for (member of team; track member.name; let i = $index) {
+      <li>
+        <app-member-card [member]="member" [ring]="i % 2 ? 'red' : 'yellow'" />
+      </li>
+    }
+  </ul>
+</section>
 
-      <div class="local-photos">
-        <img src="assets/benenzon/benenzon1.jpeg" alt="Notre local au Centre Benenzon">
-      </div>
-    </div>
-  </section>
-
-</div>
+<app-ink-band class="call" role="region" aria-label="Appel aux bénévoles">
+  <p class="call-text">On recrute des bénévoles du secteur social pour accompagner des jeunes au quotidien.</p>
+  <a class="btn btn--yellow btn--alt" routerLink="/contact">Nous écrire</a>
+</app-ink-band>

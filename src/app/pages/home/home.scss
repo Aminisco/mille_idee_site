@@ -1,7 +1,4 @@
-:host {
-  display: block;
-  --pad-x: max(var(--gutter), calc((100% - var(--page-max)) / 2 + var(--gutter)));
-}
+:host { display: block; }
 
 .section-head {
   display: flex;
@@ -244,7 +241,7 @@
 
 /* ---------- Carrousel ---------- */
 .gallery {
-  padding: 40px 0 190px;
+  padding-top: 40px;
 
   .section-head { padding-inline: var(--pad-x); }
 }
@@ -288,36 +285,11 @@
 
 /* ---------- Bénévoles ---------- */
 .join {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 48px;
-  min-height: 420px;
-  padding: 60px var(--pad-x) 50px;
-
   h2 {
     font-size: clamp(36px, 3.8vw, 52px);
     line-height: 1.06;
     letter-spacing: -1.5px;
   }
-}
-
-.join-peek {
-  position: absolute;
-  left: var(--pad-x);
-  bottom: calc(100% - 2px);
-  width: min(620px, 60%);
-  z-index: 2;
-}
-
-.join-megaphone {
-  position: absolute;
-  top: 0;
-  right: calc(var(--pad-x) + 34px);
-  width: clamp(110px, 14.7vw, 200px);
-  transform: translateY(-60%);
-  z-index: 2;
 }
 
 .join-text {
@@ -384,7 +356,6 @@
 
   .terrains-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
-  .join { flex-direction: column; align-items: flex-start; padding-top: 90px; }
   .join-contact { width: auto; }
 }
 
@@ -522,14 +493,9 @@
   .gallery .section-head { flex-direction: column; align-items: flex-start; }
 
   .join {
-    padding: 52px var(--gutter) 60px;
-
     h2 { font-size: 39px; letter-spacing: -1.2px; }
     .join-text p { margin-top: 18px; font-size: 19px; }
   }
-
-  .join-peek { left: 16px; width: min(300px, 70%); }
-  .join-megaphone { right: 14px; transform: translateY(-76%); }
 
   .join-socials a { font-size: 19px; }
 }

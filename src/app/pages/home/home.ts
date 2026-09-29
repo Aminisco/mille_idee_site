@@ -1,6 +1,7 @@
 import { Component, ElementRef, signal, viewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Edge } from '../../shared/edge/edge';
+import { InkBand } from '../../shared/ink-band/ink-band';
 import { PhotoShape, Project, TAG_LABELS, findProject, formatProjectDate } from '../../data/projects';
 
 interface HomeProject {
@@ -23,7 +24,7 @@ const featured = (slug: string, shape?: PhotoShape): HomeProject => {
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, Edge],
+  imports: [RouterLink, Edge, InkBand],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

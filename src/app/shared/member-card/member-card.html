@@ -1,33 +1,12 @@
-<div class="member-card animate-card">
-
-  <!-- image rectangulaire en haut -->
-  <div class="photo-wrapper">
-    <img class="photo" [src]="photo" [alt]="name">
-
-    @if (cofounder) {
-      <span class="founder-badge" aria-label="Cofondateur">
-        <span class="founder-badge-icon" aria-hidden="true">★</span>
-        Cofondateur
-      </span>
-    }
-  </div>
-
-  <!-- contenu texte -->
-  <div class="member-content">
-
-    <h3 class="name">{{ name }}</h3>
-    <p class="role">{{ role }}</p>
-
-    @if (email) {
-      <a class="email" [href]="'mailto:' + email">
-        {{ email }}
-      </a>
-    }
-
-    @if (bio) {
-      <p class="bio">{{ bio }}</p>
-    }
-
-  </div>
-
+<div class="portrait">
+  <img class="ring" [src]="ringSrc()" alt="" width="224" height="224" loading="lazy">
+  @if (member().photo; as photo) {
+    <img class="face" [src]="photo" [alt]="'Portrait de ' + member().name" width="400" height="400" loading="lazy">
+  } @else {
+    <span class="face initials" aria-hidden="true">{{ initials() }}</span>
+  }
 </div>
+
+<h3>{{ member().name }}</h3>
+<p class="role">{{ member().role }}</p>
+<p class="bio">{{ member().bio }}</p>

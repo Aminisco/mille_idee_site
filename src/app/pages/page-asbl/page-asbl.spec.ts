@@ -22,4 +22,20 @@ describe('PageAsbl', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('shows the five team members, alternating rings, without any email', () => {
+    const el = fixture.nativeElement as HTMLElement;
+    const rings = Array.from(el.querySelectorAll('app-member-card .ring')).map(r => r.getAttribute('src'));
+
+    expect(el.querySelectorAll('app-member-card').length).toBe(5);
+    expect(rings).toEqual([
+      'illustrations/ring_yel.svg',
+      'illustrations/ring_red.svg',
+      'illustrations/ring_yel.svg',
+      'illustrations/ring_red.svg',
+      'illustrations/ring_yel.svg',
+    ]);
+    expect(el.querySelector('a[href^="mailto:"]')).toBeNull();
+    expect(el.textContent).not.toContain('@');
+  });
 });

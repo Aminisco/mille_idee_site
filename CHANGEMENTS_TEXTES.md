@@ -88,3 +88,57 @@ Lien : « Tous les projets → » (desktop), « Voir tous les projets → » (mo
 - Texte : On recrute des bénévoles du secteur social pour accompagner des jeunes au quotidien. Et si tu as un projet en tête, écris-nous, on te répond dès que possible.
 - Par mail : milleidees1190@gmail.com
 - Sur les réseaux : Instagram : milleidees_asbl / LinkedIn : Mille Idées
+
+## L'asbl
+
+### Intro
+
+| Avant | Après |
+|---|---|
+| Mille Idées : une association pour les jeunes de Bruxelles | Une association pour les jeunes de Bruxelles. |
+| Lutter contre l'exclusion sociale, et donner aux jeunes de Bruxelles les moyens de s'affirmer comme citoyens. | Lutter contre l'exclusion sociale et donner aux jeunes de Bruxelles les moyens de s'affirmer comme citoyens. Développer leur potentiel, pour qu'ils deviennent des citoyens actifs et responsables. |
+| Carte « On l'a fait avec vous. » + 3 points (Projets sportifs, artistiques, citoyens / Un accompagnement individuel quand c'est nécessaire / Un lieu pour discuter, monter des projets, se retrouver) + bouton « Découvrir nos projets » | (retiré, le contenu est repris par « Comment on travaille ») |
+| « y » parasite après le texte d'intro, indicateur « En savoir plus » posé sur l'image | (supprimés) |
+
+### Objectifs
+
+| Avant | Après |
+|---|---|
+| Nos missions (étiquette) / Nos objectifs / Des actions concrètes pour soutenir les jeunes bruxellois, au quotidien. | Ce qu'on veut |
+| Découverte & créativité | Découverte et créativité |
+| Les 4 textes d'objectifs | inchangés |
+
+### Méthode
+
+| Avant | Après |
+|---|---|
+| Notre approche (étiquette) / Un espace qui grandit au rythme des jeunes. / Mille Idées propose aux jeunes bruxellois un lieu pour s'exprimer, être accompagné et essayer des choses, à leur rythme. | Comment on travaille |
+| Des projets variés | Des projets variés. |
+| Un accompagnement sur mesure / … nous offrons une écoute active … | Un accompagnement sur mesure. / … on propose une écoute active … |
+| Chaque jeune à son rythme | Chaque jeune à son rythme. |
+| Étiquettes sous chaque bloc (Sport, Art, Écoute, Scolarité, Admin, Ateliers…) | (retirées) |
+| Bloc image « Avec les jeunes » / Ouvrir des portes, pour chacun d'eux. | (retiré) |
+
+### Équipe
+
+| Avant | Après |
+|---|---|
+| Notre équipe | L'équipe |
+| (nouveau) | Trois cofondateurs et deux membres qui les ont rejoints. Ici, tout le monde est bénévole. **[À VALIDER : est-ce bien vrai pour les 5 ?]** |
+| Badge « ★ Cofondateur » | « cofondateur » ajouté au rôle : Président, cofondateur / Trésorier, cofondateur / Secrétaire, cofondateur |
+| Emails personnels affichés en clair sous chaque nom | (retirés) |
+| Anas : … avec une grande expérience dans l'Aide à la Jeunesse et la vie institutionnelle | … psycho-éducatif, avec une grande expérience dans l'Aide à la Jeunesse et la vie institutionnelle. |
+| Saphae : Infirmière en soins généraux de formation | Infirmière en soins généraux de formation. |
+| Adam : Animateur à Mosaïc ASBL avec une formation de régisseur dans l'événementiel | Animateur à l'asbl Mosaïc, avec une formation de régisseur dans l'événementiel. |
+| Photo silhouette grise (Saphae) | Cercle jaune avec les initiales « SA » |
+
+### Notre local
+
+| Avant | Après |
+|---|---|
+| Bloc « Notre local / On se retrouve au Centre Benenzon » + adresse + horaires | (retiré de cette page, l'info est dans le pied de page et sur l'accueil) |
+
+### Appel bénévoles (nouveau)
+
+- On recrute des bénévoles du secteur social pour accompagner des jeunes au quotidien.
+- Bouton : Nous écrire
