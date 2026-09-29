@@ -1,56 +1,39 @@
-<div class="header-top">
-  <div class="social-icons">
-    <a href="https://www.instagram.com/milleidees_asbl/" target="_blank" aria-label="Instagram">
-      <img src="assets/logo/logo-instagram.png" alt="Instagram">
-    </a>
-    <a href="https://www.linkedin.com/company/mille-idees-asbl/" target="_blank" aria-label="LinkedIn">
-      <img src="assets/logo/linkedin.png" alt="Linkedin">
-    </a>
-  </div>
-</div>
-
-<header class="header" [class.menu-open]="menuOpen()">
-  <a class="logo" routerLink="/home">
-    <img src="/assets/logo/logo_noir_png.png" alt="Logo Mille Idées">
-    <div class="logo-text">
-      <span class="logo-name">Mille Idées Asbl</span>
-      <span class="logo-tagline">Au service des jeunes de Bruxelles</span>
-    </div>
+<div class="bar">
+  <a class="brand" routerLink="/home" aria-label="Mille Idées, accueil">
+    <img src="assets/logo/logo-mille-idees.png" alt="" width="84" height="55">
+    <span class="brand-tagline">Asbl au service des jeunes de Bruxelles</span>
   </a>
 
-  <!-- Nav desktop (dans le flex du header) -->
-  <nav class="nav nav--desktop">
-    <a routerLink="/home"    routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact:true}">Accueil</a>
-    <a routerLink="/asbl"    routerLinkActive="nav-active">L'Asbl</a>
-    <a routerLink="/projets" routerLinkActive="nav-active">Projets</a>
-    <a routerLink="/contact" routerLinkActive="nav-active" class="nav-cta">Contact</a>
+  <nav class="nav" aria-label="Navigation principale">
+    <a routerLink="/projets" routerLinkActive="is-active" ariaCurrentWhenActive="page">Projets</a>
+    <a routerLink="/asbl" routerLinkActive="is-active" ariaCurrentWhenActive="page">L'asbl</a>
+    <a routerLink="/contact" routerLinkActive="is-active" ariaCurrentWhenActive="page" class="btn btn--alt btn--small nav-contact">Contact</a>
   </nav>
 
   <button
-    class="burger"
+    #menuButton
+    class="menu-toggle"
     type="button"
-    [attr.aria-expanded]="menuOpen()"
     aria-controls="mobile-nav"
-    aria-label="Menu"
+    [attr.aria-expanded]="menuOpen()"
     (click)="toggleMenu()">
-    <span class="burger-bar"></span>
-    <span class="burger-bar"></span>
-    <span class="burger-bar"></span>
+    Menu
   </button>
-</header>
+</div>
 
-<!-- Backdrop -->
-<div class="nav-backdrop" [class.open]="menuOpen()" (click)="closeMenu()" aria-hidden="true"></div>
+<div class="drawer-backdrop" [class.open]="menuOpen()" (click)="closeMenu()" aria-hidden="true"></div>
 
-<!-- Nav mobile : drawer à droite, hors du header -->
-<nav id="mobile-nav" class="nav--mobile" [class.open]="menuOpen()">
-  <button class="nav-close" type="button" aria-label="Fermer le menu" (click)="closeMenu()">
-    <span></span>
-    <span></span>
-  </button>
+<nav
+  #drawer
+  id="mobile-nav"
+  class="drawer"
+  [class.open]="menuOpen()"
+  [attr.inert]="menuOpen() ? null : ''"
+  aria-label="Menu">
+  <button class="menu-toggle drawer-close" type="button" (click)="closeMenu(true)">Fermer</button>
 
-  <a routerLink="/home"    routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact:true}" (click)="closeMenu()">Accueil</a>
-  <a routerLink="/asbl"    routerLinkActive="nav-active" (click)="closeMenu()">L'Asbl</a>
-  <a routerLink="/projets" routerLinkActive="nav-active" (click)="closeMenu()">Projets</a>
-  <a routerLink="/contact" routerLinkActive="nav-active" class="nav-cta" (click)="closeMenu()">Contact</a>
+  <a routerLink="/home" routerLinkActive="is-active" ariaCurrentWhenActive="page" [routerLinkActiveOptions]="{ exact: true }">Accueil</a>
+  <a routerLink="/projets" routerLinkActive="is-active" ariaCurrentWhenActive="page">Projets</a>
+  <a routerLink="/asbl" routerLinkActive="is-active" ariaCurrentWhenActive="page">L'asbl</a>
+  <a routerLink="/contact" routerLinkActive="is-active" ariaCurrentWhenActive="page">Contact</a>
 </nav>

@@ -21,6 +21,12 @@ export class App {
     this.showScrollTop.set(window.scrollY > 400);
   }
 
+  // Avec <base href="/">, un simple lien d'ancre rechargerait la page d'accueil
+  skipToContent(event: Event): void {
+    event.preventDefault();
+    document.getElementById('contenu')?.focus();
+  }
+
   scrollToTop(): void {
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
