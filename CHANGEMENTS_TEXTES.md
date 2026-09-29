@@ -3,6 +3,16 @@
 À valider par le comité. Règle générale : **tutoiement partout**, « on » pour parler de l'asbl.
 Chaque ligne donne l'ancien texte et le nouveau. Les textes marqués **[À VALIDER]** sont nouveaux ou demandent un avis.
 
+## Points à trancher par le comité
+
+1. Accueil, bandeau samedi : « Pas besoin de prévenir. » Est-ce bien vrai ?
+2. Accueil, section projets : « Sept projets et plus de cinquante jeunes accompagnés depuis le début, tout ça porté par des bénévoles. » Les chiffres sont-ils à jour ?
+3. Accueil, terrain « Art » : aucun projet artistique n'existe encore. Le texte est une invitation (« Une idée ? Écris-nous. »). On le garde, ou on retire ce terrain en attendant ?
+4. L'asbl, équipe : « Trois cofondateurs et deux membres qui les ont rejoints. Ici, tout le monde est bénévole. » Est-ce vrai pour les 5 ?
+5. L'asbl, Saphae : pas de photo pour l'instant, un cercle avec ses initiales la remplace. Si elle veut une photo, il suffit de l'envoyer.
+
+Vérification faite : il ne reste plus aucun « vous » sur le site.
+
 ## En-tête
 
 | Avant | Après |
@@ -172,6 +182,12 @@ Lien : « Tous les projets → » (desktop), « Voir tous les projets → » (mo
 | Section « À l'agenda / Prochains événements » avec badge « À venir » et lien « Nous contacter » | Les projets à venir restent dans la liste, avec un badge « À venir » à côté de la date |
 | Aucun projet dans cette catégorie pour le moment. | (retiré : chaque filtre a au moins un projet) |
 | Texte alternatif = titre du projet | Une description de chaque photo |
+
+## Titres des pages (onglet du navigateur)
+
+| Avant | Après |
+|---|---|
+| Mille Idées ASBL, association de jeunes à Bruxelles (le même sur toutes les pages) | Accueil : Mille Idées, asbl de jeunes à Bruxelles · L'asbl · Mille Idées · Projets · Mille Idées · Contact · Mille Idées |
 
 ## Contact
 
