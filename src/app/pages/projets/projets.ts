@@ -5,6 +5,12 @@ type FilterKey = ProjectTag | 'all';
 
 const FILTER_KEYS: FilterKey[] = ['all', 'maraude', 'citoyen', 'sport', 'financement'];
 
+// Petits objets de la frise, posés à côté du premier projet de leur thème pour aérer la liste
+const DECOR_BY_TAG: Partial<Record<ProjectTag, string>> = {
+  sport: 'illustrations/obj_ball.svg',
+  citoyen: 'illustrations/obj_leaf.svg',
+};
+
 @Component({
   selector: 'app-projects',
   templateUrl: './projets.html',
@@ -28,6 +34,15 @@ export class ProjectsComponent {
   readonly filteredProjects = computed(() => {
     const filter = this.activeFilter();
     return filter === 'all' ? this.projects : this.projects.filter(p => p.tag === filter);
+  });
+
+  readonly decorBySlug = computed(() => {
+    const decor = new Map<string, string>();
+    for (const project of this.filteredProjects()) {
+      const src = DECOR_BY_TAG[project.tag];
+      if (src && ![...decor.values()].includes(src)) decor.set(project.slug, src);
+    }
+    return decor;
   });
 
   isUpcoming(date: string): boolean {

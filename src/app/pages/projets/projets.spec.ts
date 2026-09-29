@@ -48,4 +48,13 @@ describe('ProjectsComponent', () => {
     expect(last.querySelector('.doodle')).not.toBeNull();
     expect(last.querySelector('.sticker')).toBeNull();
   });
+
+  it('puts one decorative object next to the first sport and citizen projects only', () => {
+    const decors = Array.from(el.querySelectorAll<HTMLImageElement>('.project .decor'));
+    expect(decors.map(d => d.closest('.project')?.querySelector('h2')?.textContent?.trim())).toEqual([
+      'Atelier boxe anglaise',
+      'Clean Walking à Saint-Gilles',
+    ]);
+    expect(decors.every(d => d.getAttribute('aria-hidden') === 'true' && d.alt === '')).toBeTrue();
+  });
 });

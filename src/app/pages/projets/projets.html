@@ -54,6 +54,10 @@
         <span class="project-tag">{{ tagLabels[project.tag] }}</span>
       </p>
 
+      @if (decorBySlug().get(project.slug); as decor) {
+        <img class="decor" [src]="decor" alt="" aria-hidden="true" width="64" height="64" loading="lazy">
+      }
+
       <div class="project-text">
         <h2>{{ project.title }}</h2>
         <p>{{ project.description }}</p>
@@ -62,7 +66,10 @@
   }
 </ul>
 
-<p class="more">
-  D'autres projets arrivent. Pour les suivre, c'est sur
-  <a href="https://www.instagram.com/milleidees_asbl/" target="_blank" rel="noopener noreferrer">Instagram</a>.
-</p>
+<div class="more">
+  <p>
+    D'autres projets arrivent. Pour les suivre, c'est sur
+    <a href="https://www.instagram.com/milleidees_asbl/" target="_blank" rel="noopener noreferrer">Instagram</a>.
+  </p>
+  <img class="decor-end" src="illustrations/obj_spraycan.svg" alt="" aria-hidden="true" width="64" height="64" loading="lazy">
+</div>
