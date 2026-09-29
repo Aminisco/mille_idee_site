@@ -40,3 +40,10 @@ cp doodle.py /tmp/gen/ && python teen_scenes.py
 `python assets7.py ../public/illustrations/`.
 
 Les SVG publiés dans `public/illustrations/` restent la référence : les fichiers d'origine contiennent en plus un bloc de métadonnées que les scripts ne régénèrent pas.
+
+## Retouches faites à la main (pas de script)
+
+- `frieze.svg` (v3, 6 objets), `icon_instagram.svg`, `icon_linkedin.svg`, `obj_*.svg` ont été fournis sans script.
+- Dans `frieze.svg`, le thermos (3e objet) est passé d'olive/charbon à brique `#A83A28` / bleu `#3A4A7A`, pour correspondre à `thermos.svg`.
+- `kids_group`, `panorama`, `stand` (v2) et `plane` : les derniers `#D8261C` remplacés par `#A83A28`.
+
