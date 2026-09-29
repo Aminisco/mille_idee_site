@@ -1,133 +1,68 @@
-<div class="projets-page">
+<section class="intro">
+  <div class="intro-text">
+    <h1>Nos <span class="marker">projets</span></h1>
+    <p>
+      Maraudes, projets citoyens, ateliers sportifs, autofinancement :
+      chaque action est portée par et pour les jeunes de Bruxelles.
+    </p>
 
-  <!-- HERO -->
-  <section class="projets-hero animate-fade">
-    <div class="projets-hero-inner">
-      <span class="hero-chip">Nos projets</span>
-      <h1>Découvrez ce que nous construisons</h1>
-      <p>
-        Maraudes, projets citoyens, ateliers sportifs, auto-financement…
-        chaque action est portée par et pour les jeunes de Bruxelles.
-      </p>
-    </div>
-  </section>
-
-  <!-- FILTRES -->
-  <div class="filters-bar animate-fade" role="tablist" aria-label="Filtres des projets">
-    @for (filter of filters; track filter.key) {
-      <button
-        class="filter-pill"
-        [class.active]="activeFilter() === filter.key"
-        [attr.aria-pressed]="activeFilter() === filter.key"
-        (click)="setFilter(filter.key)"
-        type="button">
-        <span class="filter-label">{{ filter.label }}</span>
-        <span class="filter-count">{{ countFor(filter.key) }}</span>
-      </button>
-    }
-  </div>
-
-  <!-- GRILLE -->
-  @if (filteredProjects().length > 0) {
-    <div class="cards-grid animate-fade">
-      @for (project of filteredProjects(); track project.title) {
-        <article class="card">
-
-          @if (project.image && project.image.length > 0) {
-            <div class="card-slider">
-              <img
-                class="card-img"
-                [src]="project.image[getSlideIndex(project.title)]"
-                [alt]="project.title"
-              />
-              @if (project.image.length > 1) {
-                <button
-                  class="slider-btn slider-prev"
-                  (click)="prevSlide(project.title, project.image.length, $event)"
-                  aria-label="Image précédente"
-                >&#8249;</button>
-                <button
-                  class="slider-btn slider-next"
-                  (click)="nextSlide(project.title, project.image.length, $event)"
-                  aria-label="Image suivante"
-                >&#8250;</button>
-                <div class="slider-dots">
-                  @for (img of project.image; track $index) {
-                    <span
-                      class="dot"
-                      [class.active]="getSlideIndex(project.title) === $index"
-                      (click)="setSlide(project.title, $index)"
-                    ></span>
-                  }
-                </div>
-              }
-            </div>
-          } @else {
-            <div class="card-img-placeholder"></div>
-          }
-
-          <div class="card-body">
-            <span [class]="'card-tag tag-' + project.tag">{{ project.category }}</span>
-            <h3 class="card-title">{{ project.title }}</h3>
-            <time class="card-date" [attr.datetime]="project.date">{{ formatDate(project.date) }}</time>
-            <p class="card-desc">{{ project.description }}</p>
-          </div>
-
-        </article>
+    <div class="filters" role="group" aria-label="Filtrer les projets par thème">
+      @for (filter of filters; track filter.key; let odd = $odd) {
+        <button
+          type="button"
+          class="filter"
+          [class.filter--alt]="odd"
+          [attr.aria-pressed]="activeFilter() === filter.key"
+          (click)="setFilter(filter.key)">
+          {{ filter.label }} <span class="filter-count">{{ filter.count }}</span>
+        </button>
       }
     </div>
-  } @else {
-    <div class="empty-state animate-fade">
-      <span class="empty-icon" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-      </span>
-      <p>Aucun projet dans cette catégorie pour le moment.</p>
-    </div>
-  }
+  </div>
 
-  <!-- À VENIR -->
-  <section class="coming-soon animate-fade" aria-label="Projets à venir">
-    <div class="coming-soon-icon" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>
-    </div>
-    <div class="coming-soon-text">
-      <h3>De nouveaux projets arrivent bientôt</h3>
-      <p>On prépare des actions inédites pour 2026. Reste connecté·e sur nos réseaux pour ne rien manquer.</p>
-    </div>
-  </section>
+  <img class="intro-doodle" src="illustrations/stand.svg" alt="" width="330" height="310">
+</section>
 
-  <!-- PROCHAINS ÉVÉNEMENTS -->
-  @if (upcomingProjects().length > 0) {
-    <section class="upcoming-section animate-fade" aria-label="Prochains événements">
-      <header class="upcoming-header">
-        <span class="upcoming-eyebrow">À l'agenda</span>
-        <h2 class="upcoming-section-title">Prochains événements</h2>
-      </header>
+<p class="sr-only" aria-live="polite">
+  {{ filteredProjects().length }} projet{{ filteredProjects().length > 1 ? 's' : '' }} affiché{{ filteredProjects().length > 1 ? 's' : '' }}
+</p>
 
-      <div class="upcoming-list">
-        @for (project of upcomingProjects(); track project.title) {
-          <article class="upcoming-card">
-            <div class="upcoming-image">
-              @if (project.image && project.image.length > 0) {
-                <img [src]="project.image[0]" [alt]="project.title">
-              }
-            </div>
-            <div class="upcoming-body">
-              <div class="upcoming-meta">
-                <span class="upcoming-badge">À venir</span>
-                <time class="upcoming-date" [attr.datetime]="project.date">{{ formatDate(project.date) }}</time>
-              </div>
-              <h3 class="upcoming-title">{{ project.title }}</h3>
-              <p class="upcoming-desc">{{ project.description }}</p>
-              <a routerLink="/contact" class="upcoming-cta">
-                Nous contacter
-                <span aria-hidden="true">→</span>
-              </a>
-            </div>
-          </article>
+<ul class="project-list">
+  @for (project of filteredProjects(); track project.slug) {
+    <li class="project">
+      <div class="project-media" [class.project-media--doodle]="!project.photo">
+        @if (project.photo; as photo) {
+          <img
+            class="photo"
+            [class]="'shape-' + photo.shape"
+            [src]="photo.src"
+            [alt]="photo.alt"
+            [style.object-position]="photo.position"
+            width="600" height="800"
+            loading="lazy">
+          <img class="sticker" [src]="project.doodle" alt="" width="100" height="90" loading="lazy">
+        } @else {
+          <img class="doodle" [src]="project.doodle" alt="" width="200" height="180" loading="lazy">
         }
       </div>
-    </section>
-  }
 
-</div>
+      <p class="project-meta">
+        <time [attr.datetime]="project.date">{{ formatDate(project.date) }}</time>
+        @if (isUpcoming(project.date)) {
+          <span class="upcoming">À venir</span>
+        }
+        <span class="project-tag">{{ tagLabels[project.tag] }}</span>
+      </p>
+
+      <div class="project-text">
+        <h2>{{ project.title }}</h2>
+        <p>{{ project.description }}</p>
+      </div>
+    </li>
+  }
+</ul>
+
+<p class="more">
+  D'autres projets arrivent. Pour les suivre, c'est sur
+  <a href="https://www.instagram.com/milleidees_asbl/" target="_blank" rel="noopener noreferrer">Instagram</a>.
+</p>

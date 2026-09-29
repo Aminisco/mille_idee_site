@@ -142,3 +142,33 @@ Lien : « Tous les projets → » (desktop), « Voir tous les projets → » (mo
 
 - On recrute des bénévoles du secteur social pour accompagner des jeunes au quotidien.
 - Bouton : Nous écrire
+
+## Projets
+
+### Intro
+
+| Avant | Après |
+|---|---|
+| Nos projets (étiquette) / Découvrez ce que nous construisons | Nos projets |
+| Maraudes, projets citoyens, ateliers sportifs, auto-financement… chaque action est portée par et pour les jeunes de Bruxelles. | Maraudes, projets citoyens, ateliers sportifs, autofinancement : chaque action est portée par et pour les jeunes de Bruxelles. |
+| Filtres : Tous, Maraude, Citoyen, Sport, Financement (comptaient seulement les projets passés) | Mêmes filtres, ils comptent tous les projets (Tous 7) |
+
+### Descriptions
+
+| Projet | Avant | Après |
+|---|---|---|
+| Vente de gaufres | Vente de gaufres à venir, pour financer nos prochains projets. Envie d'en commander ? Écrivez-nous depuis la page contact, on revient vers vous rapidement. | Pour financer nos prochains projets. Envie d'en commander ? Écris-nous depuis la page contact, on te répond rapidement. |
+| Hiver Partagé | Proposer un repas et un moment de partage aux sans-abris de Bruxelles, tout en sensibilisant nos jeunes à la précarité omniprésente dans notre capitale. | Un repas et un moment de partage avec les sans-abris de Bruxelles, pour sensibiliser nos jeunes à la précarité. |
+| Atelier boxe anglaise | Atelier découverte organisé en collaboration avec l'ASBL Mosaïc, ouvert à tous les niveaux. | Atelier découverte organisé avec l'asbl Mosaïc, ouvert à tous les niveaux. |
+| Clean Walking (titre) | Clean Walking — Saint-Gilles | Clean Walking à Saint-Gilles |
+| Clean Walking | Ramassage des déchets dans les rues du quartier de Saint-Gilles, pour un Bruxelles plus propre et plus solidaire. | Ramassage des déchets dans les rues du quartier, pour un Bruxelles plus propre et plus solidaire. |
+| Vente de bonbons, Maraude estivale, Première maraude | | inchangés |
+
+### Blocs retirés ou remplacés
+
+| Avant | Après |
+|---|---|
+| De nouveaux projets arrivent bientôt / On prépare des actions inédites pour 2026. Reste connecté·e sur nos réseaux pour ne rien manquer. | D'autres projets arrivent. Pour les suivre, c'est sur Instagram. |
+| Section « À l'agenda / Prochains événements » avec badge « À venir » et lien « Nous contacter » | Les projets à venir restent dans la liste, avec un badge « À venir » à côté de la date |
+| Aucun projet dans cette catégorie pour le moment. | (retiré : chaque filtre a au moins un projet) |
+| Texte alternatif = titre du projet | Une description de chaque photo |

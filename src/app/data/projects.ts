@@ -111,8 +111,8 @@ export const PROJECTS: Project[] = [
     },
     doodle: 'illustrations/sunbottle.svg',
   },
-  // TODO(étape 5) : image_events/première-maraude.jpeg montre l'affiche d'Hiver Partagé,
-  // pas la première maraude. Retrouver la bonne photo avant de l'afficher.
+  // Pas de photo : l'ancienne « première-maraude.jpeg » était l'affiche d'Hiver Partagé
+  // (renommée hiver-partage-affiche.jpeg)
   {
     slug: 'premiere-maraude',
     title: 'Première maraude',
@@ -120,7 +120,7 @@ export const PROJECTS: Project[] = [
     date: '2024-11-01',
     summary: "Notre toute première sortie maraude à Bruxelles : repas chauds, vêtements et un temps d'écoute avec les personnes à la rue.",
     description: "Notre toute première sortie maraude à Bruxelles : repas chauds, vêtements et un temps d'écoute avec les personnes à la rue.",
-    doodle: 'illustrations/sunbottle.svg',
+    doodle: 'illustrations/icon_hands.svg',
   },
 ];
 
