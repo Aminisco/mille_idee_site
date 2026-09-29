@@ -43,6 +43,8 @@ Thumbs.db
 
 # Maquettes et assets de la refonte (hors repo)
 /mille-idees-refonte/
+/mille-idees-refonte-v2/
+/mille-idees-refonte-v3/
 
 # Python
 __pycache__/
