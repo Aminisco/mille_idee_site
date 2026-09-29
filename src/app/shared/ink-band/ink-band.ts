@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 @Component({
   selector: 'app-ink-band',
   template: `
-    <img class="peek" src="illustrations/peek.svg" alt="" width="620" height="150" loading="lazy">
+    <img class="peek" src="illustrations/peek.svg" alt="" width="620" height="130" loading="lazy">
     <img class="megaphone" src="illustrations/megaphone.svg" alt="" width="200" height="167" loading="lazy">
     <ng-content />
   `,

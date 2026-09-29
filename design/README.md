@@ -11,7 +11,11 @@ Scripts Python qui génèrent les SVG de `public/illustrations/`. Le tracé « �
 | `assets4.py` | `panorama`, `scene_contact`, `peek`, `icon_sprout`, `icon_door`, `icon_bulb`, `icon_hands` |
 | `assets5.py` | `frieze` (réassemble des SVG déjà générés) |
 | `assets6.py` | `atelier`, `stand` (réutilisent `waffle`) |
-| `assets7.py` | `thermos` (Première maraude) |
+| `assets7.py` | `thermos` (Première maraude), en moutarde et brique |
+| `teen.py` | Personnages « ado » : silhouettes longues, petites têtes, visages neutres, sneakers |
+| `teen_scenes.py` | Les 6 scènes v2 : `kids_group_v2`, `panorama_v2`, `peek_v2`, `scene_contact_v2`, `atelier_v2`, `stand_v2` |
+
+Depuis la mise à jour « ado », le site utilise les scènes v2 (renommées sans `_v2` dans `public/illustrations/`). Les objets et icônes d'`assets2.py` à `assets4.py` y sont recolorés : `#F2C200` devient `#C79A2E` (moutarde) et `#D8261C` devient `#A83A28` (brique). Les scripts, eux, gardent les anciennes couleurs de `doodle.py` : après une régénération, il faut refaire ce remplacement.
 
 ## Lancer
 
@@ -24,6 +28,12 @@ mkdir -p /tmp/gen/svg
 cd design
 for n in 1 2 3 4 5 6; do python assets$n.py; done
 python assets7.py /tmp/gen/svg/
+```
+
+`teen.py` et `teen_scenes.py` cherchent `doodle.py` dans `/tmp/gen` avant le dossier courant, et `teen_scenes.py` relit `waffle.svg` dans `/tmp/gen/svg/` (lancer `assets2.py` avant) :
+
+```sh
+cp doodle.py /tmp/gen/ && python teen_scenes.py
 ```
 
 `assets7.py` prend le dossier de sortie en argument. Pour mettre à jour directement le site :
