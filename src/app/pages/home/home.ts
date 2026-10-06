@@ -34,7 +34,7 @@ export class Home {
 
   protected readonly terrains = [
     { name: 'Sport', text: "Atelier boxe anglaise avec l'asbl Mosaïc, ouvert à tous les niveaux." },
-    // TODO(comité) : pas encore de projet artistique, ce texte est une invitation à en proposer un
+    // Pas encore de projet artistique : ce texte invite à en proposer un, à remplacer dès qu'il y en a un
     { name: 'Art', text: 'Des projets artistiques à imaginer avec les jeunes. Une idée ? Écris-nous.' },
     { name: 'Humanitaire', text: 'Maraudes et repas partagés avec les sans-abris de Bruxelles.' },
     { name: 'Citoyen', text: 'Clean Walking à Saint-Gilles, pour un Bruxelles plus propre et plus solidaire.' },
