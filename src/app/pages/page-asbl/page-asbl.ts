@@ -28,19 +28,19 @@ export class PageAsbl {
     {
       name: 'Julien Dubois',
       role: 'Président, cofondateur',
-      photo: 'assets/equipe/julien.jpg',
+      photo: 'assets/equipe/julien.webp',
       bio: 'Fondateur de projets associatifs et éducateur spécialisé, formé en accompagnement psycho-éducatif. Plusieurs années en Aide à la Jeunesse et en milieu institutionnel.',
     },
     {
       name: 'Amin Rozas Zabalo',
       role: 'Trésorier, cofondateur',
-      photo: 'assets/equipe/amin.jpg',
+      photo: 'assets/equipe/amin.webp',
       bio: "Informaticien de formation. Convaincu qu'on peut aider les jeunes via des projets concrets, sportifs comme citoyens.",
     },
     {
       name: 'Anas Bentatou',
       role: 'Secrétaire, cofondateur',
-      photo: 'assets/equipe/anas.jpg',
+      photo: 'assets/equipe/anas.webp',
       bio: "Animateur et éducateur en accompagnement psycho-éducatif, avec une grande expérience dans l'Aide à la Jeunesse et la vie institutionnelle.",
     },
     {
@@ -51,7 +51,7 @@ export class PageAsbl {
     {
       name: 'Adam Ghannan',
       role: 'Animateur',
-      photo: 'assets/equipe/adam.jpg',
+      photo: 'assets/equipe/adam.webp',
       bio: "Animateur à l'asbl Mosaïc, avec une formation de régisseur dans l'événementiel.",
     },
   ];

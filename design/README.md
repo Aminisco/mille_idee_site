@@ -12,6 +12,7 @@ Scripts Python qui génèrent les SVG de `public/illustrations/`. Le tracé « �
 | `assets5.py` | `frieze` (réassemble des SVG déjà générés) |
 | `assets6.py` | `atelier`, `stand` (réutilisent `waffle`) |
 | `assets7.py` | `thermos` (Première maraude), en moutarde et brique |
+| `webp.py` | Hors illustrations : convertit photos et logos de `src/assets` en WebP (voir `originaux/README.md`) |
 | `teen.py` | Personnages « ado » : silhouettes longues, petites têtes, visages neutres, sneakers |
 | `teen_scenes.py` | Les 6 scènes v2 : `kids_group_v2`, `panorama_v2`, `peek_v2`, `scene_contact_v2`, `atelier_v2`, `stand_v2` |
 

@@ -15,7 +15,7 @@ describe('MemberCard', () => {
   });
 
   it('shows the portrait inside the chosen ring', () => {
-    fixture.componentRef.setInput('member', { name: 'Julien Dubois', role: 'Président', bio: '', photo: 'assets/equipe/julien.jpg' });
+    fixture.componentRef.setInput('member', { name: 'Julien Dubois', role: 'Président', bio: '', photo: 'assets/equipe/julien.webp' });
     fixture.componentRef.setInput('ring', 'red');
     fixture.detectChanges();
 

@@ -47,13 +47,13 @@ export class Home {
   ];
 
   protected readonly slides: Slide[] = [
-    { src: 'assets/photos/vie/maraude-mars.jpg', alt: 'Maraude de nuit dans Bruxelles, sacs de vivres à la main', width: 1000, height: 667 },
-    { src: 'assets/photos/vie/photo-groupe.jpg', alt: 'Photo de groupe des jeunes et des bénévoles, le soir de la maraude', width: 1000, height: 667 },
-    { src: 'assets/photos/vie/cleanwalking1.jpg', alt: 'Deux jeunes remplissent un sac poubelle dans un parc à Saint-Gilles', width: 675, height: 900 },
-    { src: 'assets/photos/vie/cleanwalking2.jpg', alt: 'Un jeune ramasse des déchets au pied d’un arbre', width: 675, height: 900 },
-    { src: 'assets/photos/vie/boxe1.jpg', alt: 'Atelier boxe anglaise avec l’asbl Mosaïc', width: 675, height: 900 },
-    { src: 'assets/photos/vie/boxe2.jpg', alt: 'Des jeunes enchaînent les exercices de boxe, gants aux mains', width: 675, height: 900 },
-    { src: 'assets/photos/vie/bonbons.jpg', alt: 'Un plateau de sachets de bonbons pendant la vente dans la rue', width: 675, height: 900 },
+    { src: 'assets/photos/vie/maraude-mars.webp', alt: 'Maraude de nuit dans Bruxelles, sacs de vivres à la main', width: 1000, height: 667 },
+    { src: 'assets/photos/vie/photo-groupe.webp', alt: 'Photo de groupe des jeunes et des bénévoles, le soir de la maraude', width: 1000, height: 667 },
+    { src: 'assets/photos/vie/cleanwalking1.webp', alt: 'Deux jeunes remplissent un sac poubelle dans un parc à Saint-Gilles', width: 675, height: 900 },
+    { src: 'assets/photos/vie/cleanwalking2.webp', alt: 'Un jeune ramasse des déchets au pied d’un arbre', width: 675, height: 900 },
+    { src: 'assets/photos/vie/boxe1.webp', alt: 'Atelier boxe anglaise avec l’asbl Mosaïc', width: 675, height: 900 },
+    { src: 'assets/photos/vie/boxe2.webp', alt: 'Des jeunes enchaînent les exercices de boxe, gants aux mains', width: 675, height: 900 },
+    { src: 'assets/photos/vie/bonbons.webp', alt: 'Un plateau de sachets de bonbons pendant la vente dans la rue', width: 675, height: 900 },
   ];
   protected readonly slideShapes: PhotoShape[] = ['cut', 'leaf', 'arch'];
 

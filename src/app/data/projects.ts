@@ -33,7 +33,7 @@ export const PROJECTS: Project[] = [
     summary: 'Pour financer nos prochains projets. Tu veux en commander ? Écris-nous.',
     description: "Pour financer nos prochains projets. Envie d'en commander ? Écris-nous depuis la page contact, on te répond rapidement.",
     photo: {
-      src: 'assets/photos/gaufres.jpg',
+      src: 'assets/photos/gaufres.webp',
       alt: 'Affiche de la vente de gaufres : 10 € la boîte, vanille ou chocolat',
       shape: 'pebble',
       position: 'top',
@@ -48,7 +48,7 @@ export const PROJECTS: Project[] = [
     summary: 'Un repas et un moment de partage avec les sans-abris de Bruxelles, pour sensibiliser nos jeunes à la précarité.',
     description: 'Un repas et un moment de partage avec les sans-abris de Bruxelles, pour sensibiliser nos jeunes à la précarité.',
     photo: {
-      src: 'assets/photos/hiver-partage.jpg',
+      src: 'assets/photos/hiver-partage.webp',
       alt: "Photo de groupe des jeunes et des bénévoles, le soir d'Hiver Partagé",
       shape: 'cut',
     },
@@ -62,7 +62,7 @@ export const PROJECTS: Project[] = [
     summary: "Atelier découverte avec l'asbl Mosaïc, ouvert à tous les niveaux.",
     description: "Atelier découverte organisé avec l'asbl Mosaïc, ouvert à tous les niveaux.",
     photo: {
-      src: 'assets/photos/boxe-atelier.jpg',
+      src: 'assets/photos/boxe-atelier.webp',
       alt: 'Des jeunes enchaînent les exercices de boxe, gants aux mains, devant un mur de briques orange',
       shape: 'arch',
     },
@@ -76,7 +76,7 @@ export const PROJECTS: Project[] = [
     summary: 'Vente dans les rues de Bruxelles pour financer notre voyage culturel au Canada.',
     description: 'Vente dans les rues de Bruxelles pour financer notre voyage culturel au Canada.',
     photo: {
-      src: 'assets/photos/bonbons.jpg',
+      src: 'assets/photos/bonbons.webp',
       alt: 'Sachets de bonbons préparés pour la vente',
       shape: 'leaf',
     },
@@ -90,7 +90,7 @@ export const PROJECTS: Project[] = [
     summary: 'Ramassage des déchets dans les rues du quartier, pour un Bruxelles plus propre et plus solidaire.',
     description: 'Ramassage des déchets dans les rues du quartier, pour un Bruxelles plus propre et plus solidaire.',
     photo: {
-      src: 'assets/photos/cleanwalking.jpg',
+      src: 'assets/photos/cleanwalking.webp',
       alt: 'Deux jeunes ramassent des déchets dans un parc à Saint-Gilles',
       shape: 'pebble',
     },
@@ -104,7 +104,7 @@ export const PROJECTS: Project[] = [
     summary: "L'été, la précarité reste. Sortie en équipe à travers Bruxelles, avec eau, vivres et discussion.",
     description: "L'été, la précarité reste. Sortie en équipe à travers Bruxelles, avec eau, vivres et discussion.",
     photo: {
-      src: 'assets/photos/maraude-estivale.jpg',
+      src: 'assets/photos/maraude-estivale.webp',
       alt: "Affiche illustrée de la maraude estivale devant l'hôtel de ville de Bruxelles",
       shape: 'pebble-2',
       position: 'top',
