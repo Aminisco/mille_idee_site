@@ -10,6 +10,55 @@
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" href="favicon.png" sizes="192x192">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- Aperçu des liens partagés (WhatsApp, Instagram, LinkedIn…). Titre, description et URL viennent de chaque route (src/app/seo.ts) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Mille Idées">
+  <meta property="og:locale" content="fr_BE">
+  <meta property="og:image" content="https://mille-idees.be/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Le groupe de Mille Idées réuni un soir autour d'un banc">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fiche de l'asbl pour Google : identité, lieu et horaires du samedi, réseaux -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NGO",
+    "@id": "https://mille-idees.be/#asbl",
+    "name": "Mille Idées",
+    "alternateName": "Mille Idées ASBL",
+    "url": "https://mille-idees.be/",
+    "logo": "https://mille-idees.be/assets/logo/logo-mille-idees.png",
+    "image": "https://mille-idees.be/og-image.jpg",
+    "description": "ASBL bruxelloise. On accompagne les jeunes via des projets sportifs, citoyens, artistiques et humanitaires.",
+    "email": "milleidees1190@gmail.com",
+    "areaServed": { "@type": "City", "name": "Bruxelles" },
+    "location": {
+      "@type": "Place",
+      "name": "Centre Benenzon",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Avenue Général Eisenhower 132",
+        "postalCode": "1030",
+        "addressLocality": "Schaerbeek",
+        "addressRegion": "Bruxelles-Capitale",
+        "addressCountry": "BE"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "https://schema.org/Saturday",
+        "opens": "16:00",
+        "closes": "19:00"
+      }
+    },
+    "sameAs": [
+      "https://www.instagram.com/milleidees_asbl/",
+      "https://www.linkedin.com/company/mille-idees-asbl/"
+    ]
+  }
+  </script>
 </head>
 <body>
   <app-root></app-root>

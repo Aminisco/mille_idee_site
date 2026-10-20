@@ -40,7 +40,9 @@
               "@fontsource/karla/latin-500.css",
               "@fontsource/karla/latin-700.css",
               "src/styles.scss"
-            ]
+            ],
+            "server": "src/main.server.ts",
+            "outputMode": "static"
           },
           "configurations": {
             "production": {

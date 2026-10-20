@@ -1,5 +1,5 @@
 <div class="bar">
-  <a class="brand" routerLink="/home" aria-label="Mille Idées, accueil">
+  <a class="brand" routerLink="/" aria-label="Mille Idées, accueil">
     <img src="assets/logo/logo-mille-idees.png" alt="" width="84" height="55">
     <span class="brand-tagline">Asbl au service des jeunes de Bruxelles</span>
   </a>
@@ -32,7 +32,7 @@
   aria-label="Menu">
   <button class="menu-toggle drawer-close" type="button" (click)="closeMenu(true)">Fermer</button>
 
-  <a routerLink="/home" routerLinkActive="is-active" ariaCurrentWhenActive="page" [routerLinkActiveOptions]="{ exact: true }">Accueil</a>
+  <a routerLink="/" routerLinkActive="is-active" ariaCurrentWhenActive="page" [routerLinkActiveOptions]="{ exact: true }">Accueil</a>
   <a routerLink="/projets" routerLinkActive="is-active" ariaCurrentWhenActive="page">Projets</a>
   <a routerLink="/asbl" routerLinkActive="is-active" ariaCurrentWhenActive="page">L'asbl</a>
   <a routerLink="/contact" routerLinkActive="is-active" ariaCurrentWhenActive="page">Contact</a>

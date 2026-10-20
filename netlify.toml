@@ -1,4 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = "dist/mille-idees-site/browser"
+
+# Les pages sont prérendues en HTML (voir scripts/flatten-routes.mjs) : plus besoin de tout
+# renvoyer vers index.html. Une adresse inconnue reçoit 404.html avec un vrai statut 404.
+
+# Ancienne adresse de l'accueil
 [[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
+  from = "/home"
+  to = "/"
+  status = 301
