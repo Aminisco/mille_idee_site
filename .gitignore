@@ -48,3 +48,4 @@ Thumbs.db
 
 # Python
 __pycache__/
+.claude/agent-memory/
