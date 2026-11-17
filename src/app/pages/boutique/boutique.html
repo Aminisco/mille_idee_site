@@ -32,8 +32,6 @@
   <div class="status" role="status">
     @if (sending()) {
       <p class="alert">Envoi en cours…</p>
-    } @else if (status() === 'error') {
-      <p class="alert alert--error">L'envoi n'a pas marché. Réessaie, ou écris-nous depuis la page <a routerLink="/contact">Contact</a>.</p>
     } @else if (status() === 'success') {
       <p id="order-success" class="alert" tabindex="-1">Merci ! On a bien reçu ta commande, on te répond par mail.</p>
     }
@@ -89,7 +87,11 @@
       <!-- TODO durée de conservation à décider -->
       <p class="privacy">Ton nom, ton email et ta remarque servent uniquement à traiter ta commande. Ils passent par Netlify, notre hébergeur.</p>
 
-      <div class="actions">
+      @if (status() === 'error') {
+        <p id="order-error" class="alert alert--error" role="alert" tabindex="-1">L'envoi n'a pas marché. Réessaie, ou écris-nous depuis la page <a routerLink="/contact">Contact</a>.</p>
+      }
+
+      <div class="actions actions--sticky">
         <button type="button" class="btn btn--alt btn--small" [disabled]="sending()" (click)="cancel()">Annuler</button>
         <button type="submit" class="btn btn--small" [disabled]="sending()">
           {{ sending() ? 'Envoi…' : 'Envoyer la commande' }}

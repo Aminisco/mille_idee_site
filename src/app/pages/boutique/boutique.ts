@@ -142,7 +142,7 @@ export class Boutique {
       return;
     }
     this.status.set(result);
-    // Le bouton d'envoi (ou le formulaire) vient de disparaître ou d'être désactivé : on place le focus sur la suite
-    this.focusAfterRender(result === 'success' ? '#order-success' : 'button[type=submit]');
+    // Le bouton d'envoi vient d'être désactivé puis réactivé : le focus va sur le message, qui défile en vue et est annoncé
+    this.focusAfterRender(result === 'success' ? '#order-success' : '#order-error');
   }
 }

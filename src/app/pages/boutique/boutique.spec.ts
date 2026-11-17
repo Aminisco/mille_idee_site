@@ -173,6 +173,22 @@ describe('Boutique', () => {
     expect(submitBtn().disabled).toBeFalse();
   });
 
+  it('moves focus to the error message, placed before the buttons, after a failed send', async () => {
+    await setup();
+    submit.and.rejectWith(new Error('500'));
+    orderButtons()[0].click();
+    fixture.detectChanges();
+    fill();
+    submitBtn().click();
+    await fixture.whenStable();
+    fixture.detectChanges();
+    const error = el.querySelector<HTMLElement>('#order-error')!;
+    expect(error.textContent).toContain("L'envoi n'a pas marché");
+    expect(document.activeElement).toBe(error);
+    const actions = el.querySelector('dialog .actions')!;
+    expect(error.compareDocumentPosition(actions) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
   it('shows the privacy line under the form', async () => {
     await setup();
     expect(dialog().textContent).toContain('Ton nom, ton email et ta remarque servent uniquement à traiter ta commande. Ils passent par Netlify, notre hébergeur.');

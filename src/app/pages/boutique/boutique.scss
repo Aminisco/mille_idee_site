@@ -75,17 +75,27 @@
   max-width: 560px;
   max-height: calc(100dvh - 2 * var(--gutter));
   margin: auto;
-  padding: 32px 28px 28px;
+  padding: 24px 28px 0;
   overflow-y: auto;
   background: var(--paper);
   border: var(--border);
   border-radius: var(--radius-field);
   color: var(--ink);
 
+  // Le formulaire défile, les boutons restent collés en bas de la fenêtre
+  .actions--sticky {
+    position: sticky;
+    bottom: 0;
+    margin-inline: -28px;
+    padding: 14px 28px 20px;
+    background: var(--paper);
+    border-top: 1px solid var(--ink);
+  }
+
   &::backdrop { background: rgb(20 19 15 / 0.6); }
 
   h2 {
-    margin-bottom: 18px;
+    margin-bottom: 14px;
     font-size: clamp(26px, 3vw, 32px);
     letter-spacing: -1px;
   }
@@ -111,7 +121,7 @@
 }
 
 .privacy {
-  margin: 4px 0 20px;
+  margin: 4px 0 16px;
   font-size: 16px;
   color: var(--grey);
 }
