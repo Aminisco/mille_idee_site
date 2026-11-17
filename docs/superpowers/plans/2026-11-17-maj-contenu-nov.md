@@ -31,7 +31,7 @@
 
 ---
 
-### Tâche 1 : type projet/atelier, cinq nouveaux contenus, deux sections sur /projets, compteur et mention SRG
+### Task 1: type projet/atelier, cinq nouveaux contenus, deux sections sur /projets, compteur et mention SRG
 
 **Fichiers :**
 - Modifier : `src/app/data/projects.ts:1-125`, `src/app/pages/projets/projets.ts`, `src/app/pages/projets/projets.html`, `src/app/pages/projets/projets.scss`, `src/app/pages/home/home.html:3,73`, `src/app/pages/page-asbl/page-asbl.html:3-7`, `src/styles.scss`, `src/app/app.routes.ts:29-36`
@@ -99,7 +99,7 @@ git commit -m "feat(projects): add project type, five entries, workshops section
 
 ---
 
-### Tâche 2 : config de don et contenu EPC
+### Task 2: config de don et contenu EPC
 
 **Fichiers :**
 - Créer : `src/app/config/values.ts`, `src/app/config/donation.ts`, `src/app/pages/don/epc.ts`
@@ -170,7 +170,7 @@ git commit -m "feat(donation): add donation config and EPC transfer payload"
 
 ---
 
-### Tâche 3 : page /don avec QR code et lien de paiement
+### Task 3: page /don avec QR code et lien de paiement
 
 **Fichiers :**
 - Créer : `src/app/pages/don/epc-qr.ts`, `src/app/pages/don/don.ts`, `src/app/pages/don/don.html`, `src/app/pages/don/don.scss`
@@ -223,7 +223,7 @@ git commit -m "feat(donation): add /don page with EPC QR code and payment link"
 
 ---
 
-### Tâche 4 : boutique et commande Netlify Forms
+### Task 4: boutique et commande Netlify Forms
 
 **Fichiers :**
 - Créer : `src/app/data/products.ts`, `src/app/pages/boutique/order.ts`, `src/app/pages/boutique/boutique.ts`, `src/app/pages/boutique/boutique.html`, `src/app/pages/boutique/boutique.scss`, `public/__forms.html`
@@ -287,7 +287,7 @@ git commit -m "feat(shop): add /boutique page with Netlify order form"
 
 ---
 
-### Tâche 5 : nav, footer et ancres
+### Task 5: nav, footer et ancres
 
 **Fichiers :**
 - Modifier : `src/app/components/header/header.html:7-11,34-38`, `src/app/components/header/header.scss`, `src/app/components/footer/footer.html:5-58`, `src/app/components/footer/footer.scss`, `src/app/app.config.ts:12`
@@ -320,7 +320,7 @@ git commit -m "feat(nav): make donate the nav button, add shop and footer site l
 
 ---
 
-### Tâche 6 : vérification du lot
+### Task 6: vérification du lot
 
 - [ ] **Étape 1 : build de prod**
 
