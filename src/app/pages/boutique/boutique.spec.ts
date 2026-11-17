@@ -184,4 +184,57 @@ describe('Boutique', () => {
     expect(input('nom').value).toBe('');
     expect(input('quantite').value).toBe('1');
   });
+
+  it('moves focus to the thank-you message after success', async () => {
+    await setup();
+    orderButtons()[0].click();
+    fixture.detectChanges();
+    fill();
+    submitBtn().click();
+    await fixture.whenStable();
+    fixture.detectChanges();
+    expect(document.activeElement?.id).toBe('order-success');
+  });
+
+  it('focuses the name field when reopened after a successful order', async () => {
+    await setup();
+    orderButtons()[0].click();
+    fixture.detectChanges();
+    fill();
+    submitBtn().click();
+    await fixture.whenStable();
+    fixture.detectChanges();
+    dialog().close();
+
+    orderButtons()[1].click();
+    fixture.detectChanges();
+    expect(document.activeElement?.id).toBe('order-nom');
+    expect(input('nom').value).toBe('');
+  });
+
+  it('ignores a late result and blocks a second send after the dialog was closed during sending', async () => {
+    await setup();
+    let resolve!: () => void;
+    submit.and.returnValue(new Promise<void>(r => (resolve = r)));
+    orderButtons()[0].click();
+    fixture.detectChanges();
+    fill();
+    submitBtn().click();
+    fixture.detectChanges();
+    dialog().close();
+
+    orderButtons()[1].click();
+    fixture.detectChanges();
+    fill();
+    submitBtn().click();
+    fixture.detectChanges();
+    expect(submit).toHaveBeenCalledTimes(1);
+
+    resolve();
+    await fixture.whenStable();
+    fixture.detectChanges();
+    expect(dialog().textContent).not.toContain('Merci !');
+    expect(dialog().textContent).toContain('Commander : TODO nom du bic 2');
+    expect(submitBtn().disabled).toBeFalse();
+  });
 });

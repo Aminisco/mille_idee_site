@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, ElementRef, inject, InjectionToken, signal, viewChild } from '@angular/core';
+import { afterNextRender, ChangeDetectionStrategy, Component, computed, ElementRef, inject, InjectionToken, Injector, signal, viewChild } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
@@ -32,6 +32,7 @@ function wholeNumber(control: AbstractControl): ValidationErrors | null {
 export class Boutique {
   protected readonly products = inject(SHOP_PRODUCTS);
   private readonly submitter = inject(ORDER_SUBMITTER);
+  private readonly injector = inject(Injector);
   private readonly dialog = viewChild.required<ElementRef<HTMLDialogElement>>('orderDialog');
 
   protected readonly formatPrice = formatPrice;
@@ -57,6 +58,12 @@ export class Boutique {
   });
 
   private opener: HTMLElement | null = null;
+  /** Change à chaque ouverture : un envoi qui finit après une fermeture ne touche plus l'écran. */
+  private session = 0;
+
+  private focusAfterRender(selector: string): void {
+    afterNextRender(() => this.dialog().nativeElement.querySelector<HTMLElement>(selector)?.focus(), { injector: this.injector });
+  }
 
   protected showError(field: OrderField): boolean {
     const control = this.form.controls[field];
@@ -67,11 +74,14 @@ export class Boutique {
   protected open(product: Product, event: Event): void {
     this.opener = event.currentTarget as HTMLElement;
     this.selected.set(product);
+    this.session++;
     this.status.set('idle');
-    this.sending.set(false);
     this.submitted.set(false);
     this.form.reset({ nom: '', email: '', quantite: 1, remarque: '', 'bot-field': '' });
+    // `sending` n'est pas remis à zéro ici : un envoi encore en cours garde le verrou anti double envoi
     this.dialog().nativeElement.showModal();
+    // Si la fenêtre affichait encore la vue « merci », le focus du navigateur tombe sur un élément qui disparaît au rendu
+    this.focusAfterRender('#order-nom');
   }
 
   protected cancel(): void {
@@ -99,6 +109,7 @@ export class Boutique {
       return;
     }
 
+    const session = this.session;
     this.sending.set(true);
     this.status.set('idle');
     const value = this.form.getRawValue();
@@ -110,13 +121,18 @@ export class Boutique {
       remarque: value.remarque.trim(),
       'bot-field': value['bot-field'],
     };
+    let result: OrderStatus = 'success';
     try {
       await this.submitter(order);
-      this.status.set('success');
     } catch {
-      this.status.set('error');
-    } finally {
-      this.sending.set(false);
+      result = 'error';
     }
+    this.sending.set(false);
+    if (session !== this.session) {
+      return;
+    }
+    this.status.set(result);
+    // Le bouton d'envoi (ou le formulaire) vient de disparaître ou d'être désactivé : on place le focus sur la suite
+    this.focusAfterRender(result === 'success' ? '#order-success' : 'button[type=submit]');
   }
 }

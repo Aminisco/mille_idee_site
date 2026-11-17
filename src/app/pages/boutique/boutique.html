@@ -35,7 +35,7 @@
     } @else if (status() === 'error') {
       <p class="alert alert--error">L'envoi n'a pas marché. Réessaie, ou écris-nous depuis la page <a routerLink="/contact">Contact</a>.</p>
     } @else if (status() === 'success') {
-      <p class="alert">Merci ! On a bien reçu ta commande, on te répond par mail.</p>
+      <p id="order-success" class="alert" tabindex="-1">Merci ! On a bien reçu ta commande, on te répond par mail.</p>
     }
   </div>
 

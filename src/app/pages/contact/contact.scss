@@ -94,20 +94,6 @@
 
 .status:empty { display: none; }
 
-.alert {
-  margin-bottom: 20px;
-  padding: 12px 16px;
-  background: var(--paper);
-  border: var(--border);
-  border-radius: var(--radius-field);
-  font-weight: 700;
-}
-
-.alert--error {
-  background: var(--ink);
-  color: var(--paper);
-}
-
 .panel .btn {
   min-height: 58px;
   margin-top: 4px;
