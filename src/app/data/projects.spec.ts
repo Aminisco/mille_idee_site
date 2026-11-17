@@ -6,10 +6,15 @@ describe('projects data', () => {
     expect(formatProjectDate('2025-12-24')).toBe('24 décembre 2025');
   });
 
-  it('keeps the seven projects of the site, with unique slugs', () => {
-    const slugs = PROJECTS.map(p => p.slug);
-    expect(slugs.length).toBe(7);
-    expect(new Set(slugs).size).toBe(7);
+  it('has 12 entries: 10 projects and 2 workshops', () => {
+    expect(PROJECTS.length).toBe(12);
+    expect(PROJECTS.filter(p => p.type === 'projet').length).toBe(10);
+    expect(PROJECTS.filter(p => p.type === 'atelier').map(p => p.slug).sort())
+      .toEqual(['atelier-ecriture-canada', 'ateliers-ecriture']);
+  });
+
+  it('keeps slugs unique', () => {
+    expect(new Set(PROJECTS.map(p => p.slug)).size).toBe(PROJECTS.length);
   });
 
   it('throws on an unknown slug', () => {

@@ -3,6 +3,8 @@ import { PageAsbl } from './pages/page-asbl/page-asbl';
 import { Home } from './pages/home/home';
 import { Contact } from './pages/contact/contact';
 import { ProjectsComponent } from './pages/projets/projets';
+import { Don } from './pages/don/don';
+import { Boutique } from './pages/boutique/boutique';
 import { NotFound } from './pages/not-found/not-found';
 
 // Les descriptions apparaissent sous le titre dans Google et dans les aperçus de partage (~155 caractères max)
@@ -29,9 +31,9 @@ export const routes: Routes = [
   {
     path: 'projets',
     component: ProjectsComponent,
-    title: 'Projets : maraudes, sport, actions citoyennes · Mille Idées',
+    title: 'Projets et ateliers : maraudes, sport, actions citoyennes · Mille Idées',
     data: {
-      description: 'Maraudes, Hiver Partagé, atelier de boxe, Clean Walking, ventes de gaufres et de bonbons : les projets montés par et pour les jeunes de Bruxelles depuis 2024.',
+      description: "Maraudes, sport, actions citoyennes, ateliers d'écriture : les projets montés par et pour les jeunes de Bruxelles depuis 2024.",
     },
   },
   {
@@ -40,6 +42,22 @@ export const routes: Routes = [
     title: 'Contact · Mille Idées, asbl à Schaerbeek',
     data: {
       description: 'Une question, une idée de projet ? Écris-nous, ou passe le samedi de 16h à 19h au Centre Benenzon, avenue Général Eisenhower 132, à Schaerbeek.',
+    },
+  },
+  {
+    path: 'don',
+    component: Don,
+    title: 'Faire un don · Mille Idées, asbl de jeunes à Bruxelles',
+    data: {
+      description: 'Soutiens les projets des jeunes de Bruxelles : don par virement, QR code à scanner avec ton appli bancaire, ou paiement par Bancontact et carte.',
+    },
+  },
+  {
+    path: 'boutique',
+    component: Boutique,
+    title: 'Boutique : des bics pour financer nos projets · Mille Idées',
+    data: {
+      description: 'Commande des bics Mille Idées et finance les projets des jeunes de Bruxelles : choisis ton modèle, indique la quantité, on te recontacte par mail.',
     },
   },
   { path: '**', component: NotFound, title: 'Page introuvable · Mille Idées', data: { noindex: true } },

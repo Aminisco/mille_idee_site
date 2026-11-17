@@ -135,6 +135,24 @@
   font-weight: 700;
 }
 
+/* ---------- Ateliers ---------- */
+.workshops {
+  padding-top: 24px;
+
+  > h2 {
+    padding-inline: var(--pad-x);
+    font-size: clamp(34px, 3.6vw, 48px);
+    line-height: 1;
+  }
+
+  .project-list { padding-top: 24px; }
+}
+
+.ateliers-link {
+  display: inline-block;
+  margin-top: 18px;
+}
+
 .more {
   display: flex;
   justify-content: space-between;

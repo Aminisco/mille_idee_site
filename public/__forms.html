@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <title>Formulaires</title>
+</head>
+<body>
+  <!-- Sert uniquement à la détection Netlify Forms au déploiement. Mêmes champs que ORDER_FIELDS (src/app/pages/boutique/order.ts). -->
+  <form name="commande" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="produit">
+    <input type="text" name="nom">
+    <input type="email" name="email">
+    <input type="number" name="quantite">
+    <textarea name="remarque"></textarea>
+    <input type="text" name="bot-field">
+  </form>
+</body>
+</html>

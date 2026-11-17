@@ -11,6 +11,8 @@
   --grey: #5C5A52;
   --paper-dark: #E6E0D2;
   --grey-on-ink: #B9B5A8;
+  /* Fond des champs de formulaire, un peu plus clair que le papier */
+  --field-bg: #FFFDF7;
 
   --font-display: 'Archivo', 'Arial Black', system-ui, sans-serif;
   --font-body: 'Karla', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -188,6 +190,79 @@ p { margin: 0; }
   font-weight: 700;
 }
 
+/* ---------- Champs de formulaire (contact, don, boutique) ---------- */
+.field {
+  margin-bottom: 22px;
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  input,
+  textarea {
+    display: block;
+    width: 100%;
+    padding: 0 16px;
+    background: var(--field-bg);
+    border: var(--border);
+    border-radius: var(--radius-field);
+    color: var(--ink);
+    font-size: 18px;
+  }
+
+  input { height: 56px; }
+
+  textarea {
+    min-height: 150px;
+    padding-block: 14px;
+    resize: vertical;
+  }
+
+  [aria-invalid='true'] { border-style: dashed; }
+}
+
+/* Le rouge ne contraste pas assez sur le jaune : message en encre, puce rouge */
+.error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  font-size: 16px;
+  font-weight: 700;
+
+  &::before {
+    content: "";
+    flex: none;
+    width: 10px;
+    height: 10px;
+    background: var(--red);
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+  }
+}
+
+/* Message d'état d'un formulaire : encre sur papier, inversé pour une erreur */
+.alert {
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  background: var(--paper);
+  border: var(--border);
+  border-radius: var(--radius-field);
+  font-weight: 700;
+
+  a { color: inherit; }
+}
+
+.alert--error {
+  background: var(--ink);
+  color: var(--paper);
+
+  a { color: var(--paper); }
+}
+
 /* ---------- Photos détourées ---------- */
 .photo {
   display: block;
@@ -222,4 +297,19 @@ p { margin: 0; }
     background: url('/illustrations/underline.svg') no-repeat center / 100% 100%;
     pointer-events: none;
   }
+}
+
+/* ---------- Mention de spécialisation (SRG / Aide à la Jeunesse) ---------- */
+.speciality {
+  display: inline-block;
+  max-width: 100%;
+  margin: 18px 0 0;
+  padding: 4px 16px;
+  border: var(--border);
+  border-radius: var(--radius-field);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.3;
 }
