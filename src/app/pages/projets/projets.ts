@@ -1,7 +1,7 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { PROJECTS, ProjectTag, TAG_LABELS, formatProjectDate } from '../../data/projects';
+import { PROJECTS, Project, ProjectTag, TAG_LABELS, formatProjectDate } from '../../data/projects';
 
 type FilterKey = ProjectTag | 'all';
 
@@ -20,7 +20,6 @@ const DECOR_BY_TAG: Partial<Record<ProjectTag, string>> = {
   styleUrl: './projets.scss',
 })
 export class ProjectsComponent {
-  protected readonly tagLabels = TAG_LABELS;
   protected readonly formatDate = formatProjectDate;
 
   private readonly today = new Date().toISOString().slice(0, 10);
@@ -50,6 +49,10 @@ export class ProjectsComponent {
     }
     return decor;
   });
+
+  tagLabel(project: Project): string {
+    return TAG_LABELS[project.tag];
+  }
 
   isUpcoming(date: string): boolean {
     return date > this.today;

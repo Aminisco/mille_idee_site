@@ -51,7 +51,7 @@
         @if (isUpcoming(project.date)) {
           <span class="upcoming">À venir</span>
         }
-        <span class="project-tag">{{ tagLabels[project.tag] }}</span>
+        <span class="project-tag">{{ tagLabel(project) }}</span>
       </p>
 
       @if (decorBySlug().get(project.slug); as decor) {
