@@ -48,3 +48,6 @@ Thumbs.db
 
 # Python
 __pycache__/
+
+# Playwright MCP screenshots and logs
+/.playwright-mcp/
