@@ -160,8 +160,9 @@ describe('Don', () => {
     });
   });
 
-  describe('with the default placeholder config', () => {
-    beforeEach(() => setup(DONATION_CONFIG));
+  describe('with a placeholder config', () => {
+    // Placeholders explicites : ce test ne doit pas dépendre des vraies valeurs de donation.ts
+    beforeEach(() => setup({ ...DONATION_CONFIG, iban: 'TODO_IBAN', bic: 'TODO_BIC', paymentLink: 'TODO_PAYMENT_LINK' }));
 
     it('shows only the coming-soon message with a link to the contact page', () => {
       expect(el.querySelector('app-epc-qr')).toBeNull();

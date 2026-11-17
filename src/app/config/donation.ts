@@ -10,7 +10,7 @@ export interface DonationConfig {
 
 export const DONATION_CONFIG: DonationConfig = {
   holder: 'ASBL Mille Idées',
-  iban: 'TODO_IBAN', // IBAN du compte de l'asbl, espaces acceptés
+  iban: 'BE94 3632 8315 0114', // IBAN du compte de l'asbl, espaces acceptés
   bic: 'TODO_BIC',
   paymentLink: 'TODO_PAYMENT_LINK', // lien Mollie ou Stripe Payment Link, en https
   reference: 'Don + ton nom',
