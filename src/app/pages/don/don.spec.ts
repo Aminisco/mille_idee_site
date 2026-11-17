@@ -1,8 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { provideRouter } from '@angular/router';
 
 import { DONATION, DONATION_CONFIG, DonationConfig } from '../../config/donation';
 import { Don } from './don';
+import { EpcQr } from './epc-qr';
 
 const VALID: DonationConfig = {
   holder: 'ASBL Mille Idées',
@@ -38,6 +40,7 @@ describe('Don', () => {
     fixture.detectChanges();
   };
   const caption = () => (el.querySelector('.qr-caption')?.textContent ?? '').replace(/\s+/g, ' ');
+  const qrPayload = () => fixture.debugElement.query(By.directive(EpcQr)).componentInstance.payload() as string;
   const copyButton = () =>
     Array.from(el.querySelectorAll<HTMLButtonElement>('button')).find(b => b.textContent?.includes("Copier l'IBAN"));
 
@@ -73,6 +76,28 @@ describe('Don', () => {
       expect(caption()).toContain('Montant : libre');
     });
 
+    it('does not flag a trailing separator while the donor is still typing', () => {
+      type('Montant (facultatif)', '12,');
+      const field = input('Montant (facultatif)');
+      expect(el.querySelector('#amount-error')).toBeNull();
+      expect(field.getAttribute('aria-invalid')).toBeNull();
+      expect(caption()).toContain('Montant : libre');
+      expect(qrPayload().split('\n')[7]).toBe('');
+      type('Montant (facultatif)', '12,5');
+      expect(caption()).toContain('Montant : 12,50 €');
+    });
+
+    it('still flags a really invalid amount after a separator', () => {
+      type('Montant (facultatif)', '12,,');
+      expect(el.querySelector('#amount-error')).not.toBeNull();
+    });
+
+    it('encodes the configured IBAN, the typed amount and the donor name in the QR payload', () => {
+      type('Montant (facultatif)', '12,50');
+      type('Ton nom (facultatif)', 'Sarah');
+      expect(qrPayload()).toBe('BCD\n002\n1\nSCT\nGEBABEBB\nASBL Mille Idées\nBE68539007547034\nEUR12.50\n\n\nDon Sarah');
+    });
+
     it('puts the donor name in the remittance caption', () => {
       type('Ton nom (facultatif)', 'Sarah');
       expect(caption()).toContain('Communication : Don Sarah');
@@ -106,6 +131,21 @@ describe('Don', () => {
 
     it('never mentions tax deductibility', () => {
       expect(text().toLowerCase()).not.toContain('déductible');
+    });
+  });
+
+  describe('BIC guard', () => {
+    it('shows and encodes a lower-case BIC normalised', async () => {
+      await setup({ ...VALID, bic: 'gebabebb' });
+      expect(text()).toContain('GEBABEBB');
+      expect(qrPayload().split('\n')[4]).toBe('GEBABEBB');
+    });
+
+    it('neither shows nor encodes a malformed BIC', async () => {
+      await setup({ ...VALID, bic: 'GEB@' });
+      expect(text()).not.toContain('GEB@');
+      expect(el.textContent).not.toContain('BIC');
+      expect(qrPayload().split('\n')[4]).toBe('');
     });
   });
 

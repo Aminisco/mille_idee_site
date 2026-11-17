@@ -2,7 +2,9 @@ import {
   buildEpcPayload,
   donationRemittance,
   formatIban,
+  isValidBic,
   isValidIban,
+  normalizeBic,
   normalizeIban,
   parseAmount,
 } from './epc';
@@ -33,12 +35,46 @@ describe('parseAmount', () => {
       expect(parseAmount(bad)).toEqual({ kind: 'invalid' });
     }
   });
+
+  it('accepts the bounds and rejects what is just beyond', () => {
+    expect(parseAmount('0,01')).toEqual({ kind: 'valid', value: 0.01 });
+    expect(parseAmount('999999999,99')).toEqual({ kind: 'valid', value: 999999999.99 });
+    expect(parseAmount('999999999,991')).toEqual({ kind: 'invalid' });
+  });
+
+  it('treats a trailing separator as a pending entry, not an error', () => {
+    expect(parseAmount('12,')).toEqual({ kind: 'pending' });
+    expect(parseAmount('12.')).toEqual({ kind: 'pending' });
+    expect(parseAmount(',')).toEqual({ kind: 'invalid' });
+    expect(parseAmount('12,,')).toEqual({ kind: 'invalid' });
+  });
 });
 
 describe('donationRemittance', () => {
   it('builds the remittance', () => {
     expect(donationRemittance('')).toBe('Don');
     expect(donationRemittance('  Sarah\nB. ')).toBe('Don Sarah B.');
+  });
+
+  it('keeps only the SEPA Latin characters, without accents', () => {
+    expect(donationRemittance('Zoé Ünal')).toBe('Don Zoe Unal');
+    expect(donationRemittance('漢'.repeat(100))).toBe('Don');
+    expect(donationRemittance('Léa 😀 K.')).toBe('Don Lea K.');
+    expect(donationRemittance("O'Neil (Jr) +1")).toBe("Don O'Neil (Jr) +1");
+  });
+
+  it('caps the remittance at 140 characters', () => {
+    expect(donationRemittance('N'.repeat(300)).length).toBe(140);
+  });
+});
+
+describe('BIC helpers', () => {
+  it('normalizes and validates', () => {
+    expect(normalizeBic(' geba bebb ')).toBe('GEBABEBB');
+    expect(isValidBic('gebabebb')).toBeTrue();
+    expect(isValidBic('GEBABEBB123')).toBeTrue();
+    expect(isValidBic('GEB@')).toBeFalse();
+    expect(isValidBic('GEBABEB')).toBeFalse();
   });
 });
 
@@ -73,5 +109,23 @@ describe('buildEpcPayload', () => {
   it('truncates the name to 70 characters', () => {
     const lines = buildEpcPayload({ name: 'N'.repeat(100), iban: 'BE68539007547034' }).split('\n');
     expect(lines[5].length).toBe(70);
+  });
+
+  it('encodes a valid BIC in upper case and omits an invalid one', () => {
+    const base = { name: 'ASBL Mille Idées', iban: 'BE68539007547034' };
+    expect(buildEpcPayload({ ...base, bic: 'geba bebb' }).split('\n')[4]).toBe('GEBABEBB');
+    expect(buildEpcPayload({ ...base, bic: 'GEB@' }).split('\n')[4]).toBe('');
+  });
+
+  it('cleans the remittance and keeps a 70-character donor name under 331 bytes', () => {
+    const p = buildEpcPayload({
+      name: 'ASBL Mille Idées',
+      iban: 'BE68539007547034',
+      bic: 'GEBABEBB',
+      amount: 999999999.99,
+      remittance: donationRemittance('é'.repeat(70)),
+    });
+    expect(p.split('\n')[10]).toBe('Don ' + 'e'.repeat(70));
+    expect(new TextEncoder().encode(p).length).toBeLessThanOrEqual(331);
   });
 });

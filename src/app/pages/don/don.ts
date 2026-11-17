@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 import { DONATION } from '../../config/donation';
 import { isHttpsUrl, isPlaceholder } from '../../config/values';
 import { EpcQr } from './epc-qr';
-import { buildEpcPayload, donationRemittance, formatIban, isValidIban, normalizeIban, parseAmount } from './epc';
+import { buildEpcPayload, donationRemittance, formatIban, isValidBic, isValidIban, normalizeBic, normalizeIban, parseAmount } from './epc';
 
 type CopyStatus = 'idle' | 'done' | 'failed';
 
@@ -22,7 +22,8 @@ export class Don {
 
   protected readonly ibanReady = !isPlaceholder(this.config.iban) && isValidIban(this.config.iban);
   protected readonly paymentReady = !isPlaceholder(this.config.paymentLink) && isHttpsUrl(this.config.paymentLink);
-  protected readonly bicShown = !isPlaceholder(this.config.bic);
+  protected readonly bicShown = !isPlaceholder(this.config.bic) && isValidBic(this.config.bic);
+  protected readonly displayBic = normalizeBic(this.config.bic);
   protected readonly displayIban = formatIban(this.config.iban);
 
   protected readonly amountRaw = signal('');

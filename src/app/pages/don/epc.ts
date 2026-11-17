@@ -22,8 +22,17 @@ export function formatIban(raw: string): string {
   return normalizeIban(raw).replace(/(.{4})(?=.)/g, '$1 ');
 }
 
+export function normalizeBic(raw: string): string {
+  return raw.replace(/\s+/g, '').toUpperCase();
+}
+
+export function isValidBic(raw: string): boolean {
+  return /^[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?$/.test(normalizeBic(raw));
+}
+
 export type AmountResult =
   | { kind: 'empty' }
+  | { kind: 'pending' }
   | { kind: 'valid'; value: number }
   | { kind: 'invalid' };
 
@@ -31,6 +40,10 @@ export function parseAmount(raw: string): AmountResult {
   const cleaned = raw.replace(/\s+/g, '').replace(',', '.');
   if (cleaned === '') {
     return { kind: 'empty' };
+  }
+  // « 12, » : le donateur est en train d'écrire les centimes, ce n'est pas encore une erreur
+  if (/^\d+\.$/.test(cleaned)) {
+    return { kind: 'pending' };
   }
   if (!/^\d+(\.\d{1,2})?$/.test(cleaned)) {
     return { kind: 'invalid' };
@@ -42,13 +55,20 @@ export function parseAmount(raw: string): AmountResult {
   return { kind: 'valid', value };
 }
 
+/** Jeu de caractères SEPA : lettres latines sans accent, chiffres et / ? : ( ) . , ' + - */
 function cleanText(text: string): string {
-  return text.replace(/\s+/g, ' ').trim();
+  return text
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, ' ')
+    .replace(/[^A-Za-z0-9 /?:().,'+-]/g, '')
+    .replace(/ {2,}/g, ' ')
+    .trim();
 }
 
 export function donationRemittance(donorName: string): string {
   const name = cleanText(donorName);
-  return name ? `Don ${name}` : 'Don';
+  return (name ? `Don ${name}` : 'Don').slice(0, 140);
 }
 
 export interface EpcTransfer {
@@ -66,7 +86,7 @@ export function buildEpcPayload(t: EpcTransfer): string {
     '002',
     '1',
     'SCT',
-    t.bic ? t.bic.trim() : '',
+    t.bic && isValidBic(t.bic) ? normalizeBic(t.bic) : '',
     t.name.slice(0, 70),
     normalizeIban(t.iban),
     t.amount === undefined ? '' : `EUR${t.amount.toFixed(2)}`,
