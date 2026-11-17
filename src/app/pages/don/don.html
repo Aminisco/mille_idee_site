@@ -57,9 +57,11 @@
               (input)="onAmount($event)"
               [attr.aria-invalid]="amountInvalid() ? 'true' : null"
               [attr.aria-describedby]="amountInvalid() ? 'amount-error' : null">
-            @if (amountInvalid()) {
-              <p class="error" id="amount-error">Montant invalide : écris par exemple 20 ou 12,50</p>
-            }
+            <div id="amount-live" aria-live="polite">
+              @if (amountInvalid()) {
+                <p class="error" id="amount-error">Montant invalide : écris par exemple 20 ou 12,50</p>
+              }
+            </div>
           </div>
           <div class="field">
             <label for="donor-name">Ton nom (facultatif)</label>

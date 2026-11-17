@@ -76,6 +76,17 @@ describe('Don', () => {
       expect(caption()).toContain('Montant : libre');
     });
 
+    it('announces the amount error through a polite live region that is always in the DOM', () => {
+      const live = () => el.querySelector('#amount-live')!;
+      expect(live().getAttribute('aria-live')).toBe('polite');
+      expect(live().textContent?.trim()).toBe('');
+      type('Montant (facultatif)', 'abc');
+      expect(live().textContent).toContain('Montant invalide');
+      expect(live().contains(el.querySelector('#amount-error'))).toBeTrue();
+      type('Montant (facultatif)', '12,');
+      expect(live().textContent?.trim()).toBe('');
+    });
+
     it('does not flag a trailing separator while the donor is still typing', () => {
       type('Montant (facultatif)', '12,');
       const field = input('Montant (facultatif)');
