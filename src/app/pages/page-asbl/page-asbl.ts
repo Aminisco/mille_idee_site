@@ -46,6 +46,7 @@ export class PageAsbl {
     {
       name: 'Saphae Allaoui',
       role: 'Chargée de communication et de partenariat',
+      photo: 'assets/equipe/saphae.webp',
       bio: 'Infirmière en soins généraux de formation.',
     },
     {
