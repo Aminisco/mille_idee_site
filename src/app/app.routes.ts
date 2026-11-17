@@ -4,6 +4,7 @@ import { Home } from './pages/home/home';
 import { Contact } from './pages/contact/contact';
 import { ProjectsComponent } from './pages/projets/projets';
 import { Don } from './pages/don/don';
+import { Boutique } from './pages/boutique/boutique';
 import { NotFound } from './pages/not-found/not-found';
 
 // Les descriptions apparaissent sous le titre dans Google et dans les aperçus de partage (~155 caractères max)
@@ -49,6 +50,14 @@ export const routes: Routes = [
     title: 'Faire un don · Mille Idées, asbl de jeunes à Bruxelles',
     data: {
       description: 'Soutiens les projets des jeunes de Bruxelles : don par virement, QR code à scanner avec ton appli bancaire, ou paiement par Bancontact et carte.',
+    },
+  },
+  {
+    path: 'boutique',
+    component: Boutique,
+    title: 'Boutique : des bics pour financer nos projets · Mille Idées',
+    data: {
+      description: 'Commande des bics Mille Idées et finance les projets des jeunes de Bruxelles : choisis ton modèle, indique la quantité, on te recontacte par mail.',
     },
   },
   { path: '**', component: NotFound, title: 'Page introuvable · Mille Idées', data: { noindex: true } },

@@ -1,0 +1,100 @@
+<section class="intro">
+  <h1>La <span class="marker">boutique</span></h1>
+  <p class="lead">On vend des bics pour financer nos projets. Tu choisis, tu commandes, on te recontacte par mail pour la suite.</p>
+</section>
+
+<ul class="products">
+  @for (product of products; track product.slug; let i = $index) {
+    <li class="product">
+      <div class="product-media">
+        @if (product.photo; as photo) {
+          <img
+            class="photo"
+            [class]="shapes[i % shapes.length]"
+            [src]="photo.src"
+            [alt]="photo.alt"
+            width="600" height="600"
+            loading="lazy">
+        } @else {
+          <div class="placeholder" aria-hidden="true">Photo à venir</div>
+        }
+      </div>
+      <h2>{{ product.name }}</h2>
+      <p class="price">{{ formatPrice(product.price) }}</p>
+      <button type="button" class="btn btn--small" (click)="open(product, $event)">Commander</button>
+    </li>
+  }
+</ul>
+
+<dialog #orderDialog class="order" aria-labelledby="order-title" (close)="onClose()">
+  <h2 id="order-title">Commander : {{ selected()?.name }}</h2>
+
+  <div class="status" role="status">
+    @if (sending()) {
+      <p class="alert">Envoi en cours…</p>
+    } @else if (status() === 'error') {
+      <p class="alert alert--error">L'envoi n'a pas marché. Réessaie, ou écris-nous depuis la page <a routerLink="/contact">Contact</a>.</p>
+    } @else if (status() === 'success') {
+      <p class="alert">Merci ! On a bien reçu ta commande, on te répond par mail.</p>
+    }
+  </div>
+
+  @if (status() === 'success') {
+    <div class="actions">
+      @if (paymentUrl(); as url) {
+        <a class="btn btn--accent btn--small" [href]="url" target="_blank" rel="noopener noreferrer">Payer en ligne</a>
+      }
+      <button type="button" class="btn btn--alt btn--small" (click)="cancel()">Fermer</button>
+    </div>
+  } @else {
+    <form [formGroup]="form" (ngSubmit)="send()" novalidate>
+      <div class="field">
+        <label for="order-nom">Ton nom</label>
+        <input id="order-nom" name="nom" type="text" formControlName="nom" maxlength="100" autocomplete="name" required
+               [attr.aria-invalid]="showError('nom')" [attr.aria-describedby]="showError('nom') ? 'order-nom-error' : null">
+        @if (showError('nom')) {
+          <p id="order-nom-error" class="error">Ton nom est requis.</p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="order-email">Ton email</label>
+        <input id="order-email" name="email" type="email" formControlName="email" autocomplete="email" required
+               [attr.aria-invalid]="showError('email')" [attr.aria-describedby]="showError('email') ? 'order-email-error' : null">
+        @if (showError('email')) {
+          <p id="order-email-error" class="error">Un email valide est requis.</p>
+        }
+      </div>
+
+      <div class="field field--short">
+        <label for="order-quantite">Quantité</label>
+        <input id="order-quantite" name="quantite" type="number" inputmode="numeric" min="1" max="99" step="1" formControlName="quantite" required
+               [attr.aria-invalid]="showError('quantite')" [attr.aria-describedby]="showError('quantite') ? 'order-quantite-error' : null">
+        @if (showError('quantite')) {
+          <p id="order-quantite-error" class="error">Indique une quantité entière entre 1 et 99.</p>
+        }
+      </div>
+
+      <div class="field">
+        <label for="order-remarque">Remarque (facultatif)</label>
+        <textarea id="order-remarque" name="remarque" rows="3" formControlName="remarque" maxlength="500"></textarea>
+      </div>
+
+      <!-- Champ piège pour les robots : masqué, jamais rempli par une personne -->
+      <div class="trap" aria-hidden="true">
+        <label for="order-bot-field">Ne pas remplir</label>
+        <input id="order-bot-field" name="bot-field" type="text" formControlName="bot-field" aria-hidden="true" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn btn--alt btn--small" (click)="cancel()">Annuler</button>
+        <button type="submit" class="btn btn--small" [disabled]="sending()">
+          {{ sending() ? 'Envoi…' : 'Envoyer la commande' }}
+        </button>
+      </div>
+
+      <!-- TODO durée de conservation à décider -->
+      <p class="privacy">Ton nom et ton email servent uniquement à traiter ta commande. Ils passent par Netlify, notre hébergeur.</p>
+    </form>
+  }
+</dialog>

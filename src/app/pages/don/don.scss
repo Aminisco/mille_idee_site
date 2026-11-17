@@ -123,52 +123,6 @@
   overflow-wrap: anywhere;
 }
 
-/* ---------- Champs ---------- */
-.field {
-  margin-bottom: 22px;
-
-  label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 17px;
-    font-weight: 700;
-  }
-
-  input {
-    display: block;
-    width: 100%;
-    height: 56px;
-    padding: 0 16px;
-    background: #FFFDF7;
-    border: var(--border);
-    border-radius: var(--radius-field);
-    color: var(--ink);
-    font-size: 18px;
-  }
-
-  [aria-invalid='true'] { border-style: dashed; }
-}
-
-// Le message reste en encre, la puce rouge porte la couleur
-.error {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 6px;
-  font-size: 16px;
-  font-weight: 700;
-
-  &::before {
-    content: "";
-    flex: none;
-    width: 10px;
-    height: 10px;
-    background: var(--red);
-    border: 2px solid var(--ink);
-    border-radius: 50%;
-  }
-}
-
 @media (max-width: 719px) {
   .intro { grid-template-columns: minmax(0, 1fr); }
 
