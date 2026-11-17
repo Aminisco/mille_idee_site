@@ -23,6 +23,11 @@ describe('PageAsbl', () => {
     expect(component).toBeTruthy();
   });
 
+  it('shows the SRG speciality under the title', () => {
+    const el = (fixture.nativeElement as HTMLElement).querySelector('.intro .speciality');
+    expect(el?.textContent?.trim()).toBe('Spécialisation SRG / Aide à la Jeunesse');
+  });
+
   it('shows the five team members, alternating rings, without any email', () => {
     const el = fixture.nativeElement as HTMLElement;
     const rings = Array.from(el.querySelectorAll('app-member-card .ring')).map(r => r.getAttribute('src'));

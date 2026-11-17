@@ -5,6 +5,7 @@
       Maraudes, projets citoyens, ateliers sportifs, autofinancement :
       chaque action est portée par et pour les jeunes de Bruxelles.
     </p>
+    <a class="link-strong ateliers-link" routerLink="/projets" fragment="ateliers">Voir les ateliers ↓</a>
 
     <div class="filters" role="group" aria-label="Filtrer les projets par thème">
       @for (filter of filters; track filter.key; let odd = $odd) {
@@ -27,9 +28,8 @@
   {{ filteredProjects().length }} projet{{ filteredProjects().length > 1 ? 's' : '' }} affiché{{ filteredProjects().length > 1 ? 's' : '' }}
 </p>
 
-<ul class="project-list">
-  @for (project of filteredProjects(); track project.slug) {
-    <li class="project">
+<ng-template #item let-project let-level="level">
+  <li class="project">
       <div class="project-media" [class.project-media--doodle]="!project.photo">
         @if (project.photo; as photo) {
           <img
@@ -59,12 +59,30 @@
       }
 
       <div class="project-text">
-        <h2>{{ project.title }}</h2>
+        @if (level === 2) {
+          <h2>{{ project.title }}</h2>
+        } @else {
+          <h3>{{ project.title }}</h3>
+        }
         <p>{{ project.description }}</p>
       </div>
     </li>
+</ng-template>
+
+<ul class="project-list">
+  @for (project of filteredProjects(); track project.slug) {
+    <ng-container *ngTemplateOutlet="item; context: { $implicit: project, level: 2 }" />
   }
 </ul>
+
+<section id="ateliers" class="workshops" aria-labelledby="ateliers-title">
+  <h2 id="ateliers-title">Nos <span class="marker">ateliers</span></h2>
+  <ul class="project-list project-list--workshops">
+    @for (workshop of workshops; track workshop.slug) {
+      <ng-container *ngTemplateOutlet="item; context: { $implicit: workshop, level: 3 }" />
+    }
+  </ul>
+</section>
 
 <div class="more">
   <p>

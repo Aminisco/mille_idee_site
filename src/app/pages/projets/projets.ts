@@ -1,4 +1,6 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { Component, computed, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { PROJECTS, ProjectTag, TAG_LABELS, formatProjectDate } from '../../data/projects';
 
 type FilterKey = ProjectTag | 'all';
@@ -13,6 +15,7 @@ const DECOR_BY_TAG: Partial<Record<ProjectTag, string>> = {
 
 @Component({
   selector: 'app-projects',
+  imports: [RouterLink, NgTemplateOutlet],
   templateUrl: './projets.html',
   styleUrl: './projets.scss',
 })
@@ -21,7 +24,10 @@ export class ProjectsComponent {
   protected readonly formatDate = formatProjectDate;
 
   private readonly today = new Date().toISOString().slice(0, 10);
-  private readonly projects = [...PROJECTS].sort((a, b) => b.date.localeCompare(a.date));
+  private readonly byDateDesc = [...PROJECTS].sort((a, b) => b.date.localeCompare(a.date));
+  /** Les filtres et les compteurs ne portent que sur les projets */
+  private readonly projects = this.byDateDesc.filter(p => p.type === 'projet');
+  readonly workshops = this.byDateDesc.filter(p => p.type === 'atelier');
 
   readonly activeFilter = signal<FilterKey>('all');
 

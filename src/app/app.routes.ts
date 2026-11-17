@@ -29,9 +29,9 @@ export const routes: Routes = [
   {
     path: 'projets',
     component: ProjectsComponent,
-    title: 'Projets : maraudes, sport, actions citoyennes · Mille Idées',
+    title: 'Projets et ateliers : maraudes, sport, actions citoyennes · Mille Idées',
     data: {
-      description: 'Maraudes, Hiver Partagé, atelier de boxe, Clean Walking, ventes de gaufres et de bonbons : les projets montés par et pour les jeunes de Bruxelles depuis 2024.',
+      description: "Maraudes, sport, actions citoyennes, ateliers d'écriture : les projets montés par et pour les jeunes de Bruxelles depuis 2024.",
     },
   },
   {

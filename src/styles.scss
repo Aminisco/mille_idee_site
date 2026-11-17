@@ -223,3 +223,18 @@ p { margin: 0; }
     pointer-events: none;
   }
 }
+
+/* ---------- Mention de spécialisation (SRG / Aide à la Jeunesse) ---------- */
+.speciality {
+  display: inline-block;
+  max-width: 100%;
+  margin: 18px 0 0;
+  padding: 4px 16px;
+  border: var(--border);
+  border-radius: var(--radius-field);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.3;
+}

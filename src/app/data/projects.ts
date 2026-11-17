@@ -1,11 +1,15 @@
 export type ProjectTag = 'maraude' | 'citoyen' | 'sport' | 'financement';
 
+/** « projet » : action avec filtre par thème ; « atelier » : activité récurrente, listée à part */
+export type ProjectType = 'projet' | 'atelier';
+
 export type PhotoShape = 'pebble' | 'pebble-2' | 'leaf' | 'arch' | 'cut';
 
 export interface Project {
   slug: string;
   title: string;
   tag: ProjectTag;
+  type: ProjectType;
   /** ISO, le jour 01 veut dire « mois entier » */
   date: string;
   /** Version courte, pour l'accueil */
@@ -26,9 +30,60 @@ export const TAG_LABELS: Record<ProjectTag, string> = {
 
 export const PROJECTS: Project[] = [
   {
+    slug: 'basket',
+    title: 'Basket',
+    tag: 'sport', // TODO tag à valider
+    type: 'projet',
+    date: '2026-11-01', // TODO date réelle
+    summary: 'TODO résumé (1 phrase)',
+    description: 'TODO description (2-3 phrases : quoi, avec qui, quand)',
+    doodle: 'illustrations/huddle.svg',
+  },
+  {
+    slug: 'foot',
+    title: 'Foot',
+    tag: 'sport', // TODO tag à valider
+    type: 'projet',
+    date: '2026-11-01', // TODO date réelle
+    summary: 'TODO résumé (1 phrase)',
+    description: 'TODO description (2-3 phrases : quoi, avec qui, quand)',
+    doodle: 'illustrations/megaphone.svg',
+  },
+  {
+    slug: 'visite-historique-bruxelles',
+    title: 'Visite historique de Bruxelles',
+    tag: 'citoyen', // TODO tag à valider
+    type: 'projet',
+    date: '2026-11-01', // TODO date réelle
+    summary: 'TODO résumé (1 phrase)',
+    description: 'TODO description (2-3 phrases : quoi, avec qui, quand)',
+    doodle: 'illustrations/panorama.svg',
+  },
+  {
+    slug: 'ateliers-ecriture',
+    title: "Ateliers d'écriture",
+    tag: 'citoyen', // TODO tag à valider
+    type: 'atelier',
+    date: '2026-11-01', // TODO date réelle
+    summary: 'TODO résumé (1 phrase)',
+    description: 'TODO description (2-3 phrases : quoi, avec qui, quand)',
+    doodle: 'illustrations/atelier.svg',
+  },
+  {
+    slug: 'atelier-ecriture-canada',
+    title: "Atelier d'écriture : projet Canada",
+    tag: 'citoyen', // TODO tag à valider
+    type: 'atelier',
+    date: '2026-11-01', // TODO date réelle
+    summary: 'TODO résumé (1 phrase)',
+    description: 'TODO description (2-3 phrases : quoi, avec qui, quand)',
+    doodle: 'illustrations/plane.svg',
+  },
+  {
     slug: 'gaufres',
     title: 'Vente de gaufres',
     tag: 'financement',
+    type: 'projet',
     date: '2026-06-01',
     summary: 'Pour financer nos prochains projets. Tu veux en commander ? Écris-nous.',
     description: "Pour financer nos prochains projets. Envie d'en commander ? Écris-nous depuis la page contact, on te répond rapidement.",
@@ -44,6 +99,7 @@ export const PROJECTS: Project[] = [
     slug: 'hiver-partage',
     title: 'Hiver Partagé',
     tag: 'maraude',
+    type: 'projet',
     date: '2026-03-01',
     summary: 'Un repas et un moment de partage avec les sans-abris de Bruxelles, pour sensibiliser nos jeunes à la précarité.',
     description: 'Un repas et un moment de partage avec les sans-abris de Bruxelles, pour sensibiliser nos jeunes à la précarité.',
@@ -58,6 +114,7 @@ export const PROJECTS: Project[] = [
     slug: 'boxe',
     title: 'Atelier boxe anglaise',
     tag: 'sport',
+    type: 'projet',
     date: '2025-12-24',
     summary: "Atelier découverte avec l'asbl Mosaïc, ouvert à tous les niveaux.",
     description: "Atelier découverte organisé avec l'asbl Mosaïc, ouvert à tous les niveaux.",
@@ -72,6 +129,7 @@ export const PROJECTS: Project[] = [
     slug: 'bonbons',
     title: 'Vente de bonbons',
     tag: 'financement',
+    type: 'projet',
     date: '2025-12-06',
     summary: 'Vente dans les rues de Bruxelles pour financer notre voyage culturel au Canada.',
     description: 'Vente dans les rues de Bruxelles pour financer notre voyage culturel au Canada.',
@@ -86,6 +144,7 @@ export const PROJECTS: Project[] = [
     slug: 'clean-walking',
     title: 'Clean Walking à Saint-Gilles',
     tag: 'citoyen',
+    type: 'projet',
     date: '2025-08-01',
     summary: 'Ramassage des déchets dans les rues du quartier, pour un Bruxelles plus propre et plus solidaire.',
     description: 'Ramassage des déchets dans les rues du quartier, pour un Bruxelles plus propre et plus solidaire.',
@@ -100,6 +159,7 @@ export const PROJECTS: Project[] = [
     slug: 'maraude-estivale',
     title: 'Maraude estivale',
     tag: 'maraude',
+    type: 'projet',
     date: '2025-06-01',
     summary: "L'été, la précarité reste. Sortie en équipe à travers Bruxelles, avec eau, vivres et discussion.",
     description: "L'été, la précarité reste. Sortie en équipe à travers Bruxelles, avec eau, vivres et discussion.",
@@ -117,6 +177,7 @@ export const PROJECTS: Project[] = [
     slug: 'premiere-maraude',
     title: 'Première maraude',
     tag: 'maraude',
+    type: 'projet',
     date: '2024-11-01',
     summary: "Notre toute première sortie maraude à Bruxelles : repas chauds, vêtements et un temps d'écoute avec les personnes à la rue.",
     description: "Notre toute première sortie maraude à Bruxelles : repas chauds, vêtements et un temps d'écoute avec les personnes à la rue.",
