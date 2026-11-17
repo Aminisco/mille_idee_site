@@ -3,6 +3,7 @@ import { PageAsbl } from './pages/page-asbl/page-asbl';
 import { Home } from './pages/home/home';
 import { Contact } from './pages/contact/contact';
 import { ProjectsComponent } from './pages/projets/projets';
+import { Don } from './pages/don/don';
 import { NotFound } from './pages/not-found/not-found';
 
 // Les descriptions apparaissent sous le titre dans Google et dans les aperçus de partage (~155 caractères max)
@@ -40,6 +41,14 @@ export const routes: Routes = [
     title: 'Contact · Mille Idées, asbl à Schaerbeek',
     data: {
       description: 'Une question, une idée de projet ? Écris-nous, ou passe le samedi de 16h à 19h au Centre Benenzon, avenue Général Eisenhower 132, à Schaerbeek.',
+    },
+  },
+  {
+    path: 'don',
+    component: Don,
+    title: 'Faire un don · Mille Idées, asbl de jeunes à Bruxelles',
+    data: {
+      description: 'Soutiens les projets des jeunes de Bruxelles : don par virement, QR code à scanner avec ton appli bancaire, ou paiement par Bancontact et carte.',
     },
   },
   { path: '**', component: NotFound, title: 'Page introuvable · Mille Idées', data: { noindex: true } },

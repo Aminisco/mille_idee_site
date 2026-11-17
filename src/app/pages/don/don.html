@@ -1,0 +1,91 @@
+<div class="don-page">
+  <section class="intro">
+    <h1>Faire un <span class="marker">don</span></h1>
+    <p class="lead">Ton don finance nos prochains projets, montés par et pour les jeunes de Bruxelles.</p>
+  </section>
+
+  @if (!ibanReady && !paymentReady) {
+    <p class="soon">
+      Les coordonnées bancaires arrivent bientôt. En attendant, écris-nous depuis la page
+      <a routerLink="/contact">Contact</a>.
+    </p>
+  }
+
+  @if (ibanReady) {
+    <section class="transfer" aria-labelledby="transfer-title">
+      <h2 id="transfer-title">Par virement</h2>
+
+      <dl class="details">
+        <div class="row">
+          <dt>Titulaire</dt>
+          <dd>{{ config.holder }}</dd>
+        </div>
+        <div class="row">
+          <dt>IBAN</dt>
+          <dd class="iban-line">
+            <span class="iban">{{ displayIban }}</span>
+            <button type="button" class="btn btn--small" (click)="copyIban()">Copier l'IBAN</button>
+          </dd>
+        </div>
+        @if (bicShown) {
+          <div class="row">
+            <dt>BIC</dt>
+            <dd>{{ config.bic }}</dd>
+          </div>
+        }
+        <div class="row">
+          <dt>Communication</dt>
+          <dd>{{ config.reference }}</dd>
+        </div>
+      </dl>
+      <p class="copy-status" aria-live="polite">{{ copyMessage() }}</p>
+
+      <h3>Ou scanne ce QR code avec ton appli bancaire</h3>
+      <div class="qr-block">
+        <form class="fields" (submit)="$event.preventDefault()" novalidate>
+          <div class="field">
+            <label for="amount">Montant (facultatif)</label>
+            <input
+              id="amount"
+              type="text"
+              inputmode="decimal"
+              autocomplete="off"
+              [value]="amountRaw()"
+              (input)="onAmount($event)"
+              [attr.aria-invalid]="amountInvalid() ? 'true' : null"
+              [attr.aria-describedby]="amountInvalid() ? 'amount-error' : null">
+            @if (amountInvalid()) {
+              <p class="error" id="amount-error">Montant invalide : écris par exemple 20 ou 12,50</p>
+            }
+          </div>
+          <div class="field">
+            <label for="donor-name">Ton nom (facultatif)</label>
+            <input
+              id="donor-name"
+              type="text"
+              maxlength="100"
+              autocomplete="name"
+              [value]="donorName()"
+              (input)="onName($event)">
+          </div>
+        </form>
+
+        <figure class="qr">
+          <app-epc-qr [payload]="payload()" [label]="qrLabel()" />
+          <figcaption class="qr-caption">
+            <span>Montant : {{ amountText() }}</span>
+            <span>Communication : {{ remittance() }}</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+  }
+
+  @if (paymentReady) {
+    <section class="card-pay" aria-labelledby="card-title">
+      <h2 id="card-title">Par Bancontact ou carte</h2>
+      <p>Tu passes par la page de paiement sécurisée de notre prestataire.</p>
+      <a class="btn" [href]="config.paymentLink">Payer par Bancontact ou carte</a>
+    </section>
+  }
+</div>
