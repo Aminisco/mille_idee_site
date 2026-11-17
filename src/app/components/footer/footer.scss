@@ -19,7 +19,7 @@
 
 .footer-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, 0.7fr);
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.8fr) minmax(0, 1fr) minmax(0, 0.7fr);
   gap: 32px 48px;
   margin-top: 18px;
 }
@@ -48,11 +48,18 @@
   line-height: 1.4;
 }
 
+.site-links,
 .partners,
 .socials {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.site-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 
 .partners {
