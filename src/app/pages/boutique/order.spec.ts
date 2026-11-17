@@ -24,12 +24,34 @@ describe('order', () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encodeOrder(order),
+      signal: jasmine.any(AbortSignal),
     });
   });
 
   it('rejects when the response is not ok', async () => {
     const fetchFn = jasmine.createSpy('fetch').and.resolveTo({ ok: false, status: 500 } as Response);
     await expectAsync(submitOrder(order, fetchFn as unknown as typeof fetch)).toBeRejected();
+  });
+
+  it('rejects when the request times out or is aborted', async () => {
+    for (const name of ['TimeoutError', 'AbortError']) {
+      const fetchFn = jasmine.createSpy('fetch').and.rejectWith(new DOMException('too slow', name));
+      await expectAsync(submitOrder(order, fetchFn as unknown as typeof fetch)).toBeRejected();
+    }
+  });
+
+  it('aborts a request that never answers', async () => {
+    const fetchFn = jasmine.createSpy('fetch').and.callFake(
+      (_url: string, init: RequestInit) =>
+        new Promise((_resolve, reject) => init.signal!.addEventListener('abort', () => reject(init.signal!.reason))),
+    );
+    const timeoutSpy = spyOn(AbortSignal, 'timeout').and.callFake(() => {
+      const c = new AbortController();
+      setTimeout(() => c.abort(new DOMException('too slow', 'TimeoutError')), 10);
+      return c.signal;
+    });
+    await expectAsync(submitOrder(order, fetchFn as unknown as typeof fetch)).toBeRejectedWithError(/too slow/);
+    expect(timeoutSpy).toHaveBeenCalledWith(15000);
   });
 
   it('declares the same fields in __forms.html and in the posted body', async () => {

@@ -146,6 +146,18 @@ describe('Boutique', () => {
     expect(dialog().textContent).not.toContain('Payer en ligne');
   });
 
+  it('treats a placeholder payment link as absent', async () => {
+    await setup([{ slug: 'x', name: 'X', price: null, photo: null, paymentLink: 'TODO lien de paiement en https' }]);
+    orderButtons()[0].click();
+    fixture.detectChanges();
+    fill();
+    submitBtn().click();
+    await fixture.whenStable();
+    fixture.detectChanges();
+    expect(dialog().textContent).toContain('Merci !');
+    expect(dialog().textContent).not.toContain('Payer en ligne');
+  });
+
   it('shows an error and keeps the values when sending fails', async () => {
     await setup();
     submit.and.rejectWith(new Error('500'));
@@ -163,7 +175,51 @@ describe('Boutique', () => {
 
   it('shows the privacy line under the form', async () => {
     await setup();
-    expect(dialog().textContent).toContain('Ton nom et ton email servent uniquement à traiter ta commande. Ils passent par Netlify, notre hébergeur.');
+    expect(dialog().textContent).toContain('Ton nom, ton email et ta remarque servent uniquement à traiter ta commande. Ils passent par Netlify, notre hébergeur.');
+  });
+
+  it('places the privacy line before the form buttons', async () => {
+    await setup();
+    const privacy = el.querySelector('dialog .privacy')!;
+    const actions = el.querySelector('dialog form .actions')!;
+    expect(privacy.compareDocumentPosition(actions) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
+  it('locks the dialog while sending: Annuler is disabled and Escape is ignored, then both work again', async () => {
+    await setup();
+    let fail!: () => void;
+    submit.and.returnValue(new Promise<void>((_, reject) => (fail = () => reject(new Error('500')))));
+    orderButtons()[0].click();
+    fixture.detectChanges();
+    fill();
+    submitBtn().click();
+    fixture.detectChanges();
+    const cancelBtn = () => Array.from(el.querySelectorAll<HTMLButtonElement>('dialog .actions button')).find(b => b.textContent?.includes('Annuler'))!;
+    expect(cancelBtn().disabled).toBeTrue();
+    const escape = new Event('cancel', { cancelable: true });
+    dialog().dispatchEvent(escape);
+    expect(escape.defaultPrevented).toBeTrue();
+
+    fail();
+    await fixture.whenStable();
+    fixture.detectChanges();
+    expect(cancelBtn().disabled).toBeFalse();
+    const escapeAfter = new Event('cancel', { cancelable: true });
+    dialog().dispatchEvent(escapeAfter);
+    expect(escapeAfter.defaultPrevented).toBeFalse();
+  });
+
+  it('shows the usual error message when the request times out', async () => {
+    await setup();
+    submit.and.rejectWith(new DOMException('too slow', 'TimeoutError'));
+    orderButtons()[0].click();
+    fixture.detectChanges();
+    fill();
+    submitBtn().click();
+    await fixture.whenStable();
+    fixture.detectChanges();
+    expect(dialog().textContent).toContain("L'envoi n'a pas marché.");
+    expect(submitBtn().disabled).toBeFalse();
   });
 
   it('resets the form on each opening and returns focus to the opening button on close', async () => {

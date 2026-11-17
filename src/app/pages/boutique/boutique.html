@@ -26,7 +26,7 @@
   }
 </ul>
 
-<dialog #orderDialog class="order" aria-labelledby="order-title" (close)="onClose()">
+<dialog #orderDialog class="order" aria-labelledby="order-title" (close)="onClose()" (cancel)="onEscape($event)">
   <h2 id="order-title">Commander : {{ selected()?.name }}</h2>
 
   <div class="status" role="status">
@@ -86,15 +86,15 @@
         <input id="order-bot-field" name="bot-field" type="text" formControlName="bot-field" aria-hidden="true" tabindex="-1" autocomplete="off">
       </div>
 
+      <!-- TODO durée de conservation à décider -->
+      <p class="privacy">Ton nom, ton email et ta remarque servent uniquement à traiter ta commande. Ils passent par Netlify, notre hébergeur.</p>
+
       <div class="actions">
-        <button type="button" class="btn btn--alt btn--small" (click)="cancel()">Annuler</button>
+        <button type="button" class="btn btn--alt btn--small" [disabled]="sending()" (click)="cancel()">Annuler</button>
         <button type="submit" class="btn btn--small" [disabled]="sending()">
           {{ sending() ? 'Envoi…' : 'Envoyer la commande' }}
         </button>
       </div>
-
-      <!-- TODO durée de conservation à décider -->
-      <p class="privacy">Ton nom et ton email servent uniquement à traiter ta commande. Ils passent par Netlify, notre hébergeur.</p>
     </form>
   }
 </dialog>

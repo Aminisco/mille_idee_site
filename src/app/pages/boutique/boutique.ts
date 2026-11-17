@@ -85,7 +85,17 @@ export class Boutique {
   }
 
   protected cancel(): void {
+    if (this.sending()) {
+      return;
+    }
     this.dialog().nativeElement.close();
+  }
+
+  // Échap pendant l'envoi fermerait la fenêtre avant de savoir si la commande est partie
+  protected onEscape(event: Event): void {
+    if (this.sending()) {
+      event.preventDefault();
+    }
   }
 
   // Appelé à la fermeture, y compris par Échap : le focus revient au bouton qui a ouvert

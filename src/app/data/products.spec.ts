@@ -1,4 +1,4 @@
-import { isHttpsUrl } from '../config/values';
+import { isHttpsUrl, isPlaceholder } from '../config/values';
 import { formatPrice, PRODUCTS } from './products';
 
 describe('products', () => {
@@ -15,10 +15,10 @@ describe('products', () => {
     }
   });
 
-  it('only keeps payment links that are https URLs', () => {
+  it('only keeps payment links that are placeholders or https URLs', () => {
     for (const p of PRODUCTS) {
       if (p.paymentLink !== undefined) {
-        expect(isHttpsUrl(p.paymentLink)).toBeTrue();
+        expect(isPlaceholder(p.paymentLink) || isHttpsUrl(p.paymentLink)).toBeTrue();
       }
     }
   });
